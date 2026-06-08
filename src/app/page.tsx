@@ -365,7 +365,7 @@ export default function Home() {
           <Reveal>
             <div className="flex justify-center gap-4 flex-wrap">
               <a
-                href="mailto:baguswiranto38@gmail.com"
+                href="mailto:baguswirantowicaksono@gmail.com"
                 className="btn-outline px-5 py-3 rounded-xl text-white font-medium flex items-center gap-2"
               >
                 <Mail className="w-4 h-4" />
