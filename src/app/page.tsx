@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatedBackground } from "@/components/animated-background";
+import { SolarSystem } from "@/components/solar-system";
 import { motion } from "framer-motion";
 import {
   GitFork,
@@ -74,8 +75,9 @@ export default function Home() {
       <AnimatedBackground />
 
       {/* Hero */}
-      <section className="min-h-screen flex items-center justify-center px-4">
-        <div className="text-center max-w-3xl">
+      <section className="min-h-screen flex items-center justify-center px-4 relative">
+        <SolarSystem />
+        <div className="text-center max-w-3xl relative z-10">
           <Reveal>
             <p className="text-sm tracking-widest uppercase mb-4 text-purple-400">
               Developer &amp; Entrepreneur
