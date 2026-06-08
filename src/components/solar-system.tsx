@@ -13,88 +13,143 @@ function useIsMobile() {
   return isMobile;
 }
 
-const DESKTOP_PLANETS = [
+// Real orbital data (semi-major axis in AU, period in Earth years)
+// Using Kepler's third law: T² = a³
+// Scaled to screen pixels with log scaling for visibility
+const REAL_ORBITS = [
   {
     name: "Mercury",
-    size: 5,
-    orbitR: 110,
-    duration: 30,
-    gradient: "radial-gradient(circle at 35% 35%, #b5b5b5, #7a7a7a, #555)",
-    glow: "rgba(180,180,180,0.2)",
+    size: 4,
+    au: 0.387,
+    period: 0.241,
+    color: "#b5b5b5",
+    glow: "rgba(180,180,180,0.25)",
   },
   {
     name: "Venus",
-    size: 8,
-    orbitR: 170,
-    duration: 45,
-    gradient: "radial-gradient(circle at 35% 35%, #ffe4a0, #dba040, #b07820)",
+    size: 7,
+    au: 0.723,
+    period: 0.615,
+    color: "#dba040",
     glow: "rgba(255,200,80,0.25)",
   },
   {
     name: "Earth",
-    size: 9,
-    orbitR: 240,
-    duration: 60,
-    gradient: "radial-gradient(circle at 35% 35%, #7ec8e3, #3b82f6, #1e40af)",
+    size: 8,
+    au: 1.0,
+    period: 1.0,
+    color: "#3b82f6",
     glow: "rgba(59,130,246,0.25)",
   },
   {
     name: "Mars",
-    size: 7,
-    orbitR: 320,
-    duration: 80,
-    gradient: "radial-gradient(circle at 35% 35%, #f09070, #c1440e, #8b2500)",
+    size: 6,
+    au: 1.524,
+    period: 1.881,
+    color: "#c1440e",
     glow: "rgba(220,80,40,0.2)",
   },
   {
     name: "Jupiter",
-    size: 18,
-    orbitR: 420,
-    duration: 120,
-    gradient: "radial-gradient(circle at 35% 35%, #f0c888, #d4944a, #b07030)",
+    size: 16,
+    au: 5.203,
+    period: 11.86,
+    color: "#d4944a",
     glow: "rgba(220,160,80,0.2)",
     hasBands: true,
   },
   {
     name: "Saturn",
-    size: 15,
-    orbitR: 530,
-    duration: 180,
-    gradient: "radial-gradient(circle at 35% 35%, #f5e6a8, #d4b868, #a08030)",
+    size: 13,
+    au: 9.537,
+    period: 29.46,
+    color: "#d4b868",
     glow: "rgba(220,190,100,0.2)",
     hasRing: true,
   },
   {
     name: "Uranus",
-    size: 12,
-    orbitR: 640,
-    duration: 240,
-    gradient: "radial-gradient(circle at 35% 35%, #a8e8e8, #60c8c8, #308888)",
+    size: 10,
+    au: 19.19,
+    period: 84.01,
+    color: "#60c8c8",
     glow: "rgba(96,200,200,0.15)",
+  },
+  {
+    name: "Neptune",
+    size: 9,
+    au: 30.07,
+    period: 164.8,
+    color: "#4060d0",
+    glow: "rgba(64,96,208,0.15)",
   },
 ];
 
-const MOBILE_PLANETS = DESKTOP_PLANETS.slice(0, 4).map((p) => ({
-  ...p,
-  size: Math.max(4, p.size - 2),
-  orbitR: Math.round(p.orbitR * 0.45),
-  duration: Math.round(p.duration * 1.5),
-}));
+// Map real AU to screen pixels (log scale for visibility)
+function auToPixels(au: number, maxRadius: number): number {
+  const minAU = 0.387;
+  const maxAU = 30.07;
+  // Log scale mapping
+  const logMin = Math.log(minAU);
+  const logMax = Math.log(maxAU);
+  const logVal = Math.log(au);
+  const normalized = (logVal - logMin) / (logMax - logMin);
+  // Inner planets get a bit more space, outer ones compressed
+  return 30 + normalized * (maxRadius - 30);
+}
+
+// Scale animation duration: 1 Earth year = baseDuration seconds
+// Make it watchable — 1 year = 8 seconds
+const BASE_YEAR = 8;
 
 export function SolarSystem() {
   const isMobile = useIsMobile();
-  const planets = isMobile ? MOBILE_PLANETS : DESKTOP_PLANETS;
+  const maxRadius = isMobile ? 150 : 400;
 
-  // Generate CSS keyframes as a string
+  // Calculate screen radii and durations
+  const planets = REAL_ORBITS.map((p) => {
+    const orbitR = auToPixels(p.au, maxRadius);
+    const duration = p.period * BASE_YEAR;
+    // Random starting angle so planets aren't all aligned
+    const startAngle = (((p.au * 137.508) % 360) * Math.PI) / 180; // golden angle offset
+    return { ...p, orbitR, duration, startAngle };
+  });
+
+  // Generate CSS keyframes
   const keyframesCSS = planets
     .map(
       (p, i) => `
     @keyframes orbit-${i} {
-      0%   { transform: translate(${p.orbitR}px, 0); }
-      25%  { transform: translate(0, -${p.orbitR}px); }
-      50%  { transform: translate(-${p.orbitR}px, 0); }
-      75%  { transform: translate(0, ${p.orbitR}px); }
-      100% { transform: translate(${p.orbitR}px, 0); }
+      0% {
+        transform: translate(
+          ${Math.cos(p.startAngle) * p.orbitR}px,
+          ${Math.sin(p.startAngle) * p.orbitR}px
+        );
+      }
+      25% {
+        transform: translate(
+          ${Math.cos(p.startAngle + Math.PI / 2) * p.orbitR}px,
+          ${Math.sin(p.startAngle + Math.PI / 2) * p.orbitR}px
+        );
+      }
+      50% {
+        transform: translate(
+          ${Math.cos(p.startAngle + Math.PI) * p.orbitR}px,
+          ${Math.sin(p.startAngle + Math.PI) * p.orbitR}px
+        );
+      }
+      75% {
+        transform: translate(
+          ${Math.cos(p.startAngle + Math.PI * 1.5) * p.orbitR}px,
+          ${Math.sin(p.startAngle + Math.PI * 1.5) * p.orbitR}px
+        );
+      }
+      100% {
+        transform: translate(
+          ${Math.cos(p.startAngle + Math.PI * 2) * p.orbitR}px,
+          ${Math.sin(p.startAngle + Math.PI * 2) * p.orbitR}px
+        );
+      }
     }
   `
     )
@@ -114,10 +169,23 @@ export function SolarSystem() {
             height: planet.orbitR * 2,
             top: `calc(50% - ${planet.orbitR}px)`,
             left: `calc(50% - ${planet.orbitR}px)`,
-            border: "1px solid rgba(255,255,255,0.03)",
+            border: "1px solid rgba(255,255,255,0.04)",
           }}
         />
       ))}
+
+      {/* Sun — center glow */}
+      <div
+        className="absolute rounded-full"
+        style={{
+          width: isMobile ? 10 : 14,
+          height: isMobile ? 10 : 14,
+          top: "calc(50% - 5px)",
+          left: "calc(50% - 5px)",
+          background: "radial-gradient(circle, #fff 0%, #ffe066 30%, #ff8800 60%, transparent 100%)",
+          boxShadow: "0 0 20px rgba(255,200,60,0.6), 0 0 60px rgba(255,140,0,0.3)",
+        }}
+      />
 
       {/* Planets */}
       {planets.map((planet, i) => (
@@ -127,16 +195,17 @@ export function SolarSystem() {
           style={{
             width: planet.size,
             height: planet.size,
-            top: `calc(50% - ${planet.size / 2}px)`,
-            left: `calc(50% - ${planet.size / 2}px)`,
+            top: "calc(50% - 4px)",
+            left: "calc(50% - 4px)",
             animation: `orbit-${i} ${planet.duration}s linear infinite`,
             willChange: "transform",
           }}
         >
+          {/* Planet body */}
           <div
             className="w-full h-full rounded-full relative overflow-hidden"
             style={{
-              background: planet.gradient,
+              background: `radial-gradient(circle at 35% 35%, ${planet.color}, ${planet.color}88, ${planet.color}44)`,
               boxShadow: `0 0 ${planet.size}px ${planet.glow}, inset -${planet.size / 4}px -${planet.size / 4}px ${planet.size / 2}px rgba(0,0,0,0.6)`,
             }}
           >
@@ -177,12 +246,12 @@ export function SolarSystem() {
             <div
               className="absolute top-1/2 left-1/2"
               style={{
-                width: planet.size * 2.4,
-                height: planet.size * 0.6,
+                width: planet.size * 2.2,
+                height: planet.size * 0.5,
                 transform: "translate(-50%, -50%) rotateX(75deg)",
                 borderRadius: "50%",
-                border: "2px solid rgba(210,180,100,0.25)",
-                boxShadow: "0 0 8px rgba(210,180,100,0.1)",
+                border: "1.5px solid rgba(210,180,100,0.3)",
+                boxShadow: "0 0 6px rgba(210,180,100,0.1)",
               }}
             />
           )}
