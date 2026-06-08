@@ -381,7 +381,7 @@ export default function Home() {
                 GitHub
               </a>
               <a
-                href="https://t.me/kaikazuki"
+                href="https://t.me/kaikazukii"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-outline px-5 py-3 rounded-xl text-white font-medium flex items-center gap-2"
