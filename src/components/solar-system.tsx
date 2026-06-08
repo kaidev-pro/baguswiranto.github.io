@@ -99,8 +99,9 @@ function auToPixels(au: number, maxRadius: number): number {
 }
 
 // Scale animation duration: 1 Earth year = baseDuration seconds
-// Make it watchable — 1 year = 8 seconds
-const BASE_YEAR = 8;
+// Slow and majestic — 1 year = 20 seconds
+// Mercury ~5s, Earth 20s, Jupiter ~237s
+const BASE_YEAR = 20;
 
 export function SolarSystem() {
   const isMobile = useIsMobile();
