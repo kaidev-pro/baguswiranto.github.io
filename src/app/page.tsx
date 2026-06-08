@@ -18,8 +18,10 @@ import {
   Server,
   Globe,
   Terminal,
-  Layers,
   Zap,
+  Layers,
+  Briefcase,
+  FileText,
   ChevronUp,
 } from "lucide-react";
 
@@ -377,7 +379,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="btn-outline px-5 py-3 rounded-xl text-white font-medium flex items-center gap-2"
               >
-                <ExternalLink className="w-4 h-4" />
+                <Briefcase className="w-4 h-4" />
                 LinkedIn
               </a>
               <a
