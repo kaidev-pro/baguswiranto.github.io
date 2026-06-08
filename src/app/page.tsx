@@ -5,8 +5,8 @@ import { SolarSystem } from "@/components/solar-system";
 import { TypingEffect } from "@/components/typing-effect";
 import { FloatingParticles } from "@/components/floating-particles";
 import { CosmicGlow } from "@/components/cosmic-glow";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { useState, useEffect } from "react";
 import {
   GitFork,
   Mail,
@@ -19,6 +19,7 @@ import {
   Terminal,
   Layers,
   Zap,
+  ChevronUp,
 } from "lucide-react";
 
 const SKILLS = [
@@ -73,11 +74,64 @@ function Reveal({ children, className }: { children: React.ReactNode; className?
   );
 }
 
+function SectionHeader({ children }: { children: React.ReactNode }) {
+  return (
+    <Reveal>
+      <div className="flex items-center justify-center gap-4 mb-12">
+        <div className="h-px w-12 bg-gradient-to-r from-transparent to-purple-500/50" />
+        <h2 className="text-3xl font-bold">
+          {children}
+        </h2>
+        <div className="h-px w-12 bg-gradient-to-l from-transparent to-cyan-500/50" />
+      </div>
+    </Reveal>
+  );
+}
+
+function ScrollProgress() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+
+  return (
+    <motion.div
+      className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"
+      style={{
+        scaleX,
+        background: "linear-gradient(90deg, #a855f7, #22d3ee, #818cf8)",
+      }}
+    />
+  );
+}
+
+function BackToTop() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setVisible(window.scrollY > 500);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <motion.button
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: visible ? 1 : 0, scale: visible ? 1 : 0.8 }}
+      className="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-purple-500/20 border border-purple-500/40 backdrop-blur-sm flex items-center justify-center hover:bg-purple-500/30 hover:border-purple-400/60 transition-all"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      style={{ pointerEvents: visible ? "auto" : "none" }}
+    >
+      <ChevronUp className="w-5 h-5 text-purple-400" />
+    </motion.button>
+  );
+}
+
 export default function Home() {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
   return (
     <>
+      <ScrollProgress />
       <AnimatedBackground />
+      <BackToTop />
 
       {/* Hero */}
       <section className="min-h-screen flex items-center justify-center px-4 relative">
@@ -90,19 +144,24 @@ export default function Home() {
             </p>
           </Reveal>
           <Reveal>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 gradient-text">
+            <h1
+              className="text-5xl md:text-7xl font-bold mb-6 gradient-text"
+              style={{
+                textShadow: "0 0 40px rgba(168,85,247,0.3), 0 0 80px rgba(34,211,238,0.15)",
+              }}
+            >
               Bagus Wiranto Wicaksono
             </h1>
           </Reveal>
           <Reveal>
-            <p className="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-slate-300 mb-8 leading-[1.8]">
               Full-stack developer building AI-powered platforms.
               <br />
               Founder of{" "}
               <a href="https://8agents.xyz" target="_blank" className="text-purple-400 hover:text-purple-300 underline underline-offset-4">
                 8Agents
               </a>{" "}
-              &amp;{" "}
+              &{" "}
               <a href="https://rakusaku.com" target="_blank" className="text-cyan-400 hover:text-cyan-300 underline underline-offset-4">
                 RakuSaku
               </a>
@@ -125,28 +184,40 @@ export default function Home() {
       <div className="section-divider max-w-4xl mx-auto" />
 
       {/* About */}
-      <section id="about" className="py-24 px-4">
+      <section id="about" className="py-28 px-4">
         <div className="max-w-4xl mx-auto">
-          <Reveal>
-            <h2 className="text-3xl font-bold mb-12 text-center">
-              About <span className="gradient-text">Me</span>
-            </h2>
-          </Reveal>
+          <SectionHeader>
+            About <span className="gradient-text">Me</span>
+          </SectionHeader>
           <Reveal>
             <div className="glass-card rounded-2xl p-8 md:p-12">
               <div className="flex flex-col md:flex-row gap-8 items-center">
-                <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-purple-500/50 shrink-0">
-                  <img
-                    src="/profile.jpg"
-                    alt="Bagus Wiranto Wicaksono"
-                    className="w-full h-full object-cover"
+                <div className="relative shrink-0">
+                  <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-purple-500/50">
+                    <img
+                      src="/profile.jpg"
+                      alt="Bagus Wiranto Wicaksono"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  {/* Pulsing glow ring */}
+                  <div
+                    className="absolute inset-0 rounded-full"
+                    style={{
+                      border: "2px solid transparent",
+                      background: "linear-gradient(135deg, rgba(168,85,247,0.3), rgba(34,211,238,0.3)) border-box",
+                      WebkitMask: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
+                      WebkitMaskComposite: "xor",
+                      maskComposite: "exclude",
+                      animation: "profile-glow 3s ease-in-out infinite",
+                    }}
                   />
                 </div>
                 <div>
-                  <p className="text-slate-300 leading-relaxed mb-4">
+                  <p className="text-slate-300 leading-[1.8] mb-4">
                     I&apos;m a full-stack developer and entrepreneur based in Japan, passionate about building products that solve real problems. My focus is on AI-powered platforms and automation — turning complex workflows into simple, user-friendly experiences.
                   </p>
-                  <p className="text-slate-300 leading-relaxed mb-4">
+                  <p className="text-slate-300 leading-[1.8] mb-4">
                     Currently running two SaaS platforms: <strong className="text-purple-400">8Agents</strong> (AI Agent marketplace) and <strong className="text-cyan-400">RakuSaku</strong> (digital services marketplace). Both built with Next.js, FastAPI, and Docker.
                   </p>
                   <p className="text-slate-400 text-sm">
@@ -162,13 +233,11 @@ export default function Home() {
       <div className="section-divider max-w-4xl mx-auto" />
 
       {/* Skills */}
-      <section id="skills" className="py-24 px-4">
+      <section id="skills" className="py-28 px-4">
         <div className="max-w-4xl mx-auto">
-          <Reveal>
-            <h2 className="text-3xl font-bold mb-12 text-center">
-              Tech <span className="gradient-text">Stack</span>
-            </h2>
-          </Reveal>
+          <SectionHeader>
+            Tech <span className="gradient-text">Stack</span>
+          </SectionHeader>
           <Reveal>
             <div className="flex flex-wrap justify-center gap-4">
               {SKILLS.map((skill, i) => (
@@ -193,13 +262,11 @@ export default function Home() {
       <div className="section-divider max-w-4xl mx-auto" />
 
       {/* Projects */}
-      <section id="projects" className="py-24 px-4">
+      <section id="projects" className="py-28 px-4">
         <div className="max-w-4xl mx-auto">
-          <Reveal>
-            <h2 className="text-3xl font-bold mb-12 text-center">
-              Featured <span className="gradient-text">Projects</span>
-            </h2>
-          </Reveal>
+          <SectionHeader>
+            Featured <span className="gradient-text">Projects</span>
+          </SectionHeader>
           <div className="grid md:grid-cols-2 gap-6">
             {PROJECTS.map((project) => (
               <Reveal key={project.title}>
@@ -225,7 +292,7 @@ export default function Home() {
                     </h3>
                     <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-white transition-colors shrink-0" />
                   </div>
-                  <p className="text-slate-300 text-sm mb-4 leading-relaxed">
+                  <p className="text-slate-300 text-sm mb-4 leading-[1.7]">
                     {project.desc}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -248,13 +315,11 @@ export default function Home() {
       <div className="section-divider max-w-4xl mx-auto" />
 
       {/* Experience */}
-      <section id="experience" className="py-24 px-4">
+      <section id="experience" className="py-28 px-4">
         <div className="max-w-4xl mx-auto">
-          <Reveal>
-            <h2 className="text-3xl font-bold mb-12 text-center">
-              <span className="gradient-text">Experience</span>
-            </h2>
-          </Reveal>
+          <SectionHeader>
+            <span className="gradient-text">Experience</span>
+          </SectionHeader>
           <Reveal>
             <div className="glass-card rounded-2xl p-6 md:p-8">
               <div className="space-y-6">
@@ -287,15 +352,13 @@ export default function Home() {
       <div className="section-divider max-w-4xl mx-auto" />
 
       {/* Contact */}
-      <section id="contact" className="py-24 px-4">
+      <section id="contact" className="py-28 px-4">
         <div className="max-w-2xl mx-auto text-center">
+          <SectionHeader>
+            Get in <span className="gradient-text">Touch</span>
+          </SectionHeader>
           <Reveal>
-            <h2 className="text-3xl font-bold mb-6">
-              Get in <span className="gradient-text">Touch</span>
-            </h2>
-          </Reveal>
-          <Reveal>
-            <p className="text-slate-300 mb-8">
+            <p className="text-slate-300 mb-8 leading-[1.8]">
               Interested in collaborating or have a project in mind? Let&apos;s talk.
             </p>
           </Reveal>

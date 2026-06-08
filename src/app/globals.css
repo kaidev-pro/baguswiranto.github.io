@@ -109,6 +109,12 @@ body {
   100% { transform: translate(20px, -30px); opacity: 0.5; }
 }
 
+/* Profile photo glow ring */
+@keyframes profile-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
 /* Section divider */
 .section-divider {
   height: 1px;
