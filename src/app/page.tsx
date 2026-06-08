@@ -45,7 +45,7 @@ const PROJECTS = [
     desc: "Game top-up platform with automated supplier integration. Supports Roblox, Mobile Legends, and 100+ digital products.",
     tech: ["FastAPI", "PostgreSQL", "Digiflazz API", "Midtrans"],
     url: "https://rakusaku.com",
-    logo: "/logos/rakusaku.jpg",
+    logo: "/logos/rakusaku.webp",
     gradient: "from-[#0f0515] via-pink-900/30 to-[#0f0515]",
     border: "border-pink-500/40",
     hoverBorder: "hover:border-pink-400/70 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)]",
