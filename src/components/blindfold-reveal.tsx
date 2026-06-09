@@ -33,10 +33,10 @@ export function BlindfoldReveal() {
       <div
         className="absolute rounded-full overflow-hidden pointer-events-none"
         style={{
-          top: "40%",
-          left: "8%",
-          right: "8%",
-          height: "16%",
+          top: "35%",
+          left: "5%",
+          right: "5%",
+          height: "28%",
           background: isRevealed
             ? "linear-gradient(90deg, rgba(0, 212, 255, 0.9) 0%, rgba(0, 212, 255, 0.7) 100%)"
             : "linear-gradient(90deg, rgba(3, 0, 20, 0.95) 0%, rgba(3, 0, 20, 0.85) 100%)",
@@ -63,11 +63,11 @@ export function BlindfoldReveal() {
       <div
         className="absolute pointer-events-none"
         style={{
-          top: "43%",
+          top: "38%",
           left: "50%",
           transform: "translateX(-50%)",
           display: "flex",
-          gap: 22,
+          gap: 16,
           opacity: isRevealed ? 1 : 0,
           transition: "opacity 0.3s ease 0.2s",
           zIndex: 5,
