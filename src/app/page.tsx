@@ -6,6 +6,7 @@ import { CustomCursor } from "@/components/custom-cursor";
 import { DomainExpansion } from "@/components/domain-expansion";
 import { TypingEffect } from "@/components/typing-effect";
 import { ProjectCard } from "@/components/project-card";
+import { CosmicEnergy } from "@/components/cosmic-energy";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import {
@@ -156,8 +157,35 @@ export default function Home() {
       <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
         <CosmicGlow />
 
+        {/* Cosmic energy effects matching Gojo image */}
+        <CosmicEnergy />
+
         {/* Floating infinity symbols in background */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 2 }}>
+
+          {/* Gojo portrait on right side */}
+          <div
+            className="absolute hidden md:block"
+            style={{
+              right: "-5%",
+              bottom: "-2%",
+              width: "min(40vw, 380px)",
+              height: "min(75vh, 550px)",
+              opacity: 0.85,
+              filter: "drop-shadow(0 0 30px rgba(31, 90, 255, 0.4)) drop-shadow(0 0 60px rgba(138, 43, 226, 0.25))",
+              animation: "gojo-hero-float 6s ease-in-out infinite",
+              maskImage: "linear-gradient(to top, transparent 0%, black 10%, black 90%, transparent 100%)",
+              WebkitMaskImage: "linear-gradient(to top, transparent 0%, black 10%, black 90%, transparent 100%)",
+            }}
+          >
+            <img
+              src="/gojo-domain.png"
+              alt=""
+              className="w-full h-full object-contain"
+              loading="lazy"
+            />
+          </div>
+
           <div className="absolute top-[15%] left-[10%] opacity-[0.07]">
             <InfinityDecor size="12rem" />
           </div>
