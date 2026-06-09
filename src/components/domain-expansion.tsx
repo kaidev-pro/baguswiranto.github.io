@@ -41,7 +41,9 @@ export function DomainExpansion() {
 
       {/* Full-screen overlay */}
       {isActive && (
-        <div className="domain-expansion-overlay" key={Date.now()} style={{ background: "rgba(3, 0, 20, 0.92)" }}>
+        <div className="domain-expansion-overlay" key={Date.now()} style={{
+          background: isMobile ? "rgba(3, 0, 20, 0.98)" : "rgba(3, 0, 20, 0.92)",
+        }}>
 
           {/* Cosmic energy particles — mobile: 10, desktop: 30 */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -86,12 +88,14 @@ export function DomainExpansion() {
               src="/gojo-domain.png?v=3"
               alt="Gojo Satoru — Domain Expansion"
               className="w-full h-full object-contain"
+              decoding="async"
               style={{
                 maxWidth: "100vw",
                 maxHeight: "100vh",
                 filter: isMobile
-                  ? "drop-shadow(0 0 20px rgba(31, 90, 255, 0.4))"
+                  ? "none"
                   : "drop-shadow(0 0 40px rgba(31, 90, 255, 0.5)) drop-shadow(0 0 80px rgba(138, 43, 226, 0.4)) drop-shadow(0 0 120px rgba(209, 230, 255, 0.2))",
+                contain: "layout paint",
               }}
             />
           </div>
@@ -115,8 +119,9 @@ export function DomainExpansion() {
                 WebkitTextFillColor: "transparent",
                 fontWeight: 900,
                 letterSpacing: "0.05em",
-                filter: "drop-shadow(0 0 20px rgba(31, 90, 255, 0.4))",
-                animation: "domain-text-glow 2s ease-in-out infinite",
+                filter: isMobile ? "none" : "drop-shadow(0 0 20px rgba(31, 90, 255, 0.4))",
+                animation: isMobile ? "none" : "domain-text-glow 2s ease-in-out infinite",
+                textShadow: isMobile ? "0 0 20px rgba(31, 90, 255, 0.4)" : "none",
               }}
             >
               無量空処
