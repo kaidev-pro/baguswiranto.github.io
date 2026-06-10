@@ -206,11 +206,13 @@ export default function Home() {
           >
             <TypingEffect />
           </motion.p>
-          <h1 className="text-5xl md:text-7xl font-black mb-6 hero-name leading-tight">
+          <motion.h1
+            className="text-5xl md:text-7xl font-black mb-6 hero-name leading-tight"
+          >
             <span className="inline-block">Bagus Wiranto</span>
             <br />
             <span className="inline-block">Wicaksono</span>
-          </h1>
+          </motion.h1>
           <Reveal>
             <p className="text-lg md:text-xl text-slate-300 mb-8 leading-[1.8]">
               Full-stack developer who rapidly masters new technologies to ship AI-powered platforms.
