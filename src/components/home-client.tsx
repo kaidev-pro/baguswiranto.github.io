@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import {
   Mail,
   Send,
@@ -211,6 +211,10 @@ function SectionHeader({ children, eyebrow }: { children: React.ReactNode; eyebr
 
 /* ─── Main Component ─── */
 
+import { BackgroundPaths } from "@/components/ui/background-paths";
+import { LetterReveal } from "@/components/ui/letter-reveal";
+import { motion } from "framer-motion";
+
 export default function HomeClient() {
   const revealed = useScrollReveal();
   const isRevealed = (id: string) => revealed.has(id);
@@ -225,25 +229,26 @@ export default function HomeClient() {
       <BackToTop />
 
       {/* ─── Hero ─── */}
-      <section className="min-h-[92vh] py-24 flex items-center justify-center px-4 relative overflow-hidden">
-        {/* Subtle gradient background */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-20"
-            style={{ background: "radial-gradient(circle, #7EC8E3 0%, transparent 70%)" }}
-          />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full opacity-10"
-            style={{ background: "radial-gradient(circle, #A8C5E2 0%, transparent 70%)" }}
-          />
-        </div>
+      <section className="min-h-[92vh] py-24 flex items-center justify-center px-4 relative overflow-hidden bg-gradient-to-b from-background via-background to-sky-50/30">
+        <BackgroundPaths />
+        {/* Soft glow overlay */}
+        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full opacity-10 pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(126,200,227,0.4) 0%, transparent 70%)", filter: "blur(60px)" }}
+        />
 
         <div className="text-center max-w-3xl relative z-10">
           <p className="text-sm tracking-[0.24em] uppercase mb-6 text-primary font-medium">
             Full-Stack Developer · AI Automation · Product Builder
           </p>
           <h1 className="text-6xl md:text-8xl font-bold mb-8 hero-name leading-[1.1] font-serif">
-            <span className="inline-block">KAI</span>
+            <LetterReveal text="KAI" />
           </h1>
-          <div className="mb-8 space-y-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="mb-8 space-y-4"
+          >
             <p className="text-xl md:text-2xl text-foreground/80 leading-[1.55] font-medium">
               I build production-ready web apps, AI automations, and SaaS workflows from idea to deploy.
             </p>
@@ -254,8 +259,13 @@ export default function HomeClient() {
               <a href="https://rakusaku.com" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:text-pink-400 underline underline-offset-4">RakuSaku</a>.
               Based in Japan, open to remote full-stack, product engineer, and AI automation roles.
             </p>
-          </div>
-          <div className="flex gap-4 justify-center flex-wrap mb-10">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+            className="flex gap-4 justify-center flex-wrap mb-10"
+          >
             <a href="#projects" className="btn-primary px-6 py-3 rounded-xl text-foreground font-medium">
               <span>View Projects</span>
             </a>
@@ -265,8 +275,13 @@ export default function HomeClient() {
             <a href="#contact" className="btn-outline px-6 py-3 rounded-xl text-foreground font-medium">
               Contact Me
             </a>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0, duration: 0.6 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto"
+          >
             {[
               { value: "2", label: "Live products shipped" },
               { value: "15+", label: "Autonomous agents built" },
@@ -278,7 +293,7 @@ export default function HomeClient() {
                 <p className="text-[11px] uppercase tracking-[0.16em] text-muted mt-1">{item.label}</p>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
