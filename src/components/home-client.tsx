@@ -57,14 +57,14 @@ const HIRE_SIGNALS = [
 const PROJECTS = [
   {
     title: "8Agents",
-    desc: "Production AI-agent SaaS platform with 15+ autonomous agents, real-time task delegation, multi-provider AI integration, and Telegram-based monitoring for operations.",
+    desc: "Custom AI agent agency for mid-to-upper UMKM. Bespoke autonomous agent workflows — multi-provider AI integration, real-time task delegation, and Telegram-based monitoring.",
     tech: ["Next.js", "FastAPI", "Docker", "PostgreSQL", "Redis", "Telegram Bot API"],
     url: "https://8agents.xyz",
     logo: "/logos/8agents.svg",
     accent: "#f97316",
     accentRgb: "249,115,22",
     status: "LIVE",
-    impact: ["15+ agents", "Multi-provider AI", "Telegram ops"],
+    impact: ["Custom agent workflows", "Multi-provider AI", "UMKM-focused"],
   },
   {
     title: "RakuSaku",
