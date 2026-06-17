@@ -451,7 +451,7 @@ export default function HomeClient() {
             <a href="mailto:baguswirantowicaksono@gmail.com" className="btn-outline px-5 py-3 rounded-xl text-foreground font-medium flex items-center gap-2">
               <Mail className="w-4 h-4" /> Email
             </a>
-            <a href="https://github.com/baguswiranto" target="_blank" rel="noopener noreferrer" className="btn-outline px-5 py-3 rounded-xl text-foreground font-medium flex items-center gap-2">
+              <a href="https://github.com/kaidev-pro" target="_blank" rel="noopener noreferrer" className="btn-outline px-5 py-3 rounded-xl text-foreground font-medium flex items-center gap-2">
               <Briefcase className="w-4 h-4" /> GitHub
             </a>
             <a href="https://t.me/kaikazukii" target="_blank" rel="noopener noreferrer" className="btn-outline px-5 py-3 rounded-xl text-foreground font-medium flex items-center gap-2">

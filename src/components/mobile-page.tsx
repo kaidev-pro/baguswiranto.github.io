@@ -245,7 +245,7 @@ export default function MobilePage() {
           <div className="flex justify-center gap-3 flex-wrap">
             {[
               { label: "Email", href: "mailto:baguswirantowicaksono@gmail.com" },
-              { label: "GitHub", href: "https://github.com/baguswiranto" },
+              { label: "GitHub", href: "https://github.com/kaidev-pro" },
               { label: "Telegram", href: "https://t.me/kaikazukii" },
               { label: "X", href: "https://x.com/Kiminoheroo" },
               { label: "LinkedIn", href: "https://www.linkedin.com/in/bagus-wiranto-wicaksono-1ba320301" },
