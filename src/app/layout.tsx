@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, DM_Sans, JetBrains_Mono } from "next/font/google";
+import { Oswald, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const dmSerif = DM_Serif_Display({
+const oswald = Oswald({
   variable: "--font-heading",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const dmSans = DM_Sans({
@@ -32,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${dmSerif.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${oswald.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}>
       <head>
         <meta name="referrer" content="strict-origin-when-cross-origin" />
       </head>

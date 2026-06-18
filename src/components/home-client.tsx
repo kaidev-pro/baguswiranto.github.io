@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import {
   Mail,
   Send,
@@ -193,18 +193,17 @@ function ScrollProgress() {
   );
 }
 
-function SectionHeader({ children, eyebrow }: { children: React.ReactNode; eyebrow?: string }) {
+function SectionHeader({ children, eyebrow }: { children: ReactNode; eyebrow?: string }) {
   return (
-    <div className="flex flex-col items-center justify-center gap-2 mb-16">
+    <div className="mb-12">
       {eyebrow && (
-        <span className="text-[10px] tracking-[0.4em] uppercase text-muted font-bold mb-1">
+        <span className="text-[11px] tracking-[0.3em] uppercase text-primary font-semibold mb-2 block">
           {eyebrow}
         </span>
       )}
-      <h2 className="text-4xl md:text-5xl font-bold font-serif text-center text-foreground">
+      <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-foreground">
         {children}
       </h2>
-      <div className="mt-4 h-px w-24 bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
     </div>
   );
 }
@@ -229,82 +228,106 @@ export default function HomeClient() {
       <BackToTop />
 
       {/* ─── Hero ─── */}
-      <section className="min-h-[92vh] py-24 flex items-center justify-center px-4 relative overflow-hidden">
-        {/* Gradient mesh background */}
+      <section className="min-h-[92vh] py-24 px-8 md:px-16 lg:px-24 relative overflow-hidden">
+        {/* Subtle background gradient */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-[700px] h-[700px] rounded-full opacity-30"
-            style={{ background: "radial-gradient(circle, rgba(126,200,227,0.5) 0%, transparent 60%)", filter: "blur(80px)" }}
-          />
-          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full opacity-20"
-            style={{ background: "radial-gradient(circle, rgba(91,155,213,0.4) 0%, transparent 60%)", filter: "blur(60px)" }}
-          />
-          <div className="absolute top-1/3 left-1/2 w-[400px] h-[400px] rounded-full opacity-15"
-            style={{ background: "radial-gradient(circle, rgba(126,200,227,0.3) 0%, transparent 60%)", filter: "blur(50px)" }}
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-20"
+            style={{ background: "radial-gradient(circle, rgba(126,200,227,0.4) 0%, transparent 70%)", filter: "blur(60px)" }}
           />
         </div>
-        {/* Grid dots pattern */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
-          style={{ backgroundImage: "radial-gradient(circle, #1A2332 1px, transparent 1px)", backgroundSize: "32px 32px" }}
-        />
         <BackgroundPaths />
-        <div className="text-center max-w-3xl relative z-10">
-          <p className="text-sm tracking-[0.24em] uppercase mb-6 text-primary font-medium">
-            Full-Stack Developer · AI Automation · Product Builder
-          </p>
-      <h1 className="text-[8rem] md:text-[12rem] lg:text-[14rem] font-bold mb-8 hero-name leading-[0.85] font-serif tracking-tighter">
-        <LetterReveal text="KAI" />
-      </h1>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="mb-8 space-y-4"
-          >
-            <p className="text-xl md:text-2xl text-foreground/80 leading-[1.55] font-medium">
+        
+        {/* Split layout container */}
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 relative z-10 pt-16">
+          {/* Left side - Text */}
+          <div className="flex-1 max-w-xl">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="inline-block mb-6 px-4 py-2 rounded-full bg-primary/10 border border-primary/20"
+            >
+              <span className="text-sm text-primary font-medium">Available for collaboration</span>
+            </motion.div>
+            
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.7 }}
+              className="text-6xl md:text-7xl lg:text-8xl font-bold uppercase leading-[0.9] mb-6 hero-name tracking-tight"
+            >
+              I AM
+              <br />
+              <span className="text-primary">KAI</span>
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="text-xl md:text-2xl text-foreground/80 leading-[1.6] mb-4 font-medium"
+            >
               I build production-ready web apps, AI automations, and SaaS workflows from idea to deploy.
-            </p>
-            <p className="text-base md:text-lg text-muted leading-[1.8]">
+            </motion.p>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="text-base text-muted leading-[1.8] mb-8"
+            >
               Founder of{" "}
-              <a href="https://8agents.xyz" target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:text-orange-400 underline underline-offset-4">8Agents</a>
+              <a href="https://8agents.xyz" target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:text-orange-400 font-medium">8Agents</a>
               {" "}and{" "}
-              <a href="https://rakusaku.com" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:text-pink-400 underline underline-offset-4">RakuSaku</a>.
-              Based in Japan, open to remote full-stack, product engineer, and AI automation roles.
-            </p>
-          </motion.div>
+              <a href="https://rakusaku.com" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:text-pink-400 font-medium">RakuSaku</a>.
+              Based in Japan, open to remote roles.
+            </motion.p>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+              className="flex gap-4 flex-wrap"
+            >
+              <a href="#projects" className="btn-primary px-6 py-3 rounded-xl text-foreground font-medium">
+                <span>View Projects</span>
+              </a>
+              <a href="#contact" className="btn-outline px-6 py-3 rounded-xl text-foreground font-medium">
+                Contact Me
+              </a>
+            </motion.div>
+          </div>
+          
+          {/* Right side - Photo + floating text */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-            className="flex gap-4 justify-center flex-wrap mb-10"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="relative flex-shrink-0"
           >
-            <a href="#projects" className="btn-primary px-6 py-3 rounded-xl text-foreground font-medium">
-              <span>View Projects</span>
-            </a>
-            <a href="https://www.linkedin.com/in/bagus-wiranto-wicaksono-1ba320301" target="_blank" rel="noopener noreferrer" className="btn-outline px-6 py-3 rounded-xl text-foreground font-medium">
-              LinkedIn
-            </a>
-            <a href="#contact" className="btn-outline px-6 py-3 rounded-xl text-foreground font-medium">
-              Contact Me
-            </a>
+            {/* Glow behind photo */}
+            <div className="absolute -inset-8 rounded-full opacity-30"
+              style={{ background: "radial-gradient(circle, rgba(126,200,227,0.6) 0%, transparent 70%)", filter: "blur(40px)" }}
+            />
+            <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl">
+              <img
+                src="/profile.jpg"
+                alt="Kai"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            {/* Floating badge */}
+            <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl px-4 py-2 shadow-lg border border-primary/10">
+              <span className="text-sm font-bold text-primary">FULL-STACK DEV</span>
+            </div>
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.6 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto"
-          >
-            {[
-              { value: "2", label: "Live products shipped" },
-              { value: "15+", label: "Autonomous agents built" },
-              { value: "JST", label: "Timezone" },
-              { value: "Remote", label: "Available" },
-            ].map((item) => (
-              <div key={item.label} className="glass-card rounded-2xl px-4 py-3 text-left">
-                <p className="text-lg font-bold gradient-text">{item.value}</p>
-                <p className="text-[11px] uppercase tracking-[0.16em] text-muted mt-1">{item.label}</p>
-              </div>
-            ))}
-          </motion.div>
+        </div>
+        
+        {/* Right side vertical text */}
+        <div className="hidden lg:block absolute right-8 top-1/2 -translate-y-1/2 -rotate-90 origin-center">
+          <span className="text-4xl font-bold uppercase tracking-widest text-foreground/10">
+            DEVELOPER & ENTREPRENEUR
+          </span>
         </div>
       </section>
 
@@ -362,14 +385,13 @@ export default function HomeClient() {
           style={{ backgroundImage: "radial-gradient(circle, #7EC8E3 1px, transparent 1px)", backgroundSize: "24px 24px" }}
         />
         <div className="max-w-4xl mx-auto">
-          <div className="flex flex-col items-center justify-center gap-2 mb-16">
-            <span className="text-[10px] tracking-[0.4em] uppercase text-sky-300/60 font-bold mb-1">
+          <div className="mb-12">
+            <span className="text-[11px] tracking-[0.3em] uppercase text-sky-400 font-semibold mb-2 block">
               03 — Expertise
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold font-serif text-center text-white">
-              Tech <span className="gradient-text">Stack</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-white">
+              Tech Stack
             </h2>
-            <div className="mt-4 h-px w-24 bg-gradient-to-r from-transparent via-sky-400/40 to-transparent" />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {SKILLS.map((skill) => (
@@ -441,14 +463,13 @@ export default function HomeClient() {
           style={{ backgroundImage: "radial-gradient(circle, #7EC8E3 1px, transparent 1px)", backgroundSize: "24px 24px" }}
         />
         <div className="max-w-4xl mx-auto">
-          <div className="flex flex-col items-center justify-center gap-2 mb-16">
-            <span className="text-[10px] tracking-[0.4em] uppercase text-sky-300/60 font-bold mb-1">
+          <div className="mb-12">
+            <span className="text-[11px] tracking-[0.3em] uppercase text-sky-400 font-semibold mb-2 block">
               05 — Journey
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold font-serif text-center text-white">
-              <span className="gradient-text">Experience</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-white">
+              Experience
             </h2>
-            <div className="mt-4 h-px w-24 bg-gradient-to-r from-transparent via-sky-400/40 to-transparent" />
           </div>
           <div className="rounded-2xl p-6 md:p-8 backdrop-blur-md bg-white/5 border border-white/10">
             <div className="space-y-6">
