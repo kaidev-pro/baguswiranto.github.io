@@ -42,7 +42,7 @@ body {
   font-family: var(--font-body), 'DM Sans', sans-serif;
   overflow-x: hidden;
   position: relative;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 /* ============================================
@@ -56,27 +56,32 @@ body::before {
   height: 100%;
   background-image: url("https://grainy-gradients.vercel.app/noise.svg");
   filter: contrast(150%) brightness(1000%);
-  opacity: 0.015;
+  opacity: 0.02;
   pointer-events: none;
   z-index: 9999;
 }
 
 /* ============================================
-   GLASSMORPHISM CARDS — Clean & Soft
+   GLASSMORPHISM CARDS — Premium Depth
    ============================================ */
 .glass-card {
   background: var(--card-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--card-border);
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 4px 8px rgba(0, 0, 0, 0.02);
 }
 
 .glass-card:hover {
-  border-color: rgba(126, 200, 227, 0.4);
-  box-shadow: 0 8px 32px rgba(126, 200, 227, 0.12);
-  transform: translateY(-2px);
+  border-color: rgba(126, 200, 227, 0.5);
+  box-shadow: 
+    0 4px 16px rgba(126, 200, 227, 0.15),
+    0 12px 40px rgba(126, 200, 227, 0.08),
+    0 0 0 1px rgba(126, 200, 227, 0.1);
+  transform: translateY(-4px);
 }
 
 .glass-card:active {
@@ -87,7 +92,7 @@ body::before {
    GRADIENT TEXT — Soft blue
    ============================================ */
 .gradient-text {
-  background: linear-gradient(135deg, #7EC8E3, #A8C5E2);
+  background: linear-gradient(135deg, #5B9BD5, #7EC8E3, #A8C5E2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -97,7 +102,7 @@ body::before {
    HERO NAME — Clean gradient
    ============================================ */
 .hero-name {
-  background: linear-gradient(135deg, #1E2A3A 0%, #3D5A80 40%, #7EC8E3 70%, #1E2A3A 100%);
+  background: linear-gradient(135deg, #1E2A3A 0%, #3D5A80 30%, #5B9BD5 60%, #7EC8E3 80%, #1E2A3A 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -108,19 +113,20 @@ body::before {
    BUTTON STYLES — Clean & Modern
    ============================================ */
 .btn-primary {
-  background: linear-gradient(135deg, #7EC8E3, #A8C5E2);
+  background: linear-gradient(135deg, #5B9BD5, #7EC8E3);
   color: #1E2A3A;
   font-weight: 600;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 2px 8px rgba(126, 200, 227, 0.25);
 }
 
 .btn-primary::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #A8C5E2, #7EC8E3);
+  background: linear-gradient(135deg, #7EC8E3, #A8C5E2);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -130,7 +136,7 @@ body::before {
 }
 
 .btn-primary:hover {
-  box-shadow: 0 4px 20px rgba(126, 200, 227, 0.35);
+  box-shadow: 0 6px 24px rgba(126, 200, 227, 0.4);
   transform: translateY(-2px);
 }
 
@@ -141,27 +147,33 @@ body::before {
 }
 
 .btn-outline {
-  border: 1px solid rgba(126, 200, 227, 0.35);
+  border: 1px solid rgba(126, 200, 227, 0.4);
   color: var(--foreground);
   transition: all 0.3s ease;
   backdrop-filter: blur(8px);
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .btn-outline:hover {
-  background: rgba(126, 200, 227, 0.12);
-  border-color: rgba(126, 200, 227, 0.5);
-  box-shadow: 0 4px 16px rgba(126, 200, 227, 0.15);
+  background: rgba(126, 200, 227, 0.15);
+  border-color: rgba(126, 200, 227, 0.6);
+  box-shadow: 0 4px 20px rgba(126, 200, 227, 0.2);
   transform: translateY(-2px);
 }
 
 /* ============================================
-   SECTION DIVIDER
+   SECTION DIVIDER — Smooth gradient
    ============================================ */
 .section-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--card-border), var(--primary), var(--card-border), transparent);
-  opacity: 0.5;
+  height: 2px;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(126, 200, 227, 0.15) 20%,
+    rgba(126, 200, 227, 0.3) 50%,
+    rgba(126, 200, 227, 0.15) 80%,
+    transparent
+  );
 }
 
 /* ============================================
@@ -169,8 +181,8 @@ body::before {
    ============================================ */
 .section-hidden {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .section-hidden.section-revealed {
@@ -180,8 +192,8 @@ body::before {
 
 .reveal-item {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
 .reveal-item.revealed {
@@ -220,31 +232,37 @@ section {
 }
 
 /* ============================================
-   SKILL BADGE
+   SKILL BADGE — Premium depth
    ============================================ */
 .skill-card {
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .skill-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(126, 200, 227, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 
+    0 8px 24px rgba(126, 200, 227, 0.2),
+    0 0 0 1px rgba(126, 200, 227, 0.15);
 }
 
 /* ============================================
-   PROJECT CARD BRAND ACCENTS
+   PROJECT CARD BRAND ACCENTS — Premium
    ============================================ */
 .project-card {
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  transform: translateY(-6px);
+  box-shadow: 
+    0 12px 48px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(126, 200, 227, 0.1);
 }
 
 /* ============================================
-   PROFILE PHOTO FRAME
+   PROFILE PHOTO FRAME — Premium glow
    ============================================ */
 .profile-photo {
   position: relative;
@@ -255,10 +273,27 @@ section {
 .profile-photo::after {
   content: '';
   position: absolute;
-  inset: -3px;
+  inset: -4px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #7EC8E3, #A8C5E2, #7EC8E3);
+  background: linear-gradient(135deg, #5B9BD5, #7EC8E3, #A8C5E2, #7EC8E3);
   z-index: -1;
+  box-shadow: 0 8px 32px rgba(126, 200, 227, 0.3);
+}
+
+/* ============================================
+   DARK SECTION CARDS
+   ============================================ */
+.dark-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  transition: all 0.35s ease;
+}
+
+.dark-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(126, 200, 227, 0.2);
+  box-shadow: 0 8px 32px rgba(126, 200, 227, 0.1);
 }
 
 /* ============================================
@@ -268,11 +303,12 @@ section {
   .glass-card {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   }
   .glass-card:hover {
     transform: none;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     border-color: var(--card-border);
   }
   .btn-outline {
@@ -281,5 +317,13 @@ section {
   }
   section {
     will-change: auto;
+  }
+  .skill-card,
+  .project-card {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  }
+  .skill-card:hover,
+  .project-card:hover {
+    transform: none;
   }
 }
