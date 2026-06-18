@@ -342,9 +342,9 @@ export default function HomeClient() {
           <div className="glass-card rounded-2xl p-8 md:p-12">
             <div className="flex flex-col md:flex-row gap-8 items-center">
               <div className="relative shrink-0">
-                <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-primary/30">
+                <div className="w-32 h-32 rounded-2xl overflow-hidden border-2 border-primary/30">
                   <img
-                    src="/profile.jpg"
+                    src="/about.jpg"
                     alt="Kai"
                     className="w-full h-full object-cover"
                   />

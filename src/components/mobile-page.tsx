@@ -126,8 +126,8 @@ export default function MobilePage() {
           <div className="rounded-2xl p-6 glass-card">
             <div className="flex flex-col items-center gap-6 mb-4">
               <div className="relative shrink-0">
-                <div className="w-28 h-28 rounded-full overflow-hidden border-2 border-primary/30">
-                  <img src="/profile.jpg" alt="Kai" className="w-full h-full object-cover" />
+                <div className="w-28 h-28 rounded-2xl overflow-hidden border-2 border-primary/30">
+                  <img src="/about.jpg" alt="Kai" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
