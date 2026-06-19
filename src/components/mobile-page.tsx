@@ -60,54 +60,57 @@ export default function MobilePage() {
             </span>
           </div>
 
-          {/* Name */}
-          <h1 className="text-[4.5rem] leading-[0.9] font-bold mb-4 font-heading tracking-tight hero-name">
-            I AM
-            <br />
-            KAI
-          </h1>
+          {/* Name + Photo side by side */}
+          <div className="flex items-center justify-between gap-4 mb-5">
+            <h1 className="text-[3.8rem] leading-[0.9] font-bold font-heading tracking-tight hero-name">
+              I AM
+              <br />
+              <span className="text-primary">KAI</span>
+            </h1>
+            <div className="relative shrink-0">
+              <div className="absolute -inset-3 rounded-full opacity-30"
+                style={{ background: "radial-gradient(circle, rgba(126,200,227,0.6) 0%, transparent 70%)", filter: "blur(20px)" }}
+              />
+              <div className="relative w-28 h-28 rounded-full overflow-hidden border-2 border-primary/30 shadow-lg">
+                <img src="/profile.jpg" alt="Kai" className="w-full h-full object-cover" />
+              </div>
+              <div className="absolute -bottom-1 -right-1 bg-primary text-foreground text-[8px] font-bold px-2 py-0.5 rounded-full shadow">
+                FULL-STACK DEV
+              </div>
+            </div>
+          </div>
 
           {/* Description */}
-          <p className="text-base text-foreground/70 mb-3 leading-relaxed max-w-md">
+          <p className="text-sm text-foreground/70 mb-2 leading-relaxed">
             Full-stack developer building AI-powered web apps and SaaS products. I ship from idea to production — frontend, backend, and everything in between.
           </p>
-          <p className="text-sm text-muted mb-8">
+          <p className="text-xs text-muted mb-6">
             Founder of <span className="text-orange-500 font-medium">8Agents</span> & <span className="text-pink-500 font-medium">RakuSaku</span>. Based in Japan.
           </p>
 
           {/* CTAs */}
-          <div className="flex gap-3 mb-10">
-            <a href="#projects" className="btn-primary px-6 py-3 rounded-xl text-sm font-semibold">
+          <div className="flex gap-3 mb-8">
+            <a href="#projects" className="btn-primary px-5 py-2.5 rounded-xl text-xs font-semibold">
               View Projects
             </a>
-            <a href="#contact" className="btn-outline px-6 py-3 rounded-xl text-sm font-medium">
+            <a href="#contact" className="btn-outline px-5 py-2.5 rounded-xl text-xs font-medium">
               Contact Me
             </a>
           </div>
 
-          {/* Photo + Stats */}
-          <div className="flex items-center gap-6">
-            <div className="relative">
-              <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-primary/30">
-                <img src="/profile.jpg" alt="Kai" className="w-full h-full object-cover" />
+          {/* Stats row */}
+          <div className="flex items-center gap-4 justify-center">
+            {[
+              ["2", "Live products"],
+              ["15+", "AI agents"],
+              ["JST", "Timezone"],
+              ["Remote", "Available"],
+            ].map(([value, label]) => (
+              <div key={label} className="text-center">
+                <p className="text-base font-bold gradient-text">{value}</p>
+                <p className="text-[8px] uppercase tracking-[0.12em] text-muted">{label}</p>
               </div>
-              <div className="absolute -bottom-1 -right-1 bg-primary text-foreground text-[9px] font-bold px-2 py-0.5 rounded-full">
-                FULL-STACK DEV
-              </div>
-            </div>
-            <div className="flex gap-4">
-              {[
-                ["2", "Live products"],
-                ["15+", "AI agents"],
-                ["JST", "Timezone"],
-                ["Remote", "Available"],
-              ].map(([value, label]) => (
-                <div key={label} className="text-center">
-                  <p className="text-lg font-bold gradient-text">{value}</p>
-                  <p className="text-[9px] uppercase tracking-[0.12em] text-muted">{label}</p>
-                </div>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </section>
