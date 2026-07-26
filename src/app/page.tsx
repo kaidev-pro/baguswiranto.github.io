@@ -5,6 +5,7 @@ import { motion, type Variants } from "framer-motion";
 import { Code, Cpu, Palette, Video } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
+import Hero from "@/components/Hero";
 
 const projects = [
   { slug: "8agents", name: "8Agents", category: "AI Product", status: "Building", role: "Product, AI systems, frontend", summary: "A structured platform for learning, designing, and developing AI agents.", liveUrl: "https://8agents.xyz", logo: "/logos/8agents-128.webp", stack: ["AI agents", "Learning workflows", "Product systems"], tone: "agent" },
@@ -43,36 +44,7 @@ export default function Home() {
         <a className="talk" href="mailto:kai@kaidevlab.com">Let’s Talk</a>
       </header>
 
-      <section id="top" className="hero section">
-        <svg className="pcb-trace hero-pcb" viewBox="0 0 1200 720" aria-hidden="true">
-          <path d="M70 520 H230 V455 H390 V395 H520" />
-          <path d="M180 170 H320 V245 H470" />
-          <path d="M760 120 H900 V210 H1120" />
-          <path d="M680 610 H840 V535 H1040" />
-          <circle cx="70" cy="520" r="4" />
-          <circle cx="520" cy="395" r="5" />
-          <circle cx="470" cy="245" r="4" />
-          <circle cx="1120" cy="210" r="5" />
-          <circle cx="1040" cy="535" r="4" />
-        </svg>
-        <motion.div className="hero-copy" initial="hidden" animate="show" variants={reveal}>
-          <p className="eyebrow"><span className="term-prefix">~ $</span> CREATIVE TECHNOLOGIST & INDEPENDENT BUILDER<span className="blinking-cursor">_</span></p>
-          <h1>Building products, systems, and stories at the intersection of AI, code, and creativity.</h1>
-          <p className="lead">I turn ideas into digital products, developer tools, learning platforms, and creative experiences.</p>
-          <div className="actions"><a className="primary" href="#work">Explore My Work</a><a className="secondary" href="#about">Meet Kai</a></div>
-          <p className="meta">Based in Japan · Building independently</p>
-        </motion.div>
-        <motion.div className="hero-visual" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, ease: "easeOut", delay: 0.08 }}>
-          <div className="lab-orbit orbit-one" aria-hidden="true" />
-          <div className="lab-orbit orbit-two" aria-hidden="true" />
-          <div className="media-panel" aria-label="Kai holographic coding hero video">
-            <video width="1280" height="720" autoPlay muted loop playsInline preload="metadata" poster="/media/kai-hero/kai-hero-poster.webp" aria-hidden="true">
-              <source src="/media/kai-hero/kai-hero.webm" type="video/webm" />
-              <source src="/media/kai-hero/kai-hero.mp4" type="video/mp4" />
-            </video>
-          </div>
-        </motion.div>
-      </section>
+      <Hero />
 
       <section className="signal" aria-label="Current signal">
         <span><b>CURRENTLY BUILDING</b> — 8Agents</span>
@@ -88,7 +60,6 @@ export default function Home() {
           <div className="frame-corner bottom-right" />
           <div className="blueprint-dots" />
         </div>
-        <div className="module-label" aria-hidden="true"><span>MODULE 01</span><span>SELECTED WORK</span></div>
         <div className="section-head"><p className="eyebrow">SELECTED WORK</p><h2>Real products, honest status, clear proof.</h2></div>
         <div className="project-grid">
           {projects.slice(0, 4).map((p, i) => <motion.article className={`project ${i === 0 ? "featured" : ""} tone-${p.tone}`} key={p.name} variants={reveal} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }} whileHover={{ y: -5 }}>
