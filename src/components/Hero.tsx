@@ -107,7 +107,7 @@ export default function Hero() {
       <div ref={bandRef} className="hero-v2-band">
         {reducedMotion ? (
           <Image
-            src="/media/kai-hero/kai-hero-poster.jpg"
+            src="/media/kai-hero/kai-hero-poster.webp"
             alt=""
             aria-hidden="true"
             width={1920}
@@ -117,7 +117,7 @@ export default function Hero() {
         ) : (
           <video
             ref={videoRef}
-            poster="/media/kai-hero/kai-hero-poster.jpg"
+            poster="/media/kai-hero/kai-hero-poster.webp"
             preload="none"
             muted
             loop
