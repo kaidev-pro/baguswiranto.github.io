@@ -4,7 +4,7 @@
 import { motion, type Variants } from "framer-motion";
 import { Code, Cpu, Palette, Video } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const projects = [
   { slug: "8agents", name: "8Agents", category: "AI Product", status: "Building", role: "Product, AI systems, frontend", summary: "A structured platform for learning, designing, and developing AI agents.", liveUrl: "https://8agents.xyz", logo: "/logos/8agents-128.webp", tone: "agent" },
@@ -25,6 +25,14 @@ const reveal: Variants = {
 
 export default function Home() {
   const [theme, setTheme] = useState(() => (typeof document === "undefined" ? "light" : document.documentElement.dataset.theme || "light"));
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   function toggleTheme() {
     const next = theme === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = next;
@@ -33,6 +41,7 @@ export default function Home() {
   }
   return (
     <main>
+      <div className="noise-overlay" aria-hidden="true" />
       <header className="site-header">
         <a className="brand brand-logo" href="#top" aria-label="Kaidevlab home"><Image className="logo-light" src="/brand/kaidevlab-logo-light.webp" alt="Kaidevlab" fill sizes="250px" priority /><Image className="logo-dark" src="/brand/kaidevlab-logo-dark.webp" alt="" aria-hidden="true" fill sizes="250px" priority /></a>
         <nav aria-label="Primary navigation">
@@ -61,7 +70,7 @@ export default function Home() {
           <div className="actions"><a className="primary" href="#work">Explore My Work</a><a className="secondary" href="#about">Meet Kai</a></div>
           <p className="meta">Based in Japan · Building independently</p>
         </motion.div>
-        <motion.div className="hero-visual" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, ease: "easeOut", delay: 0.08 }}>
+        <motion.div className="hero-visual" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, ease: "easeOut", delay: 0.08 }} style={{ transform: `translateY(${scrollY * 0.15}px)` }}>
           <div className="lab-orbit orbit-one" aria-hidden="true" />
           <div className="lab-orbit orbit-two" aria-hidden="true" />
           <div className="media-panel" aria-label="Kai holographic coding hero video">

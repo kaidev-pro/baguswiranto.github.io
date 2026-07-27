@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
 
 :root{--background:#F4F9FF;--surface:#FFFFFF;--surface-soft:#E7F1FB;--surface-tint:#EDF6FF;--text-primary:#07162F;--text-secondary:#5C6F8F;--brand-primary:#2563EB;--brand-hover:#1D55D4;--brand-glow:#4DA8FF;--hologram-highlight:#6EAEE8;--interface-blue:#3777C5;--deep-contrast:#0F3180;--border:rgba(37,99,235,.16);--glass-border:rgba(77,168,255,.24);--signal-gold:#F6C76A;--signal-gold-soft:rgba(246,199,106,.35);--signal-gold-glow:rgba(246,199,106,.55);--signal-cyan:#00E5FF;--signal-cyan-soft:rgba(0,229,255,.15);--signal-cyan-glow:rgba(0,229,255,.4)}
 [data-theme="dark"]{--background:#061126;--surface:#0B1B38;--surface-soft:#102A52;--surface-tint:#0B1B38;--text-primary:#F2F7FF;--text-secondary:#9DB4D2;--brand-primary:#4DA8FF;--brand-hover:#6EAEE8;--brand-glow:#6EAEE8;--hologram-highlight:#6EAEE8;--interface-blue:#4DA8FF;--deep-contrast:#DCEBFF;--border:rgba(110,174,232,.22);--glass-border:rgba(110,174,232,.28);--signal-gold-soft:rgba(246,199,106,.44);--signal-gold-glow:rgba(246,199,106,.72);--signal-cyan:#00E5FF;--signal-cyan-soft:rgba(0,229,255,.12);--signal-cyan-glow:rgba(0,229,255,.3)}
@@ -141,7 +142,40 @@
 .project:hover .project-visual img{filter:blur(4px) grayscale(0.5) opacity(0.3)}
 
 
-/* Status chip accent */
+/* Luxury typography upgrade */
+h1, h2, h3{font-family:'Instrument Serif',Georgia,serif;font-weight:400}
+h1{font-size:clamp(2.8rem,6.5vw,6.8rem);line-height:1.05;letter-spacing:-0.02em}
+h2{font-size:clamp(2.2rem,4.2vw,3.8rem);line-height:1.08;letter-spacing:-0.015em}
+.eyebrow{letter-spacing:0.22em;font-size:0.75rem}
+
+/* Color depth upgrade */
+:root{--midnight:#0A0F1C;--gold:#D4AF37;--gold-soft:rgba(212,175,55,.35);--gold-glow:rgba(212,175,55,.55)}
+[data-theme="dark"]{--midnight:#050A14}
+.hero{background:radial-gradient(circle at 75% 45%,rgba(77,168,255,.25),transparent 40%),radial-gradient(circle at 50% 100%,rgba(110,174,232,.20),transparent 40%),radial-gradient(circle at 20% 80%,rgba(212,175,55,.08),transparent 30%),linear-gradient(135deg,#F8FBFF 0%,#EDF6FF 55%,#E3F0FC 100%)}
+[data-theme="dark"] .hero{background:radial-gradient(circle at 75% 45%,rgba(77,168,255,.28),transparent 40%),radial-gradient(circle at 50% 100%,rgba(110,174,232,.22),transparent 40%),radial-gradient(circle at 20% 80%,rgba(212,175,55,.12),transparent 30%),linear-gradient(135deg,#061126 0%,#0B1B38 58%,#102A52 100%)}
+.section.lab-notes-section{background:var(--midnight);color:var(--text-primary);position:relative}
+.section.lab-notes-section .eyebrow,.section.lab-notes-section h2,.section.lab-notes-section h3{color:#F2F7FF}
+.section.lab-notes-section p{color:#9DB4D2}
+.section.cta{background:var(--midnight);color:#F2F7FF}
+.section.cta .eyebrow,.section.cta h2{color:#F2F7FF}
+.section.cta p{color:#9DB4D2}
+.status.live:before{background:var(--gold);box-shadow:0 0 8px var(--gold-glow)}
+
+/* Texture & depth upgrade */
+.noise-overlay{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0.02;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")}
+.project,.capability-card,.journal-entry{box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 4px 20px rgba(0,0,0,.05);border:1px solid transparent;background:linear-gradient(var(--surface),var(--surface)) padding-box,linear-gradient(135deg,rgba(77,168,255,.3),rgba(110,174,232,.1),rgba(212,175,55,.2)) border-box}
+[data-theme="dark"] .project,[data-theme="dark"] .capability-card,[data-theme="dark"] .journal-entry{box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 4px 20px rgba(0,0,0,.2);background:linear-gradient(var(--surface),var(--surface)) padding-box,linear-gradient(135deg,rgba(77,168,255,.4),rgba(110,174,232,.15),rgba(212,175,55,.25)) border-box}
+
+/* Motion refinement upgrade */
+.hero-visual{transform:translateY(0);transition:transform .1s ease-out}
+.project:hover,.capability-card:hover{transform:translateY(-6px);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 20px 40px rgba(37,99,235,.12)}
+.journal-entry:hover{transform:translateY(-6px);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 20px 40px rgba(37,99,235,.12)}
+
+/* Layout rhythm upgrade */
+.section{padding:clamp(5rem,10vw,10rem) clamp(1rem,4vw,3rem)}
+.section-head{max-width:680px;margin-bottom:3rem}
+.hero{padding:clamp(6rem,12vw,12rem) clamp(1rem,4vw,3rem)}
+.lead{max-width:580px}
 .status{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .75rem;border-radius:999px;background:var(--surface-soft);color:var(--text-secondary);border:1px solid var(--border)}
 .status:before{content:"";display:block;width:6px;height:6px;border-radius:999px;background:var(--signal-cyan);box-shadow:0 0 8px var(--signal-cyan-glow)}
 .status.live:before{background:var(--brand-primary);box-shadow:0 0 8px var(--brand-glow)}
