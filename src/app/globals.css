@@ -140,25 +140,3 @@
 .project-visual img{transition:filter .3s ease}
 .project:hover .project-visual img{filter:blur(4px) grayscale(0.5) opacity(0.3)}
 
-/* ========== Hero v2: text-first, video band below fold ========== */
-.hero-v2{background:var(--surface);color:var(--text-primary);padding:8rem 0 0;position:relative}
-.hero-v2-copy{max-width:64rem;margin:0 auto;padding:0 1.5rem}
-.hero-v2-eyebrow{font-family:var(--font-mono,ui-monospace,SFMono-Regular,Menlo,monospace);font-size:.75rem;text-transform:uppercase;letter-spacing:.18em;color:var(--text-secondary);margin:0}
-.hero-v2-title{margin:1.5rem 0 0;max-width:56rem;font-size:clamp(2.25rem,6vw,4.5rem);font-weight:500;line-height:1.05;letter-spacing:-.02em;text-wrap:balance;font-family:var(--font-display,inherit)}
-.hero-v2-lead{margin:1.5rem 0 0;max-width:36rem;font-size:1.125rem;line-height:1.7;color:var(--text-secondary)}
-.hero-v2-actions{margin:2.25rem 0 0;display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
-.hero-v2-cta{display:inline-block;padding:.85rem 1.5rem;border-radius:999px;font-size:.9rem;font-weight:500;text-decoration:none;transition:opacity .2s,border-color .2s,background .2s}
-.hero-v2-cta.primary{background:var(--brand-primary,#1B63D6);color:#fff}
-.hero-v2-cta.primary:hover{opacity:.9}
-.hero-v2-cta.secondary{border:1px solid var(--border);color:var(--text-primary)}
-.hero-v2-cta.secondary:hover{border-color:var(--text-primary)}
-.hero-v2-cta:focus-visible{outline:2px solid currentColor;outline-offset:2px}
-.hero-v2-status{margin:3.5rem 0 0;display:grid;gap:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)}
-@media(min-width:640px){.hero-v2-status{grid-template-columns:repeat(3,1fr)}}
-.hero-v2-status dt{font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;color:var(--text-secondary);margin:0}
-.hero-v2-status dd{margin:.35rem 0 0;font-size:.9rem;font-weight:500;display:flex;align-items:center;gap:.5rem}
-.hero-v2-dot{display:inline-block;width:6px;height:6px;border-radius:999px;background:var(--brand-primary,#1B63D6)}
-.hero-v2-band{margin-top:4rem;width:100%;-webkit-mask-image:radial-gradient(ellipse 44% 52% at 50% 46%,#000 58%,transparent 100%);mask-image:radial-gradient(ellipse 44% 52% at 50% 46%,#000 58%,transparent 100%)}
-.hero-v2-band video,.hero-v2-band img{display:block;width:100%;aspect-ratio:21/9;object-fit:cover}
-@media(max-width:768px){.hero-v2{padding-top:6rem}.hero-v2-band{margin-top:2.5rem}}
-

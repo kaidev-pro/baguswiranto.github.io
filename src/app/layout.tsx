@@ -18,12 +18,14 @@ export const metadata: Metadata = {
     url: "https://kaidevlab.com",
     siteName: "Kaidevlab",
     type: "website",
+    images: [{ url: "/media/kai-hero/kai-hero-poster.webp" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Kaidevlab — Kai’s Creative Technology Lab",
     description:
       "Kai’s living creative technology lab for products, systems, experiments, and stories.",
+    images: [{ url: "/media/kai-hero/kai-hero-poster.webp" }],
   },
 };
 
