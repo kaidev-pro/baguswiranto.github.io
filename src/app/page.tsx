@@ -7,10 +7,9 @@ import Image from "next/image";
 import { useState } from "react";
 
 const projects = [
-  { slug: "8agents", name: "8Agents", category: "AI Product", status: "Building", role: "Product, AI systems, frontend", summary: "A structured platform for learning, designing, and developing AI agents.", liveUrl: "https://8agents.xyz", logo: "/logos/8agents-128.webp", stack: ["AI agents", "Learning workflows", "Product systems"], tone: "agent" },
-  { slug: "8router", name: "8Router", category: "Developer Tool", status: "Beta / Active Development", role: "Architecture, routing, product", summary: "An OpenAI-compatible gateway for routing, fallback, credentials, and multi-provider AI access.", liveUrl: "https://8router.8agents.xyz", logo: "/logos/8router-mark.svg", stack: ["Model routing", "Fallback", "Credentials"], tone: "router" },
-  { slug: "nihongogate", name: "NihongoGate", category: "Education Product", status: "Active Development", role: "Product engineering, learning design", summary: "A Japanese and SSW learning platform built around structured, practical learning workflows.", liveUrl: "https://nihongogate.kaidevlab.com", logo: "/logos/nihongogate-64.svg", stack: ["Japanese", "SSW", "Learning paths"], tone: "education" },
-  { slug: "rakusaku", name: "Rakusaku", category: "Digital Commerce Prototype", status: "Prototype — Payment Integration Pending", role: "Commerce architecture, brand, UX", summary: "A game top-up platform exploring commerce architecture, product experience, and playful branding.", liveUrl: "https://rakusaku.com", logo: "/logos/rakusaku-128.webp", stack: ["Commerce UX", "Catalog", "Prototype"], tone: "commerce", disclaimer: "The core platform and brand experience are in development. Payment gateway integration and live commerce operations are not yet active." },
+  { slug: "8agents", name: "8Agents", category: "AI Product", status: "Building", role: "Product, AI systems, frontend", summary: "A structured platform for learning, designing, and developing AI agents.", liveUrl: "https://8agents.xyz", logo: "/logos/8agents-128.webp", tone: "agent" },
+  { slug: "8router", name: "8Router", category: "Developer Tool", status: "Beta", role: "Architecture, routing, product", summary: "OpenAI-compatible gateway for routing, fallback, credentials, and multi-provider AI access.", liveUrl: "https://8router.8agents.xyz", logo: "/logos/8router-mark.svg", tone: "router" },
+  { slug: "nihongogate", name: "NihongoGate", category: "Education Product", status: "Building", role: "Product engineering, learning design", summary: "Japanese and SSW learning platform built around structured, practical learning workflows.", liveUrl: "https://nihongogate.kaidevlab.com", logo: "/logos/nihongogate-64.svg", tone: "education" },
 ];
 
 const notes = [
@@ -57,8 +56,8 @@ export default function Home() {
         </svg>
         <motion.div className="hero-copy" initial="hidden" animate="show" variants={reveal}>
           <p className="eyebrow">CREATIVE TECHNOLOGIST & INDEPENDENT BUILDER</p>
-          <h1>Building products, systems, and stories at the intersection of AI, code, and creativity.</h1>
-          <p className="lead">I turn ideas into digital products, developer tools, learning platforms, and creative experiences.</p>
+          <h1>Building products and stories at the intersection of AI, code, and creativity.</h1>
+          <p className="lead">I turn ideas into digital products, developer tools, and creative experiences.</p>
           <div className="actions"><a className="primary" href="#work">Explore My Work</a><a className="secondary" href="#about">Meet Kai</a></div>
           <p className="meta">Based in Japan · Building independently</p>
         </motion.div>
@@ -90,17 +89,14 @@ export default function Home() {
         </div>
         <div className="section-head"><p className="eyebrow">SELECTED WORK</p><h2>Real products, honest status, clear proof.</h2></div>
         <div className="project-grid">
-          {projects.slice(0, 4).map((p, i) => <motion.article className={`project ${i === 0 ? "featured" : ""} tone-${p.tone}`} key={p.name} variants={reveal} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }} whileHover={{ y: -5 }}>
+          {projects.map((p, i) => <motion.article className={`project ${i === 0 ? "featured" : ""} tone-${p.tone}`} key={p.name} variants={reveal} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }} whileHover={{ y: -5 }}>
               <div className="thumb project-visual">
                 <div className="visual-grid" aria-hidden="true" />
-                <div className="hover-stack-reveal">
-                  {p.stack.map(s => <span key={s}>{s}</span>)}
-                </div>
                 <Image src={p.logo} alt="" aria-hidden="true" width={88} height={88} />
                 <div className="visual-lines" aria-hidden="true"><span /><span /><span /></div>
-                <strong><span className="term-prefix">~ </span>{p.name}</strong>
+                <strong>{p.name}</strong>
               </div>
-            <p className="chip">{p.category}</p><h3>{p.name}</h3><p>{p.summary}</p><p className="status">{p.status}</p><p className="role">Kai’s role: {p.role}</p>{p.disclaimer && <p className="disclaimer">{p.disclaimer}</p>}<div className="project-actions"><a href={`/work/${p.slug}`}>View Project</a>{p.liveUrl && <a href={p.liveUrl} target="_blank" rel="noreferrer">Live Site</a>}</div>
+            <p className="chip">{p.category}</p><h3>{p.name}</h3><p>{p.summary}</p><p className={`status ${p.status === "Beta" ? "live" : "wip"}`}>{p.status}</p><p className="role">Kai’s role: {p.role}</p><div className="project-actions"><a href={`/work/${p.slug}`}>View Project</a>{p.liveUrl && <a href={p.liveUrl} target="_blank" rel="noreferrer">Live Site</a>}</div>
           </motion.article>)}
         </div>
       </section>
