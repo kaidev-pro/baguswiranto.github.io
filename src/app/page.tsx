@@ -89,7 +89,7 @@ export default function Home() {
         </div>
         <div className="section-head"><p className="eyebrow">SELECTED WORK</p><h2>Real products, honest status, clear proof.</h2></div>
         <div className="project-grid">
-          {projects.map((p, i) => <motion.article className={`project ${i === 0 ? "featured" : ""} tone-${p.tone}`} key={p.name} variants={reveal} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }} whileHover={{ y: -5 }}>
+          {projects.map((p, i) => <motion.article className={`project ${i === 0 ? "featured" : ""} tone-${p.tone}`} key={p.name} variants={reveal} initial="hidden" whileInView="show" viewport={{ once: true }} whileHover={{ y: -5 }}>
               <div className="thumb project-visual">
                 <div className="visual-grid" aria-hidden="true" />
                 <Image src={p.logo} alt="" aria-hidden="true" width={88} height={88} />
