@@ -12,12 +12,6 @@ const projects = [
   { slug: "nihongogate", name: "NihongoGate", category: "Education Product", status: "Building", role: "Product engineering, learning design", summary: "Japanese and SSW learning platform built around structured, practical learning workflows.", liveUrl: "https://nihongogate.kaidevlab.com", logo: "/logos/nihongogate-64.svg", tone: "education" },
 ];
 
-const notes = [
-  ["Behind the Kaidevlab Redesign: Turning a Portfolio into a Creative Technology Lab", "Published", "How product proof, honest status, and brand system come together.", "/lab-notes/behind-kaidevlab-redesign/"],
-  ["Designing AI agent learning paths", "Coming Soon", "Draft note. Not published yet.", ""],
-  ["Creative AI as production lab", "Coming Soon", "Draft note. Not published yet.", ""],
-];
-
 const reveal: Variants = {
   hidden: { opacity: 0, y: 22 },
   show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } },
@@ -158,26 +152,31 @@ export default function Home() {
           <p className="eyebrow">LAB NOTES</p>
           <h2>Build logs, tutorials, and field notes from the lab.</h2>
         </div>
-        <div className="notes-journal">
-          {notes.map((n, i) => (
-            <article className="journal-entry" key={n[0]}>
-              <div className="entry-meta">
-                <span className="entry-id">ENTRY_00{i + 1}</span>
-                <span className="entry-category">{n[1]}</span>
-              </div>
-              <div className="entry-content">
-                <h3>{n[0]}</h3>
-                <p>{n[2]}</p>
-              </div>
-              <div className="entry-footer">
-                <span className="entry-date">JULY 2026</span>
-                {n[3] ? <a className="entry-link" href={n[3]}>READ_LOG</a> : <span className="entry-link">COMING_SOON</span>}
-              </div>
-            </article>
-          ))}
+        <div className="notes-feature-layout">
+          <article className="journal-entry featured-note">
+            <div className="entry-meta">
+              <span className="entry-id">LAB NOTE 01</span>
+              <span className="entry-category">Published</span>
+            </div>
+            <div className="entry-content">
+              <h3>Behind the Kaidevlab Redesign: Turning a Portfolio into a Creative Technology Lab</h3>
+              <p>How product proof, honest status, and a brighter lab-style brand system come together.</p>
+            </div>
+            <div className="entry-footer">
+              <span className="entry-date">July 2026</span>
+              <a className="entry-link" href="/lab-notes/behind-kaidevlab-redesign/">Read Article</a>
+            </div>
+          </article>
+          <aside className="upcoming-notes" aria-label="Upcoming Notes">
+            <p className="eyebrow">Upcoming Notes</p>
+            <ul>
+              <li><span>Designing AI agent learning paths</span><small>Coming Soon</small></li>
+              <li><span>Creative AI as production lab</span><small>Coming Soon</small></li>
+            </ul>
+          </aside>
         </div>
         <div className="section-footer-actions">
-          <a className="secondary" href="/lab-notes/">Access All Logs</a>
+          <a className="secondary" href="/lab-notes/">View Lab Notes</a>
         </div>
       </section>
 
