@@ -66,3 +66,13 @@ npm run build
 - `src/lib/site-data.ts` — shared public project status data.
 - `src/app/lab-notes/[slug]/page.tsx` — first complete article.
 - `src/app/work/[slug]/page.tsx` — corrected project detail status and creative positioning.
+
+## Hero Video Sizing Correction (v2)
+
+- Increased the desktop media allocation to roughly 70–75% of the hero content width on large screens.
+- Raised the hero container maximum width from 1480px to 1760px.
+- Increased the media maximum width to 1180–1240px on large desktops.
+- Reduced headline maximum size slightly so the video remains the signature element.
+- Kept the complete 16:9 composition with `object-fit: contain` and no crop.
+- On mobile, removed horizontal hero padding from the media area and made the video nearly edge-to-edge while keeping copy padding.
+- Reduced the gap between copy and media so the video appears sooner and larger.
