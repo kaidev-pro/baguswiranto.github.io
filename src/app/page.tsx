@@ -1,163 +1,213 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
-"use client";
-
-import { motion, type Variants } from "framer-motion";
-import { Code, Cpu, Palette, Video } from "lucide-react";
+import { Code2, Cpu, Film, Palette, ScanLine, Sparkles } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { ProjectCard } from "@/components/project-card";
+import { creativeProjects, featuredProjects } from "@/lib/site-data";
 
-const projects = [
-  { slug: "8agents", name: "8Agents", category: "AI Business System", status: "Building", role: "Product architecture, AI workflow design, intake analysis", summary: "An AI-assisted business transformation system that turns UMKM intake into structured analysis, recommendations, and founder-reviewed deliverables.", liveUrl: "https://8agents.xyz", logo: "/logos/8agents-128.webp", tone: "agent" },
-  { slug: "8router", name: "8Router", category: "Developer Tool", status: "Beta", role: "Architecture, routing, product", summary: "OpenAI-compatible gateway for routing, fallback, credentials, and multi-provider AI access.", liveUrl: "https://8router.8agents.xyz", logo: "/logos/8router-mark.svg", tone: "router" },
-  { slug: "nihongogate", name: "NihongoGate", category: "Education Product", status: "Building", role: "Product engineering, learning design", summary: "Japanese and SSW learning platform built around structured, practical learning workflows.", liveUrl: "https://nihongogate.kaidevlab.com", logo: "/logos/nihongogate-64.svg", tone: "education" },
+const capabilities = [
+  {
+    icon: Code2,
+    title: "Product Engineering",
+    description: "From concept and architecture to interface, backend, deployment, and iteration.",
+  },
+  {
+    icon: Cpu,
+    title: "AI Systems",
+    description: "AI agents, model routing, automation, prompt systems, and reliable generative workflows.",
+  },
+  {
+    icon: Palette,
+    title: "Creative Direction",
+    description: "Brand identities, interface direction, digital characters, and content concepts.",
+  },
+  {
+    icon: Film,
+    title: "Visual Storytelling",
+    description: "Video editing, cinematic pacing, sound direction, manhwa, and AI-assisted production.",
+  },
 ];
 
-const reveal: Variants = {
-  hidden: { opacity: 0, y: 22 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } },
-};
+const building = ["8Agents", "Kaidevlab redesign", "8Router", "NihongoGate"];
+const exploring = ["Manhwa production", "Visual storytelling", "AI-assisted filmmaking", "Product storytelling", "Video editing"];
 
 export default function Home() {
-  const [theme, setTheme] = useState(() => (typeof document === "undefined" ? "light" : document.documentElement.dataset.theme || "light"));
-  const [menuOpen, setMenuOpen] = useState(false);
+  const blueVengeance = creativeProjects.find((project) => project.slug === "blue-vengeance");
+  const kaiRevengers = creativeProjects.find((project) => project.slug === "kai-revengers");
 
-  function toggleTheme() {
-    const next = theme === "dark" ? "light" : "dark";
-    document.documentElement.dataset.theme = next;
-    localStorage.setItem("theme", next);
-    setTheme(next);
-  }
   return (
     <main>
-      <div className="noise-overlay" aria-hidden="true" />
-      <header className="site-header">
-        <a className="brand brand-logo" href="#top" aria-label="Kaidevlab home"><Image className="logo-light" src="/brand/kaidevlab-logo-light.webp" alt="Kaidevlab" fill sizes="250px" priority /><Image className="logo-dark" src="/brand/kaidevlab-logo-dark.webp" alt="" aria-hidden="true" fill sizes="250px" priority /></a>
-        <nav className="desktop-nav" aria-label="Primary navigation">
-          <a href="#work">Work</a><a href="#notes">Lab Notes</a><a href="#about">About</a><a href="#contact">Contact</a>
-        </nav>
-        <button className="ghost theme-toggle" onClick={toggleTheme} aria-label="Toggle light and dark theme">{theme === "dark" ? "Daylight" : "Midnight"}</button>
-        <a className="talk desktop-talk" href="/contact/">Let’s Talk</a>
-        <button className="menu-toggle" type="button" aria-label="Open mobile menu" aria-expanded={menuOpen} onClick={() => setMenuOpen((v) => !v)}>Menu</button>
-        <nav className={`mobile-nav ${menuOpen ? "open" : ""}`} aria-label="Mobile navigation">
-          <a onClick={() => setMenuOpen(false)} href="#work">Work</a><a onClick={() => setMenuOpen(false)} href="#notes">Lab Notes</a><a onClick={() => setMenuOpen(false)} href="#about">About</a><a onClick={() => setMenuOpen(false)} href="#contact">Contact</a><a onClick={() => setMenuOpen(false)} href="/contact/">Let’s Talk</a>
-        </nav>
-      </header>
-
-      <section id="top" className="hero section">
-        <svg className="pcb-trace hero-pcb" viewBox="0 0 1200 720" aria-hidden="true">
-          <path d="M70 520 H230 V455 H390 V395 H520" />
-          <path d="M180 170 H320 V245 H470" />
-          <path d="M760 120 H900 V210 H1120" />
-          <path d="M680 610 H840 V535 H1040" />
-          <circle cx="70" cy="520" r="4" />
-          <circle cx="520" cy="395" r="5" />
-          <circle cx="470" cy="245" r="4" />
-          <circle cx="1120" cy="210" r="5" />
-          <circle cx="1040" cy="535" r="4" />
+      <section id="top" className="hero-section">
+        <svg className="hero-circuit" viewBox="0 0 1400 820" aria-hidden="true">
+          <path d="M70 610 H250 V525 H430 V450 H570" />
+          <path d="M140 190 H330 V275 H510" />
+          <path d="M850 125 H1040 V220 H1320" />
+          <path d="M780 700 H970 V610 H1230" />
+          <circle cx="70" cy="610" r="5" />
+          <circle cx="570" cy="450" r="6" />
+          <circle cx="510" cy="275" r="5" />
+          <circle cx="1320" cy="220" r="6" />
+          <circle cx="1230" cy="610" r="5" />
         </svg>
-        <motion.div className="hero-copy" initial="hidden" animate="show" variants={reveal}>
-          <p className="eyebrow">CREATIVE TECHNOLOGIST & INDEPENDENT BUILDER</p>
-          <h1>Building products, systems, and stories at the intersection of AI, code, and creativity.</h1>
-          <p className="lead">I turn ideas into digital products, developer tools, learning platforms, and creative experiences.</p>
-          <div className="actions"><a className="primary" href="#work">Explore My Work</a><a className="secondary" href="#about">Meet Kai</a></div>
-          <p className="meta">Based in Japan · Building independently</p>
-        </motion.div>
-        <motion.div className="hero-visual" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, ease: "easeOut", delay: 0.08 }}>
-          <div className="lab-orbit orbit-one" aria-hidden="true" />
-          <div className="lab-orbit orbit-two" aria-hidden="true" />
-          <div className="media-panel" aria-label="Kai holographic coding hero video">
-            <video width="1280" height="720" autoPlay muted loop playsInline preload="metadata" poster="/media/kai-hero/kai-hero-poster.webp" aria-hidden="true">
-              <source src="/media/kai-hero/kai-hero.webm" type="video/webm" />
-              <source src="/media/kai-hero/kai-hero.mp4" type="video/mp4" />
-            </video>
+
+        <div className="hero-inner">
+          <div className="hero-copy hero-reveal">
+            <p className="eyebrow">Creative Technologist & Independent Builder</p>
+            <h1>
+              Building products, systems, and stories at the intersection of AI, code, and creativity.
+            </h1>
+            <p className="lead">
+              I turn ideas into digital products, developer tools, learning platforms, and creative experiences.
+            </p>
+            <div className="actions">
+              <a className="primary" href="#work">Explore My Work</a>
+              <a className="secondary" href="#about">Meet Kai</a>
+            </div>
+            <p className="meta">Based in Japan · Building independently</p>
           </div>
-        </motion.div>
-      </section>
 
-      <section className="signal" aria-label="Current signal">
-        <span><b>CURRENTLY BUILDING</b> — 8Agents and Kaidevlab</span>
-        <span><b>CURRENTLY EXPLORING</b> — AI products, manhwa production, and visual storytelling</span>
-        <span><b>STATUS</b> — Open to interesting collaborations</span>
-      </section>
-
-      <section id="work" className="section blueprint-section">
-        <div className="blueprint-frame" aria-hidden="true">
-          <div className="frame-corner top-left" />
-          <div className="frame-corner top-right" />
-          <div className="frame-corner bottom-left" />
-          <div className="frame-corner bottom-right" />
-          <div className="blueprint-dots" />
-        </div>
-        <div className="section-head"><p className="eyebrow">SELECTED WORK</p><h2>Real products, honest status, clear proof.</h2></div>
-        <div className="project-grid">
-          {projects.map((p, i) => <motion.article className={`project ${i === 0 ? "featured" : ""} tone-${p.tone}`} key={p.name} initial={false} animate="show" variants={reveal} whileHover={{ y: -5 }}>
-              <div className="thumb project-visual">
-                <div className="visual-grid" aria-hidden="true" />
-                <Image src={p.logo} alt="" aria-hidden="true" width={88} height={88} />
-                <div className="visual-lines" aria-hidden="true"><span /><span /><span /></div>
-                <strong>{p.name}</strong>
+          <div className="hero-visual hero-reveal-late">
+            <div className="media-panel" aria-label="Kai holographic coding hero video">
+              <div className="media-status" aria-hidden="true">
+                <span><i /> KAI_WEB · ONLINE</span>
+                <span>BUILD / CODE / CREATE</span>
               </div>
-            <p className="chip">{p.category}</p><h3>{p.name}</h3><p>{p.summary}</p><p className={`status ${p.status === "Beta" ? "live" : "wip"}`}>{p.status}</p><p className="role">Kai’s role: {p.role}</p><div className="project-actions"><a href={`/work/${p.slug}`}>View Project</a>{p.liveUrl && <a href={p.liveUrl} target="_blank" rel="noreferrer">Live Site</a>}</div>
-          </motion.article>)}
+              <video
+                width="1920"
+                height="1080"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster="/media/kai-hero/kai-hero-poster.webp"
+                aria-hidden="true"
+              >
+                <source src="/media/kai-hero/kai-hero.webm" type="video/webm" />
+                <source src="/media/kai-hero/kai-hero.mp4" type="video/mp4" />
+              </video>
+              <Image
+                className="reduced-motion-poster"
+                src="/media/kai-hero/kai-hero-poster.webp"
+                alt="Kai working behind a transparent holographic coding interface"
+                width={1920}
+                height={1080}
+                priority
+              />
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="section split"><div><p className="eyebrow">WHAT I DO</p><h2>Build · Code · Create</h2></div><div className="capabilities-grid">{[{
-            icon: <Code size={24} />,
-            title: "Product Engineering",
-            desc: "From concept and architecture to interface, backend, deployment, and iteration.",
-          },
-          {
-            icon: <Cpu size={24} />,
-            title: "AI Systems",
-            desc: "AI agents, model routing, automation, prompt systems, and generative workflows.",
-          },
-          {
-            icon: <Palette size={24} />,
-            title: "Creative Direction",
-            desc: "Brand identities, interface direction, digital characters, and content concepts.",
-          },
-          {
-            icon: <Video size={24} />,
-            title: "Visual Storytelling",
-            desc: "Video editing, cinematic pacing, subtitles, sound direction, and AI-assisted production.",
-          },
-        ].map((cap, i) => (
-          <motion.div
-            className="capability-card"
-            key={i}
-            variants={reveal}
-            initial={false}
-            animate="show"
-          >
-            <div className="icon-wrap">{cap.icon}</div>
-            <h3>{cap.title}</h3>
-            <p>{cap.desc}</p>
-          </motion.div>
-        ))}
-      </div></section>
+      <section className="current-signal" aria-label="Current status">
+        <div><span>Currently building</span><strong>8Agents and Kaidevlab</strong></div>
+        <div><span>Currently exploring</span><strong>AI products, manhwa, and visual storytelling</strong></div>
+        <div><span>Status</span><strong>Open to interesting collaborations</strong></div>
+      </section>
 
-      <section className="section split"><div><p className="eyebrow">NOW BUILDING & LEARNING</p><h2>Kaidevlab is not a museum of finished work.</h2><p>It is a living record of what I’m building, learning, and improving.</p></div><ul><li>Building: 8Agents, Kaidevlab redesign, 8Router, NihongoGate</li><li>Learning / Exploring: manhwa production, visual storytelling, AI-assisted filmmaking, product storytelling, video editing</li></ul></section>
+      <section id="work" className="section work-section">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Selected Work</p>
+            <h2>Real products, honest status, clear direction.</h2>
+          </div>
+          <p>
+            Products are shown with their current state—not a polished fiction of where they might be later.
+          </p>
+        </div>
+        <div className="selected-work-grid">
+          {featuredProjects.map((project, index) => (
+            <ProjectCard project={project} featured={index === 0} key={project.slug} />
+          ))}
+        </div>
+        <div className="section-action"><a className="secondary" href="/work/">Explore all work</a></div>
+      </section>
 
-      <section id="about" className="section about">
-        <p className="eyebrow">ABOUT KAI</p>
-        <h2>I’m Kai, an independent builder based in Japan.</h2>
-        <p>I create digital products and explore how AI, design, code, and storytelling can work together to turn ideas into useful and memorable experiences.</p>
-        <p>I learn by building. Some projects become products, some become experiments, and others become stories—but each one becomes part of Kaidevlab.</p>
-        <a className="secondary" href="/about/">More About Me</a>
+      <section className="section capabilities-section">
+        <div className="capabilities-intro">
+          <p className="eyebrow">What I Do</p>
+          <h2>Build · Code · Create</h2>
+          <p>
+            From product architecture and AI workflows to visual direction and motion, I work across disciplines to turn ideas into functioning experiences.
+          </p>
+          <div className="stack-line" aria-label="Selected tools">
+            <span>Next.js</span><span>TypeScript</span><span>Python</span><span>PostgreSQL</span><span>Docker</span><span>CapCut</span>
+          </div>
+        </div>
+        <div className="capabilities-grid">
+          {capabilities.map(({ icon: Icon, title, description }) => (
+            <article className="capability-card" key={title}>
+              <div className="icon-wrap"><Icon size={22} /></div>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section now-section">
+        <div className="now-intro">
+          <p className="eyebrow">Now Building & Learning</p>
+          <h2>Kaidevlab is not a museum of finished work.</h2>
+          <p>It is a living record of what I’m building, learning, and improving.</p>
+        </div>
+        <div className="now-grid">
+          <article className="now-card">
+            <div className="now-card-title"><ScanLine size={20} /><h3>Building</h3></div>
+            <ul>{building.map((item) => <li key={item}><span />{item}</li>)}</ul>
+          </article>
+          <article className="now-card">
+            <div className="now-card-title"><Sparkles size={20} /><h3>Learning / Exploring</h3></div>
+            <ul>{exploring.map((item) => <li key={item}><span />{item}</li>)}</ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="creative" className="section creative-section">
+        <div className="section-heading creative-heading">
+          <div>
+            <p className="eyebrow">Creative Lab</p>
+            <h2>Stories begin as experiments, then find the right medium.</h2>
+          </div>
+          <p>
+            Kai Revengers is being archived as an early anime-film prototype. Blue Vengeance becomes the next long-form creative focus—starting as a manhwa before any future animation adaptation.
+          </p>
+        </div>
+        <div className="creative-grid">
+          {blueVengeance ? <ProjectCard project={blueVengeance} featured /> : null}
+          {kaiRevengers ? <ProjectCard project={kaiRevengers} /> : null}
+        </div>
+      </section>
+
+      <section id="about" className="section about-preview">
+        <div className="about-visual">
+          <Image src="/about.jpg" alt="Kai, an independent builder based in Japan" width={600} height={800} sizes="(max-width: 767px) 100vw, 34vw" />
+          <div className="about-visual-label"><span>Based in Japan</span><strong>Independent builder</strong></div>
+        </div>
+        <div className="about-copy">
+          <p className="eyebrow">About Kai</p>
+          <h2>I’m Kai, an independent builder based in Japan.</h2>
+          <p className="lead">
+            I create digital products and explore how AI, design, code, and storytelling can work together to turn ideas into useful and memorable experiences.
+          </p>
+          <p>
+            I learn by building. Some projects become products, some become experiments, and others become stories—but each one becomes part of Kaidevlab.
+          </p>
+          <a className="secondary" href="/about/">More About Me</a>
+        </div>
       </section>
 
       <section id="notes" className="section lab-notes-section">
-        <div className="section-head">
-          <p className="eyebrow">LAB NOTES</p>
-          <h2>Build logs, tutorials, and field notes from the lab.</h2>
+        <div className="lab-transition" aria-hidden="true"><span>Entering the lab</span></div>
+        <div className="section-heading notes-heading">
+          <div>
+            <p className="eyebrow">Lab Notes</p>
+            <h2>Build logs, tutorials, and field notes from the lab.</h2>
+          </div>
+          <p>One published note, with future topics shown honestly as upcoming—not as finished articles.</p>
         </div>
         <div className="notes-feature-layout">
           <article className="journal-entry featured-note">
-            <div className="entry-meta">
-              <span className="entry-id">LAB NOTE 01</span>
-              <span className="entry-category">Published</span>
-            </div>
+            <div className="entry-meta"><span className="entry-id">Lab Note 01</span><span className="entry-category">Published</span></div>
             <div className="entry-content">
               <h3>Behind the Kaidevlab Redesign: Turning a Portfolio into a Creative Technology Lab</h3>
               <p>How product proof, honest status, and a brighter lab-style brand system come together.</p>
@@ -167,22 +217,26 @@ export default function Home() {
               <a className="entry-link" href="/lab-notes/behind-kaidevlab-redesign/">Read Article</a>
             </div>
           </article>
-          <aside className="upcoming-notes" aria-label="Upcoming Notes">
+          <aside className="upcoming-notes" aria-label="Upcoming notes">
             <p className="eyebrow">Upcoming Notes</p>
             <ul>
-              <li><span>Designing AI agent learning paths</span><small>Coming Soon</small></li>
-              <li><span>Creative AI as production lab</span><small>Coming Soon</small></li>
+              <li><span>Building a reliable AI workflow for UMKM intake</span><small>Coming Soon</small></li>
+              <li><span>From anime experiment to Blue Vengeance manhwa</span><small>Coming Soon</small></li>
             </ul>
           </aside>
         </div>
-        <div className="section-footer-actions">
-          <a className="secondary" href="/lab-notes/">View Lab Notes</a>
-        </div>
+        <div className="section-action"><a className="notes-secondary" href="/lab-notes/">View Lab Notes</a></div>
       </section>
 
-      <section id="contact" className="section cta"><div className="cta-glow" aria-hidden="true" /><p className="eyebrow">OPEN TO COLLABORATION</p><h2>Have an idea, collaboration, or interesting problem?</h2><p>Let’s explore what we can build together — from useful products and AI systems to creative worlds with a strong point of view.</p><div className="cta-tags" aria-label="Collaboration areas"><span>Product build</span><span>AI systems</span><span>Creative worlds</span></div><a className="primary" href="mailto:kai@kaidevlab.com">Start a Conversation</a></section>
-
-      <footer><a className="brand brand-logo" href="#top" aria-label="Kaidevlab home"><Image className="logo-light" src="/brand/kaidevlab-logo-light.webp" alt="Kaidevlab" fill sizes="250px" /><Image className="logo-dark" src="/brand/kaidevlab-logo-dark.webp" alt="" aria-hidden="true" fill sizes="250px" /></a><p>Build · Code · Create</p><div><a href="https://x.com/Kiminoheroo">X</a><span className="footer-link-disabled">GitHub TODO</span><span className="footer-link-disabled">LinkedIn TODO</span><a href="mailto:kai@kaidevlab.com">Email</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div><small>© 2026 Kaidevlab. The personal creative technology lab of Kai.</small></footer>
+      <section id="contact" className="section closing-section">
+        <div className="closing-card">
+          <p className="eyebrow">Open to Collaboration</p>
+          <h2>Have an idea, collaboration, or interesting problem?</h2>
+          <p>Let’s explore what we can build together—from useful products and AI systems to creative worlds with a strong point of view.</p>
+          <div className="cta-tags"><span>Product builds</span><span>AI systems</span><span>Creative worlds</span></div>
+          <a className="primary" href="/contact/">Start a Conversation</a>
+        </div>
+      </section>
     </main>
   );
 }

@@ -38,7 +38,7 @@ const projects = {
     next: ["Add more structured modules", "Improve content taxonomy", "Plan interactive practice features"]
   },
   "rakusaku": {
-    title: "Rakusaku", category: "Digital Commerce Prototype", status: "Prototype — Payment Integration Pending", role: "Commerce architecture, brand, UX, prototype direction", logo: "/logos/rakusaku-128.webp", liveUrl: "https://rakusaku.com", year: "2026", stack: ["Commerce UX", "Catalog structure", "Brand system", "Frontend prototype"],
+    title: "Rakusaku", category: "Digital Commerce Prototype", status: "Prototype — Payment Integration Pending", role: "Commerce architecture, brand, UX, prototype direction", logo: "/logos/rakusaku-128.webp", year: "2026", stack: ["Commerce UX", "Catalog structure", "Brand system", "Frontend prototype"],
     summary: "A game top-up platform exploring commerce architecture, product experience, and playful branding.",
     problem: "Game top-up experiences often need strong trust signals, clear product choices, simple ordering, and careful payment handling.",
     goals: ["Prototype a clean commerce experience", "Explore playful but trustworthy branding", "Prepare structure for future payment integration"],
@@ -60,7 +60,7 @@ const projects = {
     next: ["Use the lessons as foundation for Blue Vengeance", "Keep archival page accurate as creative direction evolves"]
   },
   "blue-vengeance": {
-    kind: "creative", title: "Blue Vengeance", category: "Original Manhwa Series", status: "Pre-Production", role: "Creator, story direction, worldbuilding, visual development", logo: "/logos/kai-revengers-64.svg", poster: "/kai-revengers-poster.jpg", year: "2026", stack: ["Manhwa production", "Long-form story", "Character arcs", "Visual development", "Action direction"],
+    kind: "creative", title: "Blue Vengeance", category: "Original Manhwa Series", status: "Pre-Production", role: "Creator, story direction, worldbuilding, visual development", logo: "/logos/kai-revengers-64.svg", year: "2026", stack: ["Manhwa production", "Long-form story", "Character arcs", "Visual development", "Action direction"],
     summary: "An original long-form manhwa following Kai from age 17 to 27, beginning with school delinquent action before evolving into an adult investigator story involving the Tachibana family, Rin’s tragedy and amnesia, and a wider criminal network.",
     problem: "A long-form original IP needs honest positioning before chapters are released: premise, arcs, and production direction can be public without claiming a launched series.",
     goals: ["Define Kai’s 17-to-27 arc", "Build the Tachibana family and Rin storyline", "Shape the criminal network mystery", "Prepare a production pipeline before chapter release"],
@@ -149,7 +149,7 @@ export default async function Project({ params }: ProjectPageProps) {
       approach: "Production workflow",
       challenges: "Creative challenges",
       limitations: "Current progress",
-      next: "Release plan",
+      next: "Next steps",
     }
     : {
       problem: "Problem / opportunity",
@@ -167,7 +167,7 @@ export default async function Project({ params }: ProjectPageProps) {
       <div><p className="eyebrow">{p.category}</p><h1>{p.title}</h1><p className="lead">{p.summary}</p><div className="detail-actions"><span className="status">{p.status}</span>{"liveUrl" in p && p.liveUrl && <a className="primary" href={p.liveUrl} target="_blank" rel="noreferrer">Visit Live Site</a>}</div></div>
       <div className="detail-card">{!creative && <Image src={p.logo} alt="" aria-hidden="true" width={88} height={88} />}<p><b>Role</b><br/>{p.role}</p><p><b>Year</b><br/>{p.year}</p></div>
     </section>
-    {"poster" in p && p.poster && <figure className="detail-poster"><Image src={p.poster} alt={`${p.title} poster`} width={900} height={1350} sizes="(max-width: 760px) 100vw, 720px" /><figcaption>{p.title} key visual / poster.</figcaption></figure>}
+    {"poster" in p && p.poster ? <figure className="detail-poster"><Image src={p.poster} alt={`${p.title} poster`} width={900} height={1350} sizes="(max-width: 760px) 100vw, 720px" /><figcaption>{p.title} key visual / poster.</figcaption></figure> : creative ? <section className="detail-concept-visual" aria-label={`${p.title} visual development status`}><Image src={p.logo} alt="" aria-hidden="true" width={96} height={96} /><p className="eyebrow">Visual Development</p><h2>{p.title}</h2><span>Pre-production artwork is being developed. No released chapter visual is claimed here.</span></section> : null}
     {creative && <section className="creative-facts" aria-label="Production facts"><span>Status: {p.status}</span><span>Format: Creative / story experiment</span><span>Claims: No unreleased chapters or episodes promised</span></section>}
     <section className="detail-grid">
       <article><h2>{labels.problem}</h2><p>{p.problem}</p></article>

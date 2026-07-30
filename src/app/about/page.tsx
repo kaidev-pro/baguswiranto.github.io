@@ -1,2 +1,62 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
-export default function About(){return <main className="section about-page"><p className="eyebrow">ABOUT KAI</p><h1>I’m Kai, an independent builder based in Japan.</h1><p className="lead">Kaidevlab is my personal creative technology lab: a place to build products, code systems, and shape stories in public with honest status and clear direction.</p><section className="detail-grid"><article><h2>Independent-builder identity</h2><p>I work across product engineering, AI workflows, interface direction, and visual storytelling. I learn by building: some projects become tools, some become experiments, and some become story worlds.</p></article><article><h2>Current focus</h2><ul><li>8Agents — AI-assisted business transformation system</li><li>Kaidevlab — creative technology portfolio</li><li>8Router — model routing and provider gateway</li><li>NihongoGate — practical Japanese and SSW learning platform</li></ul></article><article><h2>Capabilities</h2><ul><li>Product architecture and frontend implementation</li><li>AI workflow design and reliability thinking</li><li>Creative direction and product storytelling</li><li>Visual editing, manhwa production, and AI-assisted filmmaking</li></ul></article><article><h2>Philosophy</h2><p>Build with taste, keep claims honest, avoid fake proof, and make each project useful enough to teach the next one.</p></article></section><a className="primary" href="/contact/">Start a Conversation</a><a className="secondary" href="/">Back Home</a></main>}
+import Image from "next/image";
+
+const timeline = [
+  ["Build", "Turning ideas into useful products, systems, and working prototypes."],
+  ["Code", "Learning architecture, AI workflows, reliability, and deployment through real projects."],
+  ["Create", "Developing visual direction, editing, character worlds, and long-form storytelling."],
+] as const;
+
+export default function About() {
+  return (
+    <main className="page-shell about-page">
+      <section className="about-page-hero">
+        <div className="about-page-image">
+          <Image src="/about.jpg" alt="Kai, an independent builder based in Japan" width={600} height={800} priority />
+        </div>
+        <div>
+          <p className="eyebrow">About Kai</p>
+          <h1>I’m Kai, an independent builder based in Japan.</h1>
+          <p className="lead">
+            Kaidevlab is my personal creative technology lab—a place to build products, code systems, and shape stories with honest status and clear direction.
+          </p>
+          <div className="actions">
+            <a className="primary" href="/contact/">Start a Conversation</a>
+            <a className="secondary" href="/work/">Explore My Work</a>
+          </div>
+        </div>
+      </section>
+
+      <section className="about-story-grid">
+        <article>
+          <p className="eyebrow">How I Work</p>
+          <h2>I learn by building.</h2>
+          <p>
+            Some projects become products, some become experiments, and others become story worlds. Each one teaches the next—about product decisions, technical trade-offs, visual taste, and how to keep improving without pretending everything is already finished.
+          </p>
+        </article>
+        <article>
+          <p className="eyebrow">Current Focus</p>
+          <ul className="focus-list">
+            <li><strong>8Agents</strong><span>AI-assisted business transformation for UMKM.</span></li>
+            <li><strong>Kaidevlab</strong><span>Personal brand and living portfolio.</span></li>
+            <li><strong>Blue Vengeance</strong><span>Original long-form manhwa in pre-production.</span></li>
+            <li><strong>Visual production</strong><span>Editing, motion, and AI-assisted filmmaking.</span></li>
+          </ul>
+        </article>
+      </section>
+
+      <section className="principles-section">
+        <div className="section-heading">
+          <div><p className="eyebrow">Build · Code · Create</p><h2>One identity, three connected practices.</h2></div>
+          <p>I do not separate engineering from storytelling. Product clarity, technical execution, and creative direction make each other stronger.</p>
+        </div>
+        <div className="principles-grid">
+          {timeline.map(([title, description], index) => (
+            <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{description}</p></article>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}

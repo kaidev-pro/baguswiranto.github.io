@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { Inter, Cinzel } from "next/font/google";
+import { Cinzel, Inter } from "next/font/google";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 const inter = Inter({ variable: "--font-body", subsets: ["latin"] });
@@ -9,12 +11,13 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://kaidevlab.com"),
   title: "Kaidevlab — Kai’s Creative Technology Lab",
   description:
-    "Kaidevlab is the personal creative technology lab of Kai, featuring digital products, AI systems, developer tools, learning platforms, and visual experiments.",
+    "Kaidevlab is the personal creative technology lab of Kai, featuring AI products, developer tools, learning platforms, original stories, and visual experiments.",
   icons: { icon: "/favicon.ico" },
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Kaidevlab — Kai’s Creative Technology Lab",
     description:
-      "Digital products, AI systems, developer tools, learning platforms, and visual experiments by Kai.",
+      "AI products, developer tools, learning platforms, original stories, and visual experiments by Kai.",
     url: "https://kaidevlab.com",
     siteName: "Kaidevlab",
     type: "website",
@@ -29,6 +32,14 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Kaidevlab",
+  url: "https://kaidevlab.com",
+  description: "The personal creative technology lab of Kai.",
+};
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${cinzel.variable}`}>
@@ -39,17 +50,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             __html: `(() => {try {const saved = localStorage.getItem('theme'); const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; document.documentElement.dataset.theme = saved || system || 'light';} catch (_) {document.documentElement.dataset.theme = 'light';}})();`,
           }}
         />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
-      <body>{children}</body>
+      <body>
+        <div className="noise-overlay" aria-hidden="true" />
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "Kaidevlab",
-  url: "https://kaidevlab.com",
-  description: "The personal creative technology lab of Kai.",
-};
-void jsonLd;
