@@ -7,15 +7,15 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const projects = [
-  { slug: "8agents", name: "8Agents", category: "AI Product", status: "Building", role: "Product, AI systems, frontend", summary: "A structured platform for learning, designing, and developing AI agents.", liveUrl: "https://8agents.xyz", logo: "/logos/8agents-128.webp", tone: "agent" },
+  { slug: "8agents", name: "8Agents", category: "AI Business System", status: "Building", role: "Product architecture, AI workflow design, intake analysis", summary: "An AI-assisted business transformation system that turns UMKM intake into structured analysis, recommendations, and founder-reviewed deliverables.", liveUrl: "https://8agents.xyz", logo: "/logos/8agents-128.webp", tone: "agent" },
   { slug: "8router", name: "8Router", category: "Developer Tool", status: "Beta", role: "Architecture, routing, product", summary: "OpenAI-compatible gateway for routing, fallback, credentials, and multi-provider AI access.", liveUrl: "https://8router.8agents.xyz", logo: "/logos/8router-mark.svg", tone: "router" },
   { slug: "nihongogate", name: "NihongoGate", category: "Education Product", status: "Building", role: "Product engineering, learning design", summary: "Japanese and SSW learning platform built around structured, practical learning workflows.", liveUrl: "https://nihongogate.kaidevlab.com", logo: "/logos/nihongogate-64.svg", tone: "education" },
 ];
 
 const notes = [
-  ["Behind the Kaidevlab redesign", "Behind the Build", "How hero video, product proof, and brand system come together."],
-  ["Designing AI agent learning paths", "AI & Agents", "Notes from shaping structured workflows for agent builders."],
-  ["Creative AI as production lab", "Creative AI", "Experiments across characters, motion, editing, and storytelling."],
+  ["Behind the Kaidevlab Redesign: Turning a Portfolio into a Creative Technology Lab", "Published", "How product proof, honest status, and brand system come together.", "/lab-notes/behind-kaidevlab-redesign/"],
+  ["Designing AI agent learning paths", "Coming Soon", "Draft note. Not published yet.", ""],
+  ["Creative AI as production lab", "Coming Soon", "Draft note. Not published yet.", ""],
 ];
 
 const reveal: Variants = {
@@ -48,7 +48,7 @@ export default function Home() {
           <a href="#work">Work</a><a href="#notes">Lab Notes</a><a href="#about">About</a><a href="#contact">Contact</a>
         </nav>
         <button className="ghost" onClick={toggleTheme} aria-label="Toggle light and dark theme">{theme === "dark" ? "Daylight" : "Midnight"}</button>
-        <a className="talk" href="mailto:kai@kaidevlab.com">Let’s Talk</a>
+        <a className="talk" href="/contact/">Let’s Talk</a>
       </header>
 
       <section id="top" className="hero section">
@@ -65,8 +65,8 @@ export default function Home() {
         </svg>
         <motion.div className="hero-copy" initial="hidden" animate="show" variants={reveal}>
           <p className="eyebrow">CREATIVE TECHNOLOGIST & INDEPENDENT BUILDER</p>
-          <h1>Building products and stories at the intersection of AI, code, and creativity.</h1>
-          <p className="lead">I turn ideas into digital products, developer tools, and creative experiences.</p>
+          <h1>Building products, systems, and stories at the intersection of AI, code, and creativity.</h1>
+          <p className="lead">I turn ideas into digital products, developer tools, learning platforms, and creative experiences.</p>
           <div className="actions"><a className="primary" href="#work">Explore My Work</a><a className="secondary" href="#about">Meet Kai</a></div>
           <p className="meta">Based in Japan · Building independently</p>
         </motion.div>
@@ -83,8 +83,8 @@ export default function Home() {
       </section>
 
       <section className="signal" aria-label="Current signal">
-        <span><b>CURRENTLY BUILDING</b> — 8Agents</span>
-        <span><b>CURRENTLY EXPLORING</b> — AI agents, creative AI, and digital storytelling</span>
+        <span><b>CURRENTLY BUILDING</b> — 8Agents and Kaidevlab</span>
+        <span><b>CURRENTLY EXPLORING</b> — AI products, manhwa production, and visual storytelling</span>
         <span><b>STATUS</b> — Open to interesting collaborations</span>
       </section>
 
@@ -145,7 +145,7 @@ export default function Home() {
         ))}
       </div></section>
 
-      <section className="section split"><div><p className="eyebrow">NOW BUILDING & LEARNING</p><h2>Kaidevlab is not a museum of finished work.</h2><p>It is a living record of what I’m building, learning, and improving.</p></div><ul><li>Building: 8Agents, 8Router, NihongoGate, Kaidevlab redesign</li><li>Learning: video editing, cinematic storytelling, AI-assisted filmmaking, product storytelling, creative direction</li></ul></section>
+      <section className="section split"><div><p className="eyebrow">NOW BUILDING & LEARNING</p><h2>Kaidevlab is not a museum of finished work.</h2><p>It is a living record of what I’m building, learning, and improving.</p></div><ul><li>Building: 8Agents, Kaidevlab redesign, 8Router, NihongoGate</li><li>Learning / Exploring: manhwa production, visual storytelling, AI-assisted filmmaking, product storytelling, video editing</li></ul></section>
 
       <section id="about" className="section about">
         <p className="eyebrow">ABOUT KAI</p>
@@ -173,7 +173,7 @@ export default function Home() {
               </div>
               <div className="entry-footer">
                 <span className="entry-date">JULY 2026</span>
-                <a className="entry-link" href={`/lab-notes/`}>READ_LOG</a>
+                {n[3] ? <a className="entry-link" href={n[3]}>READ_LOG</a> : <span className="entry-link">COMING_SOON</span>}
               </div>
             </article>
           ))}
@@ -185,7 +185,7 @@ export default function Home() {
 
       <section id="contact" className="section cta"><div className="cta-glow" aria-hidden="true" /><p className="eyebrow">OPEN TO COLLABORATION</p><h2>Have an idea, collaboration, or interesting problem?</h2><p>Let’s explore what we can build together — from useful products and AI systems to creative worlds with a strong point of view.</p><div className="cta-tags" aria-label="Collaboration areas"><span>Product build</span><span>AI systems</span><span>Creative worlds</span></div><a className="primary" href="mailto:kai@kaidevlab.com">Start a Conversation</a></section>
 
-      <footer><a className="brand brand-logo" href="#top" aria-label="Kaidevlab home"><Image className="logo-light" src="/brand/kaidevlab-logo-light.webp" alt="Kaidevlab" fill sizes="250px" /><Image className="logo-dark" src="/brand/kaidevlab-logo-dark.webp" alt="" aria-hidden="true" fill sizes="250px" /></a><p>Build · Code · Create</p><div><a href="https://x.com/Kiminoheroo">X</a><a href="https://github.com/">GitHub</a><a href="https://www.linkedin.com/">LinkedIn</a><a href="mailto:kai@kaidevlab.com">Email</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div><small>© 2026 Kaidevlab. The personal creative technology lab of Kai.</small></footer>
+      <footer><a className="brand brand-logo" href="#top" aria-label="Kaidevlab home"><Image className="logo-light" src="/brand/kaidevlab-logo-light.webp" alt="Kaidevlab" fill sizes="250px" /><Image className="logo-dark" src="/brand/kaidevlab-logo-dark.webp" alt="" aria-hidden="true" fill sizes="250px" /></a><p>Build · Code · Create</p><div><a href="https://x.com/Kiminoheroo">X</a><span className="footer-link-disabled">GitHub TODO</span><span className="footer-link-disabled">LinkedIn TODO</span><a href="mailto:kai@kaidevlab.com">Email</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div><small>© 2026 Kaidevlab. The personal creative technology lab of Kai.</small></footer>
     </main>
   );
 }

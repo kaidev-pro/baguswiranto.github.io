@@ -6,13 +6,16 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 
 const work = [
-  { slug: "8agents", name: "8Agents", category: "AI Product", group: "AI", status: "Building", logo: "/logos/8agents-128.webp", summary: "A structured platform for learning, designing, and developing AI agents.", liveUrl: "https://8agents.xyz" },
+  { slug: "8agents", name: "8Agents", category: "AI Business System", group: "AI Systems", status: "Building", logo: "/logos/8agents-128.webp", summary: "An AI-assisted business transformation system that turns UMKM intake into structured analysis, recommendations, and founder-reviewed deliverables.", liveUrl: "https://8agents.xyz" },
   { slug: "8router", name: "8Router", category: "Developer Tool", group: "Developer Tools", status: "Beta / Active Development", logo: "/logos/8router-mark.svg", summary: "An OpenAI-compatible gateway for routing, fallback, credentials, and multi-provider AI access.", liveUrl: "https://8router.8agents.xyz" },
   { slug: "nihongogate", name: "NihongoGate", category: "Education Product", group: "Education", status: "Active Development", logo: "/logos/nihongogate-64.svg", summary: "A Japanese and SSW learning platform built around practical learning workflows.", liveUrl: "https://nihongogate.kaidevlab.com" },
   { slug: "rakusaku", name: "Rakusaku", category: "Digital Commerce Prototype", group: "Products", status: "Prototype — Payment Integration Pending", logo: "/logos/rakusaku-128.webp", summary: "A game top-up prototype exploring commerce architecture and playful branding.", liveUrl: "https://rakusaku.com" },
+  { slug: "kai-revengers", name: "Kai Revengers", category: "AI-Assisted Anime Film Experiment", group: "Creative", status: "Archived Creative Prototype", logo: "/logos/kai-revengers-64.svg", summary: "An early cinematic experiment that helped define Kai’s action language, visual direction, editing workflow, and foundations later carried into Blue Vengeance.", liveUrl: "" },
+  { slug: "blue-vengeance", name: "Blue Vengeance", category: "Original Manhwa Series", group: "Creative", status: "Pre-Production", logo: "/logos/kai-revengers-64.svg", summary: "An original long-form manhwa following Kai from age 17 to 27, evolving from school action into an adult investigator story.", liveUrl: "" },
+  { slug: "dragon-kings-last-contract", name: "The Dragon King’s Last Contract", category: "AI Film Experiment", group: "Experiments", status: "Episode 1 Completed · Creative Experiment", logo: "/logos/kai-revengers-64.svg", summary: "A completed Episode 1 dark fantasy creative experiment built with AI filmmaking workflows.", liveUrl: "" },
 ];
 
-const filters = ["All", "Products", "AI", "Developer Tools", "Education"] as const;
+const filters = ["All", "Products", "AI Systems", "Developer Tools", "Education", "Creative", "Experiments"] as const;
 type Filter = (typeof filters)[number];
 
 const cardVariants: Variants = {

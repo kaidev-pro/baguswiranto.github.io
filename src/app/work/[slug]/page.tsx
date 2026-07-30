@@ -5,15 +5,15 @@ import { notFound } from "next/navigation";
 
 const projects = {
   "8agents": {
-    title: "8Agents", category: "AI Product", status: "Building", role: "Product strategy, AI systems, frontend, learning workflow design", logo: "/logos/8agents-128.webp", liveUrl: "https://8agents.xyz", year: "2026", stack: ["Next.js", "TypeScript", "AI model APIs", "Learning design", "Content systems"],
-    summary: "A structured platform for learning, designing, and developing AI agents.",
-    problem: "AI agent learning often feels fragmented: scattered tutorials, unclear progression, and little connection between concept, architecture, and implementation.",
-    goals: ["Turn AI-agent learning into structured paths", "Connect concepts with builder workflows", "Support practical progression from beginner to product thinking"],
-    features: ["Guided learning paths", "Agent design concepts", "Builder-oriented explanations", "Multi-language growth path"],
-    approach: "The platform is shaped as an educational product first, with clear IA, reusable content sections, and room for deeper interactive modules later.",
-    challenges: ["Balancing beginner clarity with advanced AI system topics", "Avoiding hype-driven claims", "Keeping content maintainable as agent tooling changes"],
-    limitations: ["Still building deeper hands-on modules", "Community and advanced examples are future phases"],
-    next: ["Expand guided modules", "Add practical agent architecture examples", "Improve onboarding and project-based learning"]
+    title: "8Agents", category: "AI Business System", status: "Building", role: "Product architecture, AI workflow design, intake analysis, founder control system, automation, reliability and monitoring", logo: "/logos/8agents-128.webp", liveUrl: "https://8agents.xyz", year: "2026", stack: ["PostgreSQL intake records", "BullMQ", "Redis", "AI analysis versioning", "Founder review dashboard", "Provider abstraction"],
+    summary: "An AI-assisted business transformation system that turns UMKM intake into structured analysis, recommendations, and founder-reviewed deliverables.",
+    problem: "UMKM transformation work often starts with scattered intake, unclear priorities, and AI output that lacks review, versioning, reliability controls, and founder-level approval.",
+    goals: ["Turn business intake into structured analysis", "Keep human review in the final decision loop", "Create reliable queue-based AI workflows", "Track recommendations, revisions, and approvals"],
+    features: ["Business intake workflow", "PostgreSQL-backed intake records", "BullMQ and Redis analysis queue", "AI analysis and versioning", "Founder review dashboard", "Approval and request-changes workflow", "Revision loop", "Audit logs", "Provider abstraction", "Deterministic fallback", "Health monitoring", "Production reliability controls"],
+    approach: "8Agents is designed as a business system, not a course: intake data enters a queue, AI generates structured analysis, founders review outputs, revisions are tracked, and operational reliability is monitored before final deliverables move forward.",
+    challenges: ["Keeping AI output useful without removing founder control", "Designing deterministic fallbacks for provider failure", "Making review and revision states auditable", "Avoiding inflated production claims while still showing system depth"],
+    limitations: ["Still building deeper reliability dashboards", "Some delivery workflows remain founder-reviewed before automation expands"],
+    next: ["Improve founder review UX", "Expand monitoring and audit surfaces", "Refine analysis templates for more UMKM intake types"]
   },
   "8router": {
     title: "8Router", category: "Developer Tool", status: "Beta / Active Development", role: "Architecture, routing logic, product direction, developer experience", logo: "/logos/8router-mark.svg", liveUrl: "https://8router.8agents.xyz", year: "2026", stack: ["Gateway architecture", "OpenAI-compatible API", "Provider routing", "Fallback", "Credentials"],
@@ -49,26 +49,37 @@ const projects = {
     next: ["Finalize payment gateway requirements", "Improve order-state design", "Prepare compliance and operational checklist"]
   },
   "kai-revengers": {
-    kind: "creative", title: "Kai Revengers", category: "Video Content Project", status: "Series in Production", role: "Creator, story direction, visual concept, editing direction", logo: "/logos/kai-revengers-64.svg", poster: "/kai-revengers-poster.jpg", year: "2026", stack: ["Video content", "Story planning", "Anime-inspired visuals", "Editing", "Character direction"],
-    summary: "An anime-inspired video content project built around Kai, Haruma, rivalry arcs, and cinematic short-form storytelling.",
-    problem: "Short-form video content needs a clear hook, recognizable characters, strong visual identity, and enough story momentum to make viewers follow the next episode.",
-    goals: ["Build Kai Revengers as a recognizable video content series", "Develop Kai and Haruma through rivalry-driven arcs", "Create poster, trailer, episode, and edit assets with consistent visual direction"],
-    features: ["Rivalry Arc poster direction", "Character-led story setup", "Urban anime-inspired mood", "Short-form video and trailer planning"],
-    approach: "Kai Revengers is treated as an original content project: story, poster, visual tone, edit pacing, and character branding work together before full episode release.",
-    challenges: ["Keeping character identity consistent across assets", "Balancing visual impact with clear story beats", "Turning poster energy into trailer and episode pacing"],
-    limitations: ["Series is still in production", "Trailer and complete episode structure are pending", "Distribution and release cadence are still being shaped"],
-    next: ["Finish official trailer", "Plan first episode structure", "Prepare release assets for the Rivalry Arc"]
+    kind: "creative", title: "Kai Revengers", category: "AI-Assisted Anime Film Experiment", status: "Archived Creative Prototype", role: "Creator, story direction, visual concept, editing direction", logo: "/logos/kai-revengers-64.svg", poster: "/kai-revengers-poster.jpg", year: "2026", stack: ["AI-assisted visuals", "Story planning", "Anime-inspired action", "Editing", "Character direction"],
+    summary: "An early cinematic experiment that helped define Kai’s action language, visual direction, editing workflow, and the foundations later carried into Blue Vengeance.",
+    problem: "Early creative experiments need room to test action language, character mood, and editing flow without presenting unfinished production plans as active releases.",
+    goals: ["Archive the experiment honestly", "Preserve useful visual lessons", "Carry action-language foundations into Blue Vengeance"],
+    features: ["Rivalry-driven action mood", "Urban anime-inspired visual tests", "Editing and pacing exploration", "Character energy experiments"],
+    approach: "Kai Revengers is kept as an archived prototype: useful as a record of creative exploration, but no longer presented as an active production roadmap.",
+    challenges: ["Separating archived experiments from active IP", "Keeping character naming consistent", "Avoiding stale episode promises"],
+    limitations: ["Archived prototype, not an active series", "No public release cadence promised"],
+    next: ["Use the lessons as foundation for Blue Vengeance", "Keep archival page accurate as creative direction evolves"]
+  },
+  "blue-vengeance": {
+    kind: "creative", title: "Blue Vengeance", category: "Original Manhwa Series", status: "Pre-Production", role: "Creator, story direction, worldbuilding, visual development", logo: "/logos/kai-revengers-64.svg", poster: "/kai-revengers-poster.jpg", year: "2026", stack: ["Manhwa production", "Long-form story", "Character arcs", "Visual development", "Action direction"],
+    summary: "An original long-form manhwa following Kai from age 17 to 27, beginning with school delinquent action before evolving into an adult investigator story involving the Tachibana family, Rin’s tragedy and amnesia, and a wider criminal network.",
+    problem: "A long-form original IP needs honest positioning before chapters are released: premise, arcs, and production direction can be public without claiming a launched series.",
+    goals: ["Define Kai’s 17-to-27 arc", "Build the Tachibana family and Rin storyline", "Shape the criminal network mystery", "Prepare a production pipeline before chapter release"],
+    features: ["School delinquent action period", "Adult investigator evolution", "Rin tragedy and amnesia thread", "Tachibana family conflict", "Wider criminal-network mystery"],
+    approach: "Blue Vengeance is treated as the future primary creative IP: story architecture, character arcs, tone, and production workflow come first before public chapter claims.",
+    challenges: ["Balancing action with long-term mystery", "Maintaining character continuity across a decade", "Avoiding release claims before chapters exist"],
+    limitations: ["Pre-production only", "No chapters publicly released yet"],
+    next: ["Lock chapter-one outline", "Develop key character sheets", "Plan production cadence after assets are ready"]
   },
   "dragon-kings-last-contract": {
-    kind: "creative", title: "The Dragon King’s Last Contract", category: "AI Film Series", status: "Series in Production", role: "Creator, story direction, poster concept, AI film workflow", logo: "/logos/kai-revengers-64.svg", poster: "/dragon-kings-last-contract-poster.jpg", year: "2026", stack: ["Seedance 2.0", "AI filmmaking", "Dark fantasy", "Trailer planning", "Poster direction"],
-    summary: "A dark fantasy film series about a monster, a contract, and the girl sent to kill him, built with Seedance 2.0 workflows.",
-    problem: "AI film series need more than striking visuals: they need coherent character motivation, repeatable style, strong scene continuity, and trailer pacing that sells the story.",
-    goals: ["Build a cinematic dark fantasy series", "Use Seedance 2.0 for repeatable film-style shots", "Develop the Dragon King story through poster, trailer, and episode assets"],
-    features: ["Gothic romance premise", "Dragon King visual identity", "Moonlit cathedral mood", "Contract and betrayal story hook"],
-    approach: "The series starts from a strong key visual and story hook, then expands into shot planning, character consistency, trailer structure, and release-ready short film assets.",
-    challenges: ["Maintaining character consistency across AI-generated scenes", "Preserving gothic tone without losing story clarity", "Turning poster premise into cinematic sequence flow"],
-    limitations: ["Series is still in production", "Trailer and episode structure are still being shaped", "Final release format and cadence are not locked yet"],
-    next: ["Define core characters and contract rules", "Create trailer shot list", "Generate first Seedance 2.0 scene tests"]
+    kind: "creative", title: "The Dragon King’s Last Contract", category: "AI Film Experiment", status: "Episode 1 Completed · Creative Experiment", role: "Creator, story direction, poster concept, AI film workflow", logo: "/logos/kai-revengers-64.svg", poster: "/dragon-kings-last-contract-poster.jpg", year: "2026", stack: ["AI filmmaking", "Dark fantasy", "Episode 1", "Poster direction", "Cinematic workflow"],
+    summary: "A completed Episode 1 dark fantasy creative experiment about a monster, a contract, and the girl sent to kill him.",
+    problem: "AI film experiments need coherent character motivation, repeatable mood, scene continuity, and honest status around what has actually been completed.",
+    goals: ["Present Episode 1 as completed", "Keep dark fantasy tone clear", "Use the experiment to refine AI filmmaking workflow"],
+    features: ["Gothic romance premise", "Dragon King visual identity", "Moonlit dark-fantasy mood", "Contract and betrayal story hook", "Completed first episode experiment"],
+    approach: "The project is presented as a completed creative experiment rather than an active production promise. The page documents its premise, visual direction, and workflow value.",
+    challenges: ["Maintaining character consistency across AI-generated scenes", "Preserving gothic tone without losing story clarity", "Avoiding stale future-production language"],
+    limitations: ["Episode 1 is completed as an experiment", "Future format is not committed publicly"],
+    next: ["Archive learnings", "Use workflow lessons in future creative production", "Keep page status accurate"]
   }
 } as const;
 
@@ -157,7 +168,7 @@ export default async function Project({ params }: ProjectPageProps) {
       <div className="detail-card">{!creative && <Image src={p.logo} alt="" aria-hidden="true" width={88} height={88} />}<p><b>Role</b><br/>{p.role}</p><p><b>Year</b><br/>{p.year}</p></div>
     </section>
     {"poster" in p && p.poster && <figure className="detail-poster"><Image src={p.poster} alt={`${p.title} poster`} width={900} height={1350} sizes="(max-width: 760px) 100vw, 720px" /><figcaption>{p.title} key visual / poster.</figcaption></figure>}
-    {creative && <section className="creative-facts" aria-label="Production facts"><span>Trailer: In production</span><span>Format: Short film / episodic series</span><span>Release: In planning</span></section>}
+    {creative && <section className="creative-facts" aria-label="Production facts"><span>Status: {p.status}</span><span>Format: Creative / story experiment</span><span>Claims: No unreleased chapters or episodes promised</span></section>}
     <section className="detail-grid">
       <article><h2>{labels.problem}</h2><p>{p.problem}</p></article>
       <article><h2>{labels.goals}</h2><ul>{p.goals.map(x=><li key={x}>{x}</li>)}</ul></article>
