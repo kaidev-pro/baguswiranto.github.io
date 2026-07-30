@@ -4,7 +4,7 @@
 import { motion, type Variants } from "framer-motion";
 import { Code, Cpu, Palette, Video } from "lucide-react";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const projects = [
   { slug: "8agents", name: "8Agents", category: "AI Business System", status: "Building", role: "Product architecture, AI workflow design, intake analysis", summary: "An AI-assisted business transformation system that turns UMKM intake into structured analysis, recommendations, and founder-reviewed deliverables.", liveUrl: "https://8agents.xyz", logo: "/logos/8agents-128.webp", tone: "agent" },
@@ -25,13 +25,7 @@ const reveal: Variants = {
 
 export default function Home() {
   const [theme, setTheme] = useState(() => (typeof document === "undefined" ? "light" : document.documentElement.dataset.theme || "light"));
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   function toggleTheme() {
     const next = theme === "dark" ? "light" : "dark";
@@ -44,11 +38,15 @@ export default function Home() {
       <div className="noise-overlay" aria-hidden="true" />
       <header className="site-header">
         <a className="brand brand-logo" href="#top" aria-label="Kaidevlab home"><Image className="logo-light" src="/brand/kaidevlab-logo-light.webp" alt="Kaidevlab" fill sizes="250px" priority /><Image className="logo-dark" src="/brand/kaidevlab-logo-dark.webp" alt="" aria-hidden="true" fill sizes="250px" priority /></a>
-        <nav aria-label="Primary navigation">
+        <nav className="desktop-nav" aria-label="Primary navigation">
           <a href="#work">Work</a><a href="#notes">Lab Notes</a><a href="#about">About</a><a href="#contact">Contact</a>
         </nav>
-        <button className="ghost" onClick={toggleTheme} aria-label="Toggle light and dark theme">{theme === "dark" ? "Daylight" : "Midnight"}</button>
-        <a className="talk" href="/contact/">Let’s Talk</a>
+        <button className="ghost theme-toggle" onClick={toggleTheme} aria-label="Toggle light and dark theme">{theme === "dark" ? "Daylight" : "Midnight"}</button>
+        <a className="talk desktop-talk" href="/contact/">Let’s Talk</a>
+        <button className="menu-toggle" type="button" aria-label="Open mobile menu" aria-expanded={menuOpen} onClick={() => setMenuOpen((v) => !v)}>Menu</button>
+        <nav className={`mobile-nav ${menuOpen ? "open" : ""}`} aria-label="Mobile navigation">
+          <a onClick={() => setMenuOpen(false)} href="#work">Work</a><a onClick={() => setMenuOpen(false)} href="#notes">Lab Notes</a><a onClick={() => setMenuOpen(false)} href="#about">About</a><a onClick={() => setMenuOpen(false)} href="#contact">Contact</a><a onClick={() => setMenuOpen(false)} href="/contact/">Let’s Talk</a>
+        </nav>
       </header>
 
       <section id="top" className="hero section">
@@ -70,7 +68,7 @@ export default function Home() {
           <div className="actions"><a className="primary" href="#work">Explore My Work</a><a className="secondary" href="#about">Meet Kai</a></div>
           <p className="meta">Based in Japan · Building independently</p>
         </motion.div>
-        <motion.div className="hero-visual" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, ease: "easeOut", delay: 0.08 }} style={{ transform: `translateY(${scrollY * 0.15}px)` }}>
+        <motion.div className="hero-visual" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, ease: "easeOut", delay: 0.08 }}>
           <div className="lab-orbit orbit-one" aria-hidden="true" />
           <div className="lab-orbit orbit-two" aria-hidden="true" />
           <div className="media-panel" aria-label="Kai holographic coding hero video">
