@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 export function HeroVideo() {
@@ -49,14 +48,6 @@ export function HeroVideo() {
         <source src="/media/kai-hero/kai-hero.webm" type="video/webm" />
         <source src="/media/kai-hero/kai-hero.mp4" type="video/mp4" />
       </video>
-      <Image
-        className="reduced-motion-poster"
-        src="/media/kai-hero/kai-hero-poster.webp"
-        alt="Kai working behind a transparent holographic coding interface"
-        width={1920}
-        height={1080}
-        priority
-      />
       {!isPlaying ? (
         <button className="video-play-button" type="button" onClick={() => void startVideo()}>
           Play video
