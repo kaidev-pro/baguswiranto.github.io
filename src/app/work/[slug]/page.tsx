@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 
 const projects = {
   "8agents": {
-    title: "8Agents", category: "AI Business System", status: "Building", role: "Product architecture, AI workflow design, intake analysis, founder control system, automation, reliability and monitoring", logo: "/logos/8agents-128.webp", liveUrl: "https://8agents.xyz", year: "2026", stack: ["PostgreSQL intake records", "BullMQ", "Redis", "AI analysis versioning", "Founder review dashboard", "Provider abstraction"],
+    title: "8Agents", category: "AI Business System", status: "Building", role: "Product architecture, AI workflow design, intake analysis, founder control system, automation, reliability and monitoring", logo: "/logos/8agents-128.webp", liveUrl: "https://8agents.id", year: "2026", stack: ["PostgreSQL intake records", "BullMQ", "Redis", "AI analysis versioning", "Founder review dashboard", "Provider abstraction"],
     summary: "An AI-assisted business transformation system that turns UMKM intake into structured analysis, recommendations, and founder-reviewed deliverables.",
     problem: "UMKM transformation work often starts with scattered intake, unclear priorities, and AI output that lacks review, versioning, reliability controls, and founder-level approval.",
     goals: ["Turn business intake into structured analysis", "Keep human review in the final decision loop", "Create reliable queue-based AI workflows", "Track recommendations, revisions, and approvals"],
@@ -38,7 +38,7 @@ const projects = {
     next: ["Add more structured modules", "Improve content taxonomy", "Plan interactive practice features"]
   },
   "rakusaku": {
-    title: "Rakusaku", category: "Digital Commerce Prototype", status: "Prototype — Payment Integration Pending", role: "Commerce architecture, brand, UX, prototype direction", logo: "/logos/rakusaku-128.webp", year: "2026", stack: ["Commerce UX", "Catalog structure", "Brand system", "Frontend prototype"],
+    title: "Rakusaku", category: "Digital Commerce Prototype", status: "Prototype — Payment Integration Pending", role: "Commerce architecture, brand, UX, prototype direction", logo: "/logos/rakusaku-128.webp", liveUrl: "https://rakusaku.com", year: "2026", stack: ["Commerce UX", "Catalog structure", "Brand system", "Frontend prototype"],
     summary: "A game top-up platform exploring commerce architecture, product experience, and playful branding.",
     problem: "Game top-up experiences often need strong trust signals, clear product choices, simple ordering, and careful payment handling.",
     goals: ["Prototype a clean commerce experience", "Explore playful but trustworthy branding", "Prepare structure for future payment integration"],

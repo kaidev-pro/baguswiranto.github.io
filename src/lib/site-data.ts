@@ -35,7 +35,9 @@ export const projects: ProjectPreview[] = [
     logo: "/logos/8agents-128.webp",
     tone: "agent",
     signals: ["Business intake", "Founder review", "Reliable AI workflow"],
-    liveUrl: "https://8agents.xyz",
+    liveUrl: "https://8agents.id",
+    coverImage: "/project-screenshots/8agents.png",
+    coverPosition: "center top",
   },
   {
     slug: "8router",
@@ -50,6 +52,8 @@ export const projects: ProjectPreview[] = [
     tone: "router",
     signals: ["OpenAI-compatible", "Fallback", "Provider routing"],
     liveUrl: "https://8router.8agents.xyz",
+    coverImage: "/project-screenshots/8router.png",
+    coverPosition: "center top",
   },
   {
     slug: "nihongogate",
@@ -64,6 +68,8 @@ export const projects: ProjectPreview[] = [
     tone: "education",
     signals: ["JLPT N5–N1", "SSW", "Learning paths"],
     liveUrl: "https://nihongogate.kaidevlab.com",
+    coverImage: "/project-screenshots/nihongogate.png",
+    coverPosition: "center top",
   },
   {
     slug: "rakusaku",
@@ -77,6 +83,7 @@ export const projects: ProjectPreview[] = [
     logo: "/logos/rakusaku-128.webp",
     tone: "commerce",
     signals: ["Game catalog", "Commerce UX", "Payment pending"],
+    liveUrl: "https://rakusaku.com",
   },
   {
     slug: "blue-vengeance",
