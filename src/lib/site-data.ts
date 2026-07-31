@@ -84,6 +84,8 @@ export const projects: ProjectPreview[] = [
     tone: "commerce",
     signals: ["Game catalog", "Commerce UX", "Payment pending"],
     liveUrl: "https://rakusaku.com",
+    coverImage: "/project-screenshots/rakusaku.png",
+    coverPosition: "center top",
   },
   {
     slug: "blue-vengeance",
