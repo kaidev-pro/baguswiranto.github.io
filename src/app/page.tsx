@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import { Code2, Cpu, Film, Palette, ScanLine, Sparkles } from "lucide-react";
 import Image from "next/image";
+import { HeroVideo } from "@/components/hero-video";
 import { ProjectCard } from "@/components/project-card";
 import { creativeProjects, featuredProjects } from "@/lib/site-data";
 
@@ -66,34 +67,7 @@ export default function Home() {
           </div>
 
           <div className="hero-visual hero-reveal-late">
-            <div className="media-panel" aria-label="Kai holographic coding hero video">
-              <div className="media-status" aria-hidden="true">
-                <span><i /> KAI_WEB · ONLINE</span>
-                <span>BUILD / CODE / CREATE</span>
-              </div>
-              <video
-                width="1920"
-                height="1080"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                poster="/media/kai-hero/kai-hero-poster.webp"
-                aria-hidden="true"
-              >
-                <source src="/media/kai-hero/kai-hero.webm" type="video/webm" />
-                <source src="/media/kai-hero/kai-hero.mp4" type="video/mp4" />
-              </video>
-              <Image
-                className="reduced-motion-poster"
-                src="/media/kai-hero/kai-hero-poster.webp"
-                alt="Kai working behind a transparent holographic coding interface"
-                width={1920}
-                height={1080}
-                priority
-              />
-            </div>
+            <HeroVideo />
           </div>
         </div>
       </section>
