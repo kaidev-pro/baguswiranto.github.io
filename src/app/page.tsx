@@ -33,7 +33,6 @@ const exploring = ["Manhwa production", "Visual storytelling", "AI-assisted film
 
 export default function Home() {
   const blueVengeance = creativeProjects.find((project) => project.slug === "blue-vengeance");
-  const kaiRevengers = creativeProjects.find((project) => project.slug === "kai-revengers");
 
   return (
     <main>
@@ -148,7 +147,6 @@ export default function Home() {
         </div>
         <div className="creative-grid">
           {blueVengeance ? <ProjectCard project={blueVengeance} featured /> : null}
-          {kaiRevengers ? <ProjectCard project={kaiRevengers} /> : null}
         </div>
       </section>
 

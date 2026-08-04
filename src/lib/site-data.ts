@@ -90,29 +90,16 @@ export const projects: ProjectPreview[] = [
   {
     slug: "blue-vengeance",
     name: "Blue Vengeance",
-    category: "Original Manhwa Series",
+    category: "Original Anime Series",
     group: "Creative",
     status: "Pre-Production",
     role: "Creator, story direction, visual development",
     summary:
-      "A long-form original manhwa following Kai from age 17 to 27, evolving from school action into an adult investigator story.",
+      "An original anime series following Kai and Rin through a story of gentle bonds, fading scars, and promises that become vengeance.",
     logo: "/logos/kai-revengers-64.svg",
     tone: "creative",
     signals: ["Long-form story", "Character arcs", "Visual development"],
-  },
-  {
-    slug: "kai-revengers",
-    name: "Kai Revengers",
-    category: "AI-Assisted Anime Film Experiment",
-    group: "Creative",
-    status: "Archived Creative Prototype",
-    role: "Direction, editing, sound, AI film workflow",
-    summary:
-      "An early cinematic experiment that shaped Kai’s action language, editing workflow, and the foundations later carried into Blue Vengeance.",
-    logo: "/logos/kai-revengers-64.svg",
-    tone: "creative",
-    signals: ["Anime experiment", "Video editing", "Archived"],
-    coverImage: "/kai-revengers-poster.webp",
+    coverImage: "/blue-vengeance-poster.webp",
     coverPosition: "center 24%",
   },
   {

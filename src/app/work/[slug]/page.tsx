@@ -48,20 +48,9 @@ const projects = {
     limitations: ["Payment gateway integration and live commerce operations are not yet active", "No Buy Now / transactional CTA on Kaidevlab"],
     next: ["Finalize payment gateway requirements", "Improve order-state design", "Prepare compliance and operational checklist"]
   },
-  "kai-revengers": {
-    kind: "creative", title: "Kai Revengers", category: "AI-Assisted Anime Film Experiment", status: "Archived Creative Prototype", role: "Creator, story direction, visual concept, editing direction", logo: "/logos/kai-revengers-64.svg", poster: "/kai-revengers-poster.webp", year: "2026", stack: ["AI-assisted visuals", "Story planning", "Anime-inspired action", "Editing", "Character direction"],
-    summary: "An early cinematic experiment that helped define Kai’s action language, visual direction, editing workflow, and the foundations later carried into Blue Vengeance.",
-    problem: "Early creative experiments need room to test action language, character mood, and editing flow without presenting unfinished production plans as active releases.",
-    goals: ["Archive the experiment honestly", "Preserve useful visual lessons", "Carry action-language foundations into Blue Vengeance"],
-    features: ["Rivalry-driven action mood", "Urban anime-inspired visual tests", "Editing and pacing exploration", "Character energy experiments"],
-    approach: "Kai Revengers is kept as an archived prototype: useful as a record of creative exploration, but no longer presented as an active production roadmap.",
-    challenges: ["Separating archived experiments from active IP", "Keeping character naming consistent", "Avoiding stale episode promises"],
-    limitations: ["Archived prototype, not an active series", "No public release cadence promised"],
-    next: ["Use the lessons as foundation for Blue Vengeance", "Keep archival page accurate as creative direction evolves"]
-  },
   "blue-vengeance": {
-    kind: "creative", title: "Blue Vengeance", category: "Original Manhwa Series", status: "Pre-Production", role: "Creator, story direction, worldbuilding, visual development", logo: "/logos/kai-revengers-64.svg", poster: "/blue-vengeance-poster.webp", year: "2026", stack: ["Manhwa production", "Long-form story", "Character arcs", "Visual development", "Action direction"],
-    summary: "An original long-form manhwa following Kai from age 17 to 27, beginning with school delinquent action before evolving into an adult investigator story involving the Tachibana family, Rin’s tragedy and amnesia, and a wider criminal network.",
+    kind: "creative", title: "Blue Vengeance", category: "Original Anime Series", status: "Pre-Production", role: "Creator, story direction, worldbuilding, visual development", logo: "/logos/kai-revengers-64.svg", poster: "/blue-vengeance-poster.webp", year: "2026", stack: ["Manhwa production", "Long-form story", "Character arcs", "Visual development", "Action direction"],
+    summary: "An original anime series following Kai and Rin through a story of gentle bonds, fading scars, and promises that become vengeance.",
     problem: "A long-form original IP needs honest positioning before chapters are released: premise, arcs, and production direction can be public without claiming a launched series.",
     goals: ["Define Kai’s 17-to-27 arc", "Build the Tachibana family and Rin storyline", "Shape the criminal network mystery", "Prepare a production pipeline before chapter release"],
     features: ["School delinquent action period", "Adult investigator evolution", "Rin tragedy and amnesia thread", "Tachibana family conflict", "Wider criminal-network mystery"],
