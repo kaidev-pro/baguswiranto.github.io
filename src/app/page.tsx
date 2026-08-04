@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import { Code2, Cpu, Film, Palette, ScanLine, Sparkles } from "lucide-react";
 import Image from "next/image";
-import { HeroVideo } from "@/components/hero-video";
+import KaiParallaxHero from "@/components/KaiParallaxHero";
 import { ProjectCard } from "@/components/project-card";
 import { creativeProjects, featuredProjects } from "@/lib/site-data";
 
@@ -67,7 +67,7 @@ export default function Home() {
           </div>
 
           <div className="hero-visual hero-reveal-late">
-            <HeroVideo />
+            <KaiParallaxHero />
           </div>
         </div>
       </section>

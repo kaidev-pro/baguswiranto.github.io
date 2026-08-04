@@ -1,0 +1,27 @@
+.stage { --mx:0; --my:0; position:relative; aspect-ratio:16/9; overflow:hidden; isolation:isolate; border:1px solid rgba(69,133,219,.28); border-radius:32px; background:#d8eaff; box-shadow:0 30px 80px rgba(34,89,159,.2); perspective:1200px; }
+.background,.kai { position:absolute; inset:-2.5%; width:105%; height:105%; object-fit:cover; pointer-events:none; will-change:transform; }
+.background { transform:translate3d(calc(var(--mx) * -3px),calc(var(--my) * -3px),0) scale(1.025); }
+.kai { z-index:2; transform:translate3d(calc(var(--mx) * 5px),calc(var(--my) * 4px),0) scale(1.025); filter:drop-shadow(-12px 20px 22px rgba(7,30,74,.22)); }
+.screen { position:absolute; z-index:3; top:7%; left:3.5%; width:66%; height:66%; overflow:hidden; border:1px solid rgba(35,139,255,.58); border-radius:18px; color:#17446f; background:linear-gradient(135deg,rgba(235,249,255,.28),rgba(50,138,244,.1)); backdrop-filter:blur(3px) saturate(125%); box-shadow:inset 0 0 42px rgba(58,154,255,.11),0 18px 38px rgba(16,86,177,.12); transform:translate3d(calc(var(--mx) * 10px),calc(var(--my) * 8px),46px) rotateY(-1.2deg); will-change:transform; }
+.screen::after { content:""; position:absolute; inset:0; background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.29) 47%,transparent 60%); animation:sweep 8s ease-in-out infinite; pointer-events:none; }
+.header { height:15%; display:flex; align-items:center; justify-content:space-between; padding:0 4%; border-bottom:1px solid rgba(43,139,242,.32); color:#0757b7; font-size:clamp(7px,.85vw,12px); letter-spacing:.12em; }
+.header span { color:#168565; font-size:.82em; }
+.workspace { display:grid; grid-template-columns:1.7fr .8fr; gap:2.2%; height:85%; padding:2.4%; }
+.code,.workspace aside { overflow:hidden; border:1px solid rgba(30,130,239,.28); border-radius:10px; background:rgba(238,249,255,.24); }
+.code strong,.workspace aside strong { display:block; padding:8px 11px; border-bottom:1px solid rgba(30,130,239,.22); color:#1877d9; font-size:clamp(6px,.72vw,10px); letter-spacing:.1em; }
+.code pre { margin:0; padding:10px 12px; font-size:clamp(6px,.72vw,10px); line-height:1.7; }
+.code pre span { display:block; white-space:pre; }
+.code pre i { display:inline-block; width:2.8em; color:#6c9ec8; font-style:normal; }
+.workspace aside p { position:relative; margin:11% 12%; padding-bottom:8%; border-bottom:2px solid rgba(21,114,220,.24); color:#1a65b5; font-size:clamp(6px,.62vw,9px); }
+.keyboard { position:absolute; z-index:4; left:19%; bottom:3.5%; display:grid; grid-template-columns:repeat(14,1fr); gap:2.2%; width:75%; height:15%; padding:1.2%; border:1px solid rgba(43,144,249,.45); border-radius:12px; background:rgba(221,244,255,.18); backdrop-filter:blur(2px); box-shadow:0 0 24px rgba(34,139,255,.22); transform:translate3d(calc(var(--mx) * 13px),calc(var(--my) * 10px),68px) perspective(500px) rotateX(63deg); }
+.touchpoint { position:absolute; z-index:5; left:45%; top:44%; width:34px; aspect-ratio:1; transform:translate(-50%,-50%); }
+.touchpoint i,.touchpoint b { position:absolute; inset:0; border:1px solid rgba(25,127,241,.72); border-radius:50%; box-shadow:0 0 12px rgba(21,126,242,.35); animation:ripple 2s ease-out infinite; }
+.touchpoint i:nth-child(2) { animation-delay:.65s; }
+.touchpoint b { inset:12px; border:0; background:#edfaff; box-shadow:0 0 13px #1687f2; animation:core 1.4s ease-in-out infinite; }
+.keyboard i { border:1px solid rgba(55,143,233,.25); border-radius:2px; background:rgba(236,250,255,.28); animation:tap 2.1s ease-in-out infinite; animation-delay:calc(var(--delay) * -1); }
+@keyframes sweep { 0%,20%{transform:translateX(-120%)} 48%,100%{transform:translateX(160%)} }
+@keyframes tap { 0%,92%,100%{background:rgba(236,250,255,.28);box-shadow:none} 95%{background:rgba(43,151,255,.8);box-shadow:0 0 10px #2597ff} }
+@keyframes ripple { 0%{opacity:.85;transform:scale(.35)} 100%{opacity:0;transform:scale(1.65)} }
+@keyframes core { 50%{transform:scale(.72);opacity:.55} }
+@media(max-width:720px){.stage{aspect-ratio:4/5}.background,.kai{inset:-1%;width:102%;height:102%;object-position:64% center}.screen{top:5%;left:4%;width:78%;height:57%}.workspace{grid-template-columns:1fr}.workspace aside{display:none}.keyboard{left:17%;bottom:7%;width:68%}}
+@media(prefers-reduced-motion:reduce){.stage *{animation:none!important}.background,.kai,.screen,.keyboard{transform:none!important}}
