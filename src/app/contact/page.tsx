@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { Code, Mail, MessageCircle } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Contact — Kaidevlab",
+  description: "Get in touch with Kai for product building, AI systems, creative technology, visual storytelling, or collaboration at Kaidevlab.",
+};
 
 const contactOptions = [
   {

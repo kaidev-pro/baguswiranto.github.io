@@ -1,5 +1,11 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
+import type { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "About Kai — Kaidevlab",
+  description: "Kai is an independent builder in Japan creating AI products, developer tools, learning platforms, and creative experiments under Kaidevlab.",
+};
 
 const timeline = [
   ["Build", "Turning ideas into useful products, systems, and working prototypes."],

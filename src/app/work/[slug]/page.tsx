@@ -16,7 +16,7 @@ const projects = {
     next: ["Improve founder review UX", "Expand monitoring and audit surfaces", "Refine analysis templates for more UMKM intake types"]
   },
   "8router": {
-    title: "8Router", category: "Developer Tool", status: "Beta / Active Development", role: "Architecture, routing logic, product direction, developer experience", logo: "/logos/8router-mark.svg", liveUrl: "https://8router.8agents.xyz", year: "2026", stack: ["Gateway architecture", "OpenAI-compatible API", "Provider routing", "Fallback", "Credentials"],
+    title: "8Router", category: "Developer Tool", status: "Beta · Active Development", role: "Architecture, routing logic, product direction, developer experience", logo: "/logos/8router-mark.svg", liveUrl: "https://8router.8agents.xyz", year: "2026", stack: ["Gateway architecture", "OpenAI-compatible API", "Provider routing", "Fallback", "Credentials"],
     summary: "An OpenAI-compatible gateway for routing, fallback, credentials, and multi-provider AI access.",
     problem: "AI apps often depend on one provider or require repetitive integration work across model APIs, credentials, fallback behavior, and routing rules.",
     goals: ["Provide one OpenAI-compatible entry point", "Support routing and fallback across providers", "Make credentials and provider access easier to manage"],
@@ -38,7 +38,7 @@ const projects = {
     next: ["Add more structured modules", "Improve content taxonomy", "Plan interactive practice features"]
   },
   "rakusaku": {
-    title: "Rakusaku", category: "Digital Commerce Prototype", status: "Prototype — Payment Integration Pending", role: "Commerce architecture, brand, UX, prototype direction", logo: "/logos/rakusaku-128.webp", liveUrl: "https://rakusaku.com", year: "2026", stack: ["Commerce UX", "Catalog structure", "Brand system", "Frontend prototype"],
+    title: "Rakusaku", category: "Digital Commerce Prototype", status: "Prototype · Payment Integration Pending", role: "Commerce architecture, brand, UX, prototype direction", logo: "/logos/rakusaku-128.webp", liveUrl: "https://rakusaku.com", year: "2026", stack: ["Commerce UX", "Catalog structure", "Brand system", "Frontend prototype"],
     summary: "A game top-up platform exploring commerce architecture, product experience, and playful branding.",
     problem: "Game top-up experiences often need strong trust signals, clear product choices, simple ordering, and careful payment handling.",
     goals: ["Prototype a clean commerce experience", "Explore playful but trustworthy branding", "Prepare structure for future payment integration"],

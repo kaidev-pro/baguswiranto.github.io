@@ -1,4 +1,11 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Lab Notes — Kaidevlab",
+  description: "Build logs, tutorials, and field notes from Kaidevlab — covering AI products, developer tools, creative direction, and the build process.",
+};
+
 export default function Notes() {
   return (
     <main className="page-shell lab-notes-page">
