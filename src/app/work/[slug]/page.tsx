@@ -60,7 +60,7 @@ const projects = {
     next: ["Use the lessons as foundation for Blue Vengeance", "Keep archival page accurate as creative direction evolves"]
   },
   "blue-vengeance": {
-    kind: "creative", title: "Blue Vengeance", category: "Original Manhwa Series", status: "Pre-Production", role: "Creator, story direction, worldbuilding, visual development", logo: "/logos/kai-revengers-64.svg", year: "2026", stack: ["Manhwa production", "Long-form story", "Character arcs", "Visual development", "Action direction"],
+    kind: "creative", title: "Blue Vengeance", category: "Original Manhwa Series", status: "Pre-Production", role: "Creator, story direction, worldbuilding, visual development", logo: "/logos/kai-revengers-64.svg", poster: "/blue-vengeance-poster.webp", year: "2026", stack: ["Manhwa production", "Long-form story", "Character arcs", "Visual development", "Action direction"],
     summary: "An original long-form manhwa following Kai from age 17 to 27, beginning with school delinquent action before evolving into an adult investigator story involving the Tachibana family, Rin’s tragedy and amnesia, and a wider criminal network.",
     problem: "A long-form original IP needs honest positioning before chapters are released: premise, arcs, and production direction can be public without claiming a launched series.",
     goals: ["Define Kai’s 17-to-27 arc", "Build the Tachibana family and Rin storyline", "Shape the criminal network mystery", "Prepare a production pipeline before chapter release"],
