@@ -154,7 +154,7 @@ export default function Home() {
 
       <section id="about" className="section about-preview">
         <div className="about-visual">
-          <Image src="/about.jpg" alt="Kai, an independent builder based in Japan" width={600} height={800} sizes="(max-width: 767px) 100vw, 34vw" />
+          <Image src="/about.webp" alt="Kai, an independent builder based in Japan" width={600} height={800} sizes="(max-width: 767px) 100vw, 34vw" />
           <div className="about-visual-label"><span>Based in Japan</span><strong>Independent builder</strong></div>
         </div>
         <div className="about-copy">

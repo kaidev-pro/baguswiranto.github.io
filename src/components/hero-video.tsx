@@ -38,7 +38,7 @@ export function HeroVideo() {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         poster="/media/kai-hero/kai-hero-poster.webp"
         aria-hidden="true"
         onCanPlay={() => void startVideo()}

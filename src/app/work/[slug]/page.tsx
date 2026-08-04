@@ -49,7 +49,7 @@ const projects = {
     next: ["Finalize payment gateway requirements", "Improve order-state design", "Prepare compliance and operational checklist"]
   },
   "kai-revengers": {
-    kind: "creative", title: "Kai Revengers", category: "AI-Assisted Anime Film Experiment", status: "Archived Creative Prototype", role: "Creator, story direction, visual concept, editing direction", logo: "/logos/kai-revengers-64.svg", poster: "/kai-revengers-poster.jpg", year: "2026", stack: ["AI-assisted visuals", "Story planning", "Anime-inspired action", "Editing", "Character direction"],
+    kind: "creative", title: "Kai Revengers", category: "AI-Assisted Anime Film Experiment", status: "Archived Creative Prototype", role: "Creator, story direction, visual concept, editing direction", logo: "/logos/kai-revengers-64.svg", poster: "/kai-revengers-poster.webp", year: "2026", stack: ["AI-assisted visuals", "Story planning", "Anime-inspired action", "Editing", "Character direction"],
     summary: "An early cinematic experiment that helped define Kai’s action language, visual direction, editing workflow, and the foundations later carried into Blue Vengeance.",
     problem: "Early creative experiments need room to test action language, character mood, and editing flow without presenting unfinished production plans as active releases.",
     goals: ["Archive the experiment honestly", "Preserve useful visual lessons", "Carry action-language foundations into Blue Vengeance"],
@@ -71,7 +71,7 @@ const projects = {
     next: ["Lock chapter-one outline", "Develop key character sheets", "Plan production cadence after assets are ready"]
   },
   "dragon-kings-last-contract": {
-    kind: "creative", title: "The Dragon King’s Last Contract", category: "AI Film Experiment", status: "Episode 1 Completed · Creative Experiment", role: "Creator, story direction, poster concept, AI film workflow", logo: "/logos/kai-revengers-64.svg", poster: "/dragon-kings-last-contract-poster.jpg", year: "2026", stack: ["AI filmmaking", "Dark fantasy", "Episode 1", "Poster direction", "Cinematic workflow"],
+    kind: "creative", title: "The Dragon King’s Last Contract", category: "AI Film Experiment", status: "Episode 1 Completed · Creative Experiment", role: "Creator, story direction, poster concept, AI film workflow", logo: "/logos/kai-revengers-64.svg", poster: "/dragon-kings-last-contract-poster.webp", year: "2026", stack: ["AI filmmaking", "Dark fantasy", "Episode 1", "Poster direction", "Cinematic workflow"],
     summary: "A completed Episode 1 dark fantasy creative experiment about a monster, a contract, and the girl sent to kill him.",
     problem: "AI film experiments need coherent character motivation, repeatable mood, scene continuity, and honest status around what has actually been completed.",
     goals: ["Present Episode 1 as completed", "Keep dark fantasy tone clear", "Use the experiment to refine AI filmmaking workflow"],

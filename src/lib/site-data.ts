@@ -36,7 +36,7 @@ export const projects: ProjectPreview[] = [
     tone: "agent",
     signals: ["Business intake", "Founder review", "Reliable AI workflow"],
     liveUrl: "https://8agents.id",
-    coverImage: "/project-screenshots/8agents.png",
+    coverImage: "/project-screenshots/8agents.webp",
     coverPosition: "center top",
   },
   {
@@ -52,7 +52,7 @@ export const projects: ProjectPreview[] = [
     tone: "router",
     signals: ["OpenAI-compatible", "Fallback", "Provider routing"],
     liveUrl: "https://8router.8agents.xyz",
-    coverImage: "/project-screenshots/8router.png",
+    coverImage: "/project-screenshots/8router.webp",
     coverPosition: "center top",
   },
   {
@@ -68,7 +68,7 @@ export const projects: ProjectPreview[] = [
     tone: "education",
     signals: ["JLPT N5–N1", "SSW", "Learning paths"],
     liveUrl: "https://nihongogate.kaidevlab.com",
-    coverImage: "/project-screenshots/nihongogate.png",
+    coverImage: "/project-screenshots/nihongogate.webp",
     coverPosition: "center top",
   },
   {
@@ -84,7 +84,7 @@ export const projects: ProjectPreview[] = [
     tone: "commerce",
     signals: ["Game catalog", "Commerce UX", "Payment pending"],
     liveUrl: "https://rakusaku.com",
-    coverImage: "/project-screenshots/rakusaku.png",
+    coverImage: "/project-screenshots/rakusaku.webp",
     coverPosition: "center top",
   },
   {
@@ -112,7 +112,7 @@ export const projects: ProjectPreview[] = [
     logo: "/logos/kai-revengers-64.svg",
     tone: "creative",
     signals: ["Anime experiment", "Video editing", "Archived"],
-    coverImage: "/kai-revengers-poster.jpg",
+    coverImage: "/kai-revengers-poster.webp",
     coverPosition: "center 24%",
   },
   {
@@ -127,7 +127,7 @@ export const projects: ProjectPreview[] = [
     logo: "/logos/kai-revengers-64.svg",
     tone: "fantasy",
     signals: ["Dark fantasy", "Episode 1", "AI filmmaking"],
-    coverImage: "/dragon-kings-last-contract-poster.jpg",
+    coverImage: "/dragon-kings-last-contract-poster.webp",
     coverPosition: "center 20%",
   },
 ];

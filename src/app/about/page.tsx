@@ -18,7 +18,7 @@ export default function About() {
     <main className="page-shell about-page">
       <section className="about-page-hero">
         <div className="about-page-image">
-          <Image src="/about.jpg" alt="Kai, an independent builder based in Japan" width={600} height={800} priority />
+          <Image src="/about.webp" alt="Kai, an independent builder based in Japan" width={600} height={800} priority />
         </div>
         <div>
           <p className="eyebrow">About Kai</p>
