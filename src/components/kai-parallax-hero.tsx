@@ -27,6 +27,7 @@ const metrics = [
 export function KaiParallaxHero() {
   const stageRef = useRef<HTMLElement>(null);
   const target = useRef({ x: 0, y: 0 });
+  const isInteracting = useRef(false);
   const [activeLine, setActiveLine] = useState(2);
 
   useEffect(() => {
@@ -43,18 +44,28 @@ export function KaiParallaxHero() {
     let frame = 0;
     let x = 0;
     let y = 0;
-    const render = () => {
-      x += (target.current.x - x) * 0.075;
-      y += (target.current.y - y) * 0.075;
-      stage.style.setProperty("--mx", x.toFixed(3));
-      stage.style.setProperty("--my", y.toFixed(3));
+    const render = (time: number) => {
+      const idleX = isInteracting.current ? 0 : Math.sin(time / 2300) * 0.22;
+      const idleY = isInteracting.current ? 0 : Math.cos(time / 2700) * 0.16;
+      x += (target.current.x + idleX - x) * 0.075;
+      y += (target.current.y + idleY - y) * 0.075;
+
+      stage.style.setProperty("--bg-x", `${(-x * 3).toFixed(2)}px`);
+      stage.style.setProperty("--bg-y", `${(-y * 3).toFixed(2)}px`);
+      stage.style.setProperty("--kai-x", `${(x * 5).toFixed(2)}px`);
+      stage.style.setProperty("--kai-y", `${(y * 4).toFixed(2)}px`);
+      stage.style.setProperty("--ui-x", `${(x * 10).toFixed(2)}px`);
+      stage.style.setProperty("--ui-y", `${(y * 8).toFixed(2)}px`);
+      stage.style.setProperty("--front-x", `${(x * 13).toFixed(2)}px`);
+      stage.style.setProperty("--front-y", `${(y * 10).toFixed(2)}px`);
       frame = window.requestAnimationFrame(render);
     };
-    render();
+    frame = window.requestAnimationFrame(render);
     return () => window.cancelAnimationFrame(frame);
   }, []);
 
   function handlePointerMove(event: PointerEvent<HTMLElement>) {
+    isInteracting.current = true;
     const bounds = event.currentTarget.getBoundingClientRect();
     target.current = {
       x: ((event.clientX - bounds.left) / bounds.width - 0.5) * 2,
@@ -68,7 +79,10 @@ export function KaiParallaxHero() {
       className="kai-parallax-stage"
       aria-label="Kai operating a live coding interface"
       onPointerMove={handlePointerMove}
-      onPointerLeave={() => { target.current = { x: 0, y: 0 }; }}
+      onPointerLeave={() => {
+        isInteracting.current = false;
+        target.current = { x: 0, y: 0 };
+      }}
     >
       <div className="kai-layer kai-background" aria-hidden="true">
         <Image
