@@ -282,6 +282,221 @@ ul { margin: 0; }
 .hero-reveal-late { animation: hero-in 720ms 80ms cubic-bezier(0.16, 1, 0.3, 1) both; }
 @keyframes hero-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
+/* Four-layer interactive Kai hero */
+.kai-parallax-stage {
+  --mx: 0;
+  --my: 0;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--glass-border);
+  border-radius: 26px;
+  background: #d9eaff;
+  box-shadow: 0 28px 100px rgba(77, 168, 255, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.46);
+  clip-path: polygon(22px 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%, 0 22px);
+  perspective: 1200px;
+}
+.kai-layer {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform;
+}
+.kai-background {
+  z-index: 1;
+  inset: -2.5%;
+  width: 105%;
+  height: 105%;
+  transform: translate3d(calc(var(--mx) * -3px), calc(var(--my) * -3px), 0) scale(1.025);
+}
+.kai-background img, .kai-character img { object-fit: cover; }
+[data-theme="dark"] .kai-background img { filter: brightness(0.46) saturate(1.18) hue-rotate(3deg); }
+.kai-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 55% 38%, rgba(224, 247, 255, 0.12), transparent 30%),
+    linear-gradient(115deg, rgba(255, 255, 255, 0.22), transparent 40%);
+}
+[data-theme="dark"] .kai-background::after {
+  background: radial-gradient(circle at 63% 38%, rgba(42, 139, 255, 0.2), transparent 34%), linear-gradient(115deg, rgba(4, 13, 30, 0.3), rgba(3, 11, 26, 0.62));
+}
+.kai-character {
+  z-index: 2;
+  inset: -2.5%;
+  width: 105%;
+  height: 105%;
+  transform: translate3d(calc(var(--mx) * 5px), calc(var(--my) * 4px), 0) scale(1.025);
+  filter: drop-shadow(-12px 20px 22px rgba(7, 30, 74, 0.22));
+}
+[data-theme="dark"] .kai-character { filter: drop-shadow(-12px 20px 24px rgba(0, 0, 0, 0.5)) brightness(0.86) saturate(1.08); }
+.kai-interface {
+  z-index: 3;
+  top: 7%;
+  left: 3.5%;
+  width: 66%;
+  height: 66%;
+  transform: translate3d(calc(var(--mx) * 10px), calc(var(--my) * 8px), 46px) rotateY(-1.2deg);
+  transform-origin: center;
+}
+.kai-glass-screen {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(35, 139, 255, 0.58);
+  border-radius: 16px;
+  color: #17446f;
+  background: linear-gradient(135deg, rgba(235, 249, 255, 0.23), rgba(50, 138, 244, 0.08));
+  box-shadow: inset 0 0 42px rgba(58, 154, 255, 0.11), 0 18px 38px rgba(16, 86, 177, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(2.5px) saturate(125%);
+}
+[data-theme="dark"] .kai-glass-screen {
+  color: #b8dcff;
+  background: linear-gradient(135deg, rgba(7, 31, 65, 0.28), rgba(13, 81, 159, 0.12));
+  box-shadow: inset 0 0 42px rgba(58, 154, 255, 0.08), 0 18px 38px rgba(0, 0, 0, 0.18);
+}
+.kai-glass-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.3) 47%, transparent 60%);
+  transform: translateX(-120%);
+  animation: kai-glass-sweep 8s ease-in-out infinite;
+}
+.kai-screen-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  height: 15%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4%;
+  border-bottom: 1px solid rgba(43, 139, 242, 0.3);
+  color: #0757b7;
+  font-size: clamp(0.38rem, 0.6vw, 0.66rem);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+[data-theme="dark"] .kai-screen-header { color: #8fcaff; }
+.kai-screen-brand, .kai-online { display: flex; align-items: center; gap: 0.45rem; }
+.kai-screen-brand i { width: 18px; height: 18px; background: #1677ee; clip-path: polygon(0 0, 100% 0, 70% 50%, 100% 100%, 0 100%, 30% 50%); }
+.kai-online { opacity: 0.82; }
+.kai-online i { width: 7px; height: 7px; border-radius: 50%; background: #25d68a; box-shadow: 0 0 12px #25d68a; animation: kai-pulse 1.8s ease-in-out infinite; }
+.kai-screen-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  height: 85%;
+  grid-template-columns: 1.65fr 0.8fr;
+  grid-template-rows: 1fr 0.48fr;
+  gap: 2.2%;
+  padding: 2.4%;
+}
+.kai-code-panel, .kai-build-panel, .kai-terminal-panel {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(30, 130, 239, 0.27);
+  border-radius: 9px;
+  background: rgba(238, 249, 255, 0.18);
+  box-shadow: inset 0 0 20px rgba(25, 124, 236, 0.05);
+}
+[data-theme="dark"] .kai-code-panel,
+[data-theme="dark"] .kai-build-panel,
+[data-theme="dark"] .kai-terminal-panel { background: rgba(4, 22, 49, 0.22); }
+.kai-code-panel { grid-row: 1 / 3; }
+.kai-code-panel > strong, .kai-build-panel > strong, .kai-terminal-panel > strong {
+  display: block;
+  padding: 0.46rem 0.62rem;
+  border-bottom: 1px solid rgba(30, 130, 239, 0.22);
+  color: #1877d9;
+  font-size: clamp(0.32rem, 0.51vw, 0.55rem);
+  letter-spacing: 0.11em;
+}
+[data-theme="dark"] .kai-code-panel > strong,
+[data-theme="dark"] .kai-build-panel > strong,
+[data-theme="dark"] .kai-terminal-panel > strong { color: #80c4ff; }
+.kai-code-panel pre {
+  margin: 0;
+  overflow: hidden;
+  padding: 0.52rem 0.62rem 1rem;
+  color: inherit;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: clamp(0.31rem, 0.5vw, 0.55rem);
+  line-height: 1.64;
+}
+.kai-code-panel code > span { display: block; white-space: pre; transition: background 160ms ease; }
+.kai-code-panel code > span.is-active { background: linear-gradient(90deg, rgba(29, 125, 237, 0.18), transparent); }
+.kai-code-panel code > span > i { display: inline-block; width: 2.6em; color: #6c9ec8; font-style: normal; user-select: none; }
+.kai-code-caret { display: inline-block; width: 1px; height: 1em; margin-left: 3px; vertical-align: -2px; background: #066eff; animation: kai-blink 0.9s steps(1) infinite; }
+.kai-build-panel { padding-bottom: 0.25rem; }
+.kai-metric {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.26rem;
+  margin: 0.46rem 0.55rem 0.68rem;
+  color: inherit;
+  font-size: clamp(0.28rem, 0.44vw, 0.48rem);
+  letter-spacing: 0.08em;
+}
+.kai-metric > b { color: #1267d6; }
+.kai-metric > i { grid-column: 1 / 3; height: 2px; overflow: hidden; border-radius: 2px; background: rgba(34, 115, 214, 0.15); }
+.kai-metric > i::after { content: ""; display: block; width: var(--metric-value); height: 100%; background: linear-gradient(90deg, #21a4ff, #1767df); box-shadow: 0 0 8px #2398ff; animation: kai-bar-load 2.2s ease-out both; }
+.kai-build-panel svg { width: calc(100% - 1.1rem); height: 23%; margin: 0 0.55rem; overflow: visible; }
+.kai-build-panel polyline { fill: none; stroke: #1685ed; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 360; animation: kai-draw 4s ease-in-out infinite alternate; }
+.kai-build-panel circle { fill: #fff; stroke: #1685ed; stroke-width: 3; filter: drop-shadow(0 0 5px #1685ed); }
+.kai-terminal-panel { padding-bottom: 0.3rem; }
+.kai-terminal-panel p { margin: 0; padding: 0 0.55rem; color: inherit; font-family: "SFMono-Regular", Consolas, monospace; font-size: clamp(0.27rem, 0.4vw, 0.44rem); line-height: 1.48; opacity: 0.76; }
+.kai-terminal-panel p:nth-of-type(1) { padding-top: 0.38rem; color: #0757b7; opacity: 1; }
+[data-theme="dark"] .kai-terminal-panel p:nth-of-type(1) { color: #8fcaff; }
+.kai-terminal-panel p i { color: #069a69; font-style: normal; }
+.kai-touchpoint { position: absolute; z-index: 6; top: 44%; left: 45%; width: 34px; aspect-ratio: 1; transform: translate(-50%, -50%); }
+.kai-touchpoint i, .kai-touchpoint b { position: absolute; inset: 0; border: 1px solid rgba(25, 127, 241, 0.72); border-radius: 50%; box-shadow: 0 0 12px rgba(21, 126, 242, 0.35); animation: kai-touch-ripple 2s ease-out infinite; }
+.kai-touchpoint i:nth-child(2) { animation-delay: 0.65s; }
+.kai-touchpoint b { inset: 12px; border: 0; background: #edfaff; box-shadow: 0 0 13px #1687f2; animation: kai-touch-core 1.4s ease-in-out infinite; }
+.kai-foreground {
+  z-index: 4;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: translate3d(calc(var(--mx) * 13px), calc(var(--my) * 10px), 68px);
+}
+.kai-input-deck {
+  position: absolute;
+  bottom: 3.5%;
+  left: 19%;
+  display: grid;
+  width: 75%;
+  height: 15%;
+  grid-template-columns: repeat(14, 1fr);
+  gap: 2.2%;
+  padding: 1.2%;
+  border: 1px solid rgba(43, 144, 249, 0.45);
+  border-radius: 12px;
+  background: rgba(221, 244, 255, 0.17);
+  box-shadow: 0 0 24px rgba(34, 139, 255, 0.22), inset 0 0 25px rgba(32, 138, 244, 0.11);
+  backdrop-filter: blur(2px);
+  transform: perspective(500px) rotateX(63deg);
+  transform-origin: center bottom;
+}
+.kai-input-deck > i { min-width: 0; border: 1px solid rgba(55, 143, 233, 0.25); border-radius: 2px; background: rgba(236, 250, 255, 0.28); animation: kai-key-tap 2.1s ease-in-out infinite; animation-delay: calc(var(--key-delay) * -1); }
+.kai-light-sweep { position: absolute; inset: -2.5%; background: radial-gradient(circle at 83% 78%, rgba(57, 163, 255, 0.28), transparent 10%), linear-gradient(115deg, transparent 58%, rgba(220, 247, 255, 0.14) 64%, transparent 72%); mix-blend-mode: screen; }
+.kai-parallax-hint { position: absolute; right: 1rem; bottom: 0.8rem; z-index: 5; padding: 0.38rem 0.54rem; border: 1px solid rgba(13, 103, 218, 0.2); border-radius: 999px; color: #0e5fb9; background: rgba(246, 252, 255, 0.56); font-size: 0.48rem; font-weight: 850; letter-spacing: 0.12em; text-transform: uppercase; backdrop-filter: blur(8px); }
+
+@keyframes kai-glass-sweep { 0%, 20% { transform: translateX(-120%); } 48%, 100% { transform: translateX(160%); } }
+@keyframes kai-pulse { 50% { opacity: 0.4; transform: scale(0.86); } }
+@keyframes kai-blink { 50% { opacity: 0; } }
+@keyframes kai-bar-load { from { width: 0; } }
+@keyframes kai-draw { from { stroke-dashoffset: 320; } to { stroke-dashoffset: 0; } }
+@keyframes kai-key-tap { 0%, 92%, 100% { background: rgba(236, 250, 255, 0.28); box-shadow: none; } 95% { background: rgba(43, 151, 255, 0.8); box-shadow: 0 0 10px #2597ff; } }
+@keyframes kai-touch-ripple { 0% { opacity: 0.85; transform: scale(0.35); } 100% { opacity: 0; transform: scale(1.65); } }
+@keyframes kai-touch-core { 50% { opacity: 0.55; transform: scale(0.72); } }
+
 .current-signal {
   position: relative;
   z-index: 4;
@@ -641,6 +856,16 @@ ul { margin: 0; }
   .hero-copy h1 { font-size: clamp(3rem, 14vw, 4.25rem); line-height: 0.98; }
   .hero-copy .lead { font-size: 1rem; }
   .hero-visual { width: calc(100% - 0.5rem); max-width: none; margin-inline: 0.25rem; }
+  .kai-parallax-stage { aspect-ratio: 4 / 5; border-radius: 18px; clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px); }
+  .kai-background, .kai-character { inset: -1%; width: 102%; height: 102%; }
+  .kai-background img, .kai-character img { object-position: 63% center; }
+  .kai-interface { top: 5%; left: 4%; width: 79%; height: 56%; }
+  .kai-screen-grid { grid-template-columns: 1fr; grid-template-rows: 1fr; }
+  .kai-build-panel, .kai-terminal-panel { display: none; }
+  .kai-code-panel { grid-row: auto; }
+  .kai-code-panel pre { font-size: clamp(0.38rem, 1.55vw, 0.55rem); }
+  .kai-input-deck { bottom: 7%; left: 14%; width: 80%; }
+  .kai-parallax-hint { display: none; }
   .media-panel { padding: 0.3rem; border-radius: 17px; clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px); }
   .media-panel video, .reduced-motion-poster { border-radius: 13px; }
   .media-status { top: 0.65rem; right: 0.72rem; left: 0.72rem; font-size: 0.52rem; }
@@ -678,5 +903,6 @@ ul { margin: 0; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   .media-panel video { display: block; }
+  .kai-background, .kai-character, .kai-interface, .kai-foreground { transform: none; }
   .project-card:hover, .primary:hover, .secondary:hover, .talk:hover, .contact-card:hover { transform: none; }
 }

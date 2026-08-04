@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import { Code2, Cpu, Film, Palette, ScanLine, Sparkles } from "lucide-react";
 import Image from "next/image";
-import KaiParallaxHero from "@/components/KaiParallaxHero";
+import { KaiParallaxHero } from "@/components/kai-parallax-hero";
 import { ProjectCard } from "@/components/project-card";
 import { creativeProjects, featuredProjects } from "@/lib/site-data";
 
