@@ -128,10 +128,6 @@ export function KaiParallaxHero() {
         </div>
         <p className="meta">Based in Japan · Building independently</p>
       </div>
-
-      <button className={`cinematic-motion-toggle ${motionOn ? "is-on" : ""}`} type="button" onClick={() => setMotionOn((value) => !value)} aria-pressed={motionOn} aria-label={`Motion ${motionOn ? "on" : "off"}`}>
-        <span /> Motion {motionOn ? "on" : "off"}
-      </button>
       <div className="cinematic-depth-label" aria-hidden="true"><span /> Drag to explore</div>
     </div>
   );

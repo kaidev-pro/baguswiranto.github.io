@@ -40,12 +40,6 @@ export default function Home() {
         <KaiParallaxHero />
       </section>
 
-      <section className="current-signal" aria-label="Current status">
-        <div><span>Currently building</span><strong>8Agents and Kaidevlab</strong></div>
-        <div><span>Currently exploring</span><strong>AI products, manhwa, and visual storytelling</strong></div>
-        <div><span>Status</span><strong>Open to interesting collaborations</strong></div>
-      </section>
-
       <section id="work" className="section work-section">
         <div className="section-heading">
           <div>
@@ -111,7 +105,7 @@ export default function Home() {
             <h2>Stories begin as experiments, then find the right medium.</h2>
           </div>
           <p>
-            Kai Revengers is being archived as an early anime-film prototype. Blue Vengeance becomes the next long-form creative focus—starting as a manhwa before any future animation adaptation.
+            Blue Vengeance is the current long-form creative focus—an original anime series shaped through character drama, cinematic direction, and visual storytelling.
           </p>
         </div>
         <div className="creative-grid">
@@ -162,7 +156,7 @@ export default function Home() {
             <p className="eyebrow">Upcoming Notes</p>
             <ul>
               <li><span>Building a reliable AI workflow for UMKM intake</span><small>Coming Soon</small></li>
-              <li><span>From anime experiment to Blue Vengeance manhwa</span><small>Coming Soon</small></li>
+              <li><span>Building the visual direction for Blue Vengeance</span><small>Coming Soon</small></li>
             </ul>
           </aside>
         </div>
