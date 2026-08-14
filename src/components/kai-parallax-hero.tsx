@@ -34,22 +34,23 @@ export function KaiParallaxHero() {
     const layers = Array.from(stage.querySelectorAll<HTMLElement>("[data-kai-depth]"));
     const target = { x: 0, y: 0 };
     const current = { x: 0, y: 0 };
-    const maxTravel = isTouch ? 9 : 21;
+    const maxTravel = isTouch ? 12 : 34;
+    const easing = isTouch ? 0.085 : 0.13;
     let frame = 0;
     let visible = false;
     let dragging = false;
 
     const render = (time = 0) => {
       if (isTouch && !dragging) {
-        target.x = Math.sin(time * 0.00025) * 0.08;
-        target.y = Math.cos(time * 0.00019) * 0.045;
+        target.x = Math.sin(time * 0.00025) * 0.1;
+        target.y = Math.cos(time * 0.00019) * 0.055;
       }
-      current.x += (target.x - current.x) * 0.065;
-      current.y += (target.y - current.y) * 0.065;
+      current.x += (target.x - current.x) * easing;
+      current.y += (target.y - current.y) * easing;
       layers.forEach((layer) => {
         const depth = Number(layer.dataset.kaiDepth || 0);
         const x = -current.x * maxTravel * depth;
-        const y = -current.y * maxTravel * depth * 0.55;
+        const y = -current.y * maxTravel * depth * 0.48;
         layer.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
       });
       if (visible) frame = window.requestAnimationFrame(render);
