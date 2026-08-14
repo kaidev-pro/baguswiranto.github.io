@@ -37,38 +37,7 @@ export default function Home() {
   return (
     <main>
       <section id="top" className="hero-section">
-        <svg className="hero-circuit" viewBox="0 0 1400 820" aria-hidden="true">
-          <path d="M70 610 H250 V525 H430 V450 H570" />
-          <path d="M140 190 H330 V275 H510" />
-          <path d="M850 125 H1040 V220 H1320" />
-          <path d="M780 700 H970 V610 H1230" />
-          <circle cx="70" cy="610" r="5" />
-          <circle cx="570" cy="450" r="6" />
-          <circle cx="510" cy="275" r="5" />
-          <circle cx="1320" cy="220" r="6" />
-          <circle cx="1230" cy="610" r="5" />
-        </svg>
-
-        <div className="hero-inner">
-          <div className="hero-copy hero-reveal">
-            <p className="eyebrow">Creative Technologist & Independent Builder</p>
-            <h1>
-              Building products, systems, and stories at the intersection of AI, code, and creativity.
-            </h1>
-            <p className="lead">
-              I turn ideas into digital products, developer tools, learning platforms, and creative experiences.
-            </p>
-            <div className="actions">
-              <a className="primary" href="#work">Explore My Work</a>
-              <a className="secondary" href="#about">Meet Kai</a>
-            </div>
-            <p className="meta">Based in Japan · Building independently</p>
-          </div>
-
-          <div className="hero-visual hero-reveal-late">
-            <KaiParallaxHero />
-          </div>
-        </div>
+        <KaiParallaxHero />
       </section>
 
       <section className="current-signal" aria-label="Current status">
