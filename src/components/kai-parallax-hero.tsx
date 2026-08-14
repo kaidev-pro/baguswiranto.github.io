@@ -1,137 +1,170 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { type CSSProperties, type PointerEvent, useEffect, useRef, useState } from "react";
 
-const particles = [[13, 28, 0], [27, 76, -2.4], [45, 16, -4.2], [61, 67, -1.1], [78, 24, -3.2], [91, 73, -5.1]];
-const clamp = (value: number, min = -1, max = 1) => Math.min(max, Math.max(min, value));
+const code = [
+  "import { buildImpact } from '@kaidevlab/core';",
+  "",
+  "const lab = await createStudio({",
+  "  products: ['AI', 'Web', 'Creative Tech'],",
+  "  principles: {",
+  "    craft: true,",
+  "    clarity: true,",
+  "    curiosity: true,",
+  "  },",
+  "});",
+  "",
+  "export default lab.launch();",
+];
+
+const metrics = [
+  { label: "DESIGN", value: "94%" },
+  { label: "CODE", value: "98%" },
+  { label: "CREATE", value: "91%" },
+];
 
 export function KaiParallaxHero() {
-  const stageRef = useRef<HTMLDivElement>(null);
-  const [motionOn, setMotionOn] = useState(true);
-  const [isTouch, setIsTouch] = useState(false);
+  const stageRef = useRef<HTMLElement>(null);
+  const target = useRef({ x: 0, y: 0 });
+  const isInteracting = useRef(false);
+  const [activeLine, setActiveLine] = useState(2);
 
   useEffect(() => {
-    const coarse = window.matchMedia("(pointer: coarse)");
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const syncPreferences = () => {
-      setIsTouch(coarse.matches);
-      if (reduced.matches) setMotionOn(false);
-    };
-    syncPreferences();
-    coarse.addEventListener("change", syncPreferences);
-    reduced.addEventListener("change", syncPreferences);
-    return () => {
-      coarse.removeEventListener("change", syncPreferences);
-      reduced.removeEventListener("change", syncPreferences);
-    };
+    const timer = window.setInterval(() => {
+      setActiveLine((line) => (line >= code.length - 1 ? 2 : line + 1));
+    }, 720);
+    return () => window.clearInterval(timer);
   }, []);
 
   useEffect(() => {
     const stage = stageRef.current;
-    if (!stage || !motionOn || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!stage || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const layers = Array.from(stage.querySelectorAll<HTMLElement>("[data-kai-depth]"));
-    const target = { x: 0, y: 0 };
-    const current = { x: 0, y: 0 };
-    const maxTravel = isTouch ? 9 : 21;
     let frame = 0;
-    let visible = false;
-    let dragging = false;
+    let x = 0;
+    let y = 0;
+    const render = (time: number) => {
+      const idleX = isInteracting.current ? 0 : Math.sin(time / 2300) * 0.22;
+      const idleY = isInteracting.current ? 0 : Math.cos(time / 2700) * 0.16;
+      x += (target.current.x + idleX - x) * 0.075;
+      y += (target.current.y + idleY - y) * 0.075;
 
-    const render = (time = 0) => {
-      if (isTouch && !dragging) {
-        target.x = Math.sin(time * 0.00025) * 0.08;
-        target.y = Math.cos(time * 0.00019) * 0.045;
-      }
-      current.x += (target.x - current.x) * 0.065;
-      current.y += (target.y - current.y) * 0.065;
-      layers.forEach((layer) => {
-        const depth = Number(layer.dataset.kaiDepth || 0);
-        const x = -current.x * maxTravel * depth;
-        const y = -current.y * maxTravel * depth * 0.55;
-        layer.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
-      });
-      if (visible) frame = window.requestAnimationFrame(render);
+      stage.style.setProperty("--bg-x", `${(-x * 3).toFixed(2)}px`);
+      stage.style.setProperty("--bg-y", `${(-y * 3).toFixed(2)}px`);
+      stage.style.setProperty("--kai-x", `${(x * 5).toFixed(2)}px`);
+      stage.style.setProperty("--kai-y", `${(y * 4).toFixed(2)}px`);
+      stage.style.setProperty("--ui-x", `${(x * 10).toFixed(2)}px`);
+      stage.style.setProperty("--ui-y", `${(y * 8).toFixed(2)}px`);
+      stage.style.setProperty("--front-x", `${(x * 13).toFixed(2)}px`);
+      stage.style.setProperty("--front-y", `${(y * 10).toFixed(2)}px`);
+      frame = window.requestAnimationFrame(render);
     };
-    const start = () => { if (!frame && visible) frame = window.requestAnimationFrame(render); };
-    const stop = () => { window.cancelAnimationFrame(frame); frame = 0; };
-    const reset = () => { target.x = 0; target.y = 0; };
-    const pointerInput = (event: globalThis.PointerEvent) => {
-      if (event.pointerType === "touch" && !dragging) return;
-      const bounds = stage.getBoundingClientRect();
-      target.x = clamp(((event.clientX - bounds.left) / bounds.width - 0.5) * 2);
-      target.y = clamp(((event.clientY - bounds.top) / bounds.height - 0.5) * 2);
-    };
-    const pointerDown = (event: globalThis.PointerEvent) => {
-      if (event.pointerType !== "touch") return;
-      dragging = true;
-      stage.setPointerCapture?.(event.pointerId);
-      pointerInput(event);
-    };
-    const pointerUp = (event: globalThis.PointerEvent) => {
-      dragging = false;
-      if (stage.hasPointerCapture?.(event.pointerId)) stage.releasePointerCapture(event.pointerId);
-      reset();
-    };
-    const observer = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting;
-      if (visible) start(); else stop();
-    }, { threshold: 0.05 });
+    frame = window.requestAnimationFrame(render);
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
-    observer.observe(stage);
-    stage.addEventListener("pointermove", pointerInput);
-    stage.addEventListener("pointerdown", pointerDown);
-    stage.addEventListener("pointerup", pointerUp);
-    stage.addEventListener("pointercancel", pointerUp);
-    stage.addEventListener("pointerleave", reset);
-    return () => {
-      stop();
-      observer.disconnect();
-      stage.removeEventListener("pointermove", pointerInput);
-      stage.removeEventListener("pointerdown", pointerDown);
-      stage.removeEventListener("pointerup", pointerUp);
-      stage.removeEventListener("pointercancel", pointerUp);
-      stage.removeEventListener("pointerleave", reset);
-      layers.forEach((layer) => { layer.style.transform = ""; });
+  function handlePointerMove(event: PointerEvent<HTMLElement>) {
+    isInteracting.current = true;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    target.current = {
+      x: ((event.clientX - bounds.left) / bounds.width - 0.5) * 2,
+      y: ((event.clientY - bounds.top) / bounds.height - 0.5) * 2,
     };
-  }, [isTouch, motionOn]);
+  }
 
   return (
-    <div ref={stageRef} className="cinematic-hero" aria-label="Interactive cinematic portrait of Kai">
-      <div className="cinematic-layer cinematic-background" data-kai-depth="0.12" aria-hidden="true">
-        <Image src="/media/kai-cinematic/studio-background-final.png" alt="" fill priority sizes="100vw" />
+    <section
+      ref={stageRef}
+      className="kai-parallax-stage"
+      aria-label="Kai operating a live coding interface"
+      onPointerMove={handlePointerMove}
+      onPointerLeave={() => {
+        isInteracting.current = false;
+        target.current = { x: 0, y: 0 };
+      }}
+    >
+      <div className="kai-layer kai-background" aria-hidden="true">
+        <Image
+          src="/media/kai-parallax/studio-background.webp"
+          alt=""
+          fill
+          priority
+          sizes="(max-width: 900px) 100vw, 70vw"
+        />
       </div>
-      <div className="cinematic-layer cinematic-light-arc" data-kai-depth="0.28" aria-hidden="true"><i /><i /></div>
-      <div className="cinematic-layer cinematic-atmosphere" data-kai-depth="0.36" aria-hidden="true"><i /><i /><i /></div>
-      <div className="cinematic-layer cinematic-kai" data-kai-depth="0.7">
-        <div className="cinematic-kai-halo" aria-hidden="true" />
-        <Image src="/media/kai-cinematic/kai-portrait-final.png" alt="Kai, creative technologist and independent builder" fill priority sizes="(max-width: 820px) 95vw, 66vw" />
-        <span className="cinematic-pendant-glint" aria-hidden="true" />
-      </div>
-      <div className="cinematic-layer cinematic-reflections" data-kai-depth="1.02" aria-hidden="true"><i /><i /></div>
-      <div className="cinematic-layer cinematic-particles" data-kai-depth="1.34" aria-hidden="true">
-        {particles.map(([left, top, delay], index) => (
-          <i key={index} style={{ left: `${left}%`, top: `${top}%`, animationDelay: `${delay}s` }} />
-        ))}
-      </div>
-      <div className="cinematic-scrim" aria-hidden="true" />
 
-      <div className="cinematic-copy hero-reveal">
-        <p className="eyebrow">Creative Technologist &amp; Independent Builder</p>
-        <h1>Building products, systems, and stories at the intersection of <em>AI, code, and creativity.</em></h1>
-        <p className="lead">I turn ideas into digital products, intelligent systems, and meaningful creative experiences.</p>
-        <div className="cinematic-actions">
-          <a className="primary" href="#work">Explore My Work</a>
-          <a className="secondary" href="#about">Meet Kai</a>
+      <div className="kai-layer kai-character">
+        <Image
+          src="/media/kai-parallax/kai-interactive.webp"
+          alt="Kai interacting with a transparent interface"
+          fill
+          priority
+          sizes="(max-width: 900px) 100vw, 70vw"
+        />
+      </div>
+
+      <div className="kai-layer kai-interface">
+        <div className="kai-glass-screen">
+          <div className="kai-touchpoint" aria-hidden="true"><i /><i /><b /></div>
+          <header className="kai-screen-header">
+            <span className="kai-screen-brand"><i /> KAIDEVLAB</span>
+            <span className="kai-online"><i /> SYSTEM ONLINE</span>
+          </header>
+
+          <div className="kai-screen-grid">
+            <div className="kai-code-panel">
+              <strong>{"// CODE EDITOR"}</strong>
+              <pre aria-label="Animated TypeScript code">
+                <code>
+                  {code.map((line, index) => (
+                    <span className={activeLine === index ? "is-active" : undefined} key={`${index}-${line}`}>
+                      <i>{String(index + 1).padStart(2, "0")}</i>{line || " "}
+                      {index === code.length - 1 ? <b className="kai-code-caret" /> : null}
+                    </span>
+                  ))}
+                </code>
+              </pre>
+            </div>
+
+            <aside className="kai-build-panel">
+              <strong>{"// BUILD"}</strong>
+              {metrics.map((metric) => (
+                <div className="kai-metric" key={metric.label}>
+                  <span>{metric.label}</span><b>{metric.value}</b>
+                  <i style={{ "--metric-value": metric.value } as CSSProperties} />
+                </div>
+              ))}
+              <svg viewBox="0 0 240 86" role="img" aria-label="Live build activity">
+                <polyline points="2,70 28,50 53,61 78,27 103,46 128,18 154,42 180,22 207,32 238,8" />
+                <circle cx="238" cy="8" r="4" />
+              </svg>
+            </aside>
+
+            <div className="kai-terminal-panel">
+              <strong>{"// TERMINAL"}</strong>
+              <p><b>$</b> kaidevlab build --production</p>
+              <p><i>✓</i> Compiled successfully</p>
+              <p><i>✓</i> Optimized creative systems</p>
+              <p><i>✓</i> Ready on kaidevlab.com</p>
+            </div>
+          </div>
         </div>
-        <p className="meta">Based in Japan · Building independently</p>
       </div>
 
-      <button className={`cinematic-motion-toggle ${motionOn ? "is-on" : ""}`} type="button" onClick={() => setMotionOn((value) => !value)} aria-pressed={motionOn} aria-label={`Motion ${motionOn ? "on" : "off"}`}>
-        <span /> Motion {motionOn ? "on" : "off"}
-      </button>
-      <div className="cinematic-depth-label" aria-hidden="true"><span /> Drag to explore</div>
-    </div>
+      <div className="kai-layer kai-foreground" aria-hidden="true">
+        <div className="kai-input-deck">
+          {Array.from({ length: 56 }, (_, index) => (
+            <i
+              key={index}
+              style={{ "--key-delay": `${(index * 0.173) % 2.1}s` } as CSSProperties}
+            />
+          ))}
+        </div>
+        <div className="kai-light-sweep" />
+      </div>
+
+      <span className="kai-parallax-hint" aria-hidden="true">Interactive build surface</span>
+    </section>
   );
 }
