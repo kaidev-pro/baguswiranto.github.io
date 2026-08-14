@@ -128,7 +128,6 @@ export function KaiParallaxHero() {
         </div>
         <p className="meta">Based in Japan · Building independently</p>
       </div>
-      <div className="cinematic-depth-label" aria-hidden="true"><span /> Drag to explore</div>
     </div>
   );
 }
