@@ -740,14 +740,14 @@ ul { margin: 0; }
   .cinematic-pendant-glint { right: 22%; }
 }
 @media (max-width: 820px) {
-  .hero-section:has(.cinematic-hero) { margin-top: -76px; }
-  .cinematic-hero { min-height: 900px; }
+  .hero-section:has(.cinematic-hero) { margin-top: 0; padding-top: 0; }
+  .cinematic-hero { min-height: 820px; padding-top: 92px; }
   .cinematic-background { inset: -6%; }
   .cinematic-background img { object-position: 61% center; }
   .cinematic-background::after { background: linear-gradient(180deg,rgba(255,255,255,.8),rgba(250,253,255,.5) 45%,transparent 72%); }
   .cinematic-light-arc i:first-child { width: 105vw; right: -36%; top: 29%; }
   .cinematic-scrim { background: linear-gradient(180deg,rgba(253,254,255,.98) 0%,rgba(251,253,255,.92) 39%,rgba(248,251,255,.35) 55%,transparent 72%); }
-  .cinematic-copy { left: 22px; right: 22px; top: 122px; width: auto; max-width: 630px; margin: 0 auto; transform: none; text-align: center; }
+  .cinematic-copy { left: 22px; right: 22px; top: 118px; width: auto; max-width: 630px; margin: 0 auto; transform: none; text-align: center; }
   .cinematic-copy .eyebrow { margin-bottom: 1rem; font-size: .52rem; letter-spacing: .13em; }
   .cinematic-copy h1 { margin: 0 auto; font-size: clamp(2.5rem,9.9vw,3.45rem); line-height: .96; }
   .cinematic-copy .lead { max-width: 480px; margin: 1.1rem auto 0; font-size: .82rem; line-height: 1.57; }
