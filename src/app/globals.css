@@ -755,7 +755,7 @@ ul { margin: 0; }
   .cinematic-copy .meta { margin-top: .9rem; font-size: .57rem; }
   .cinematic-kai img {
     right: auto !important;
-    left: 63% !important;
+    left: 50% !important;
     bottom: -5% !important;
     height: 59% !important;
     transform: translateX(-50%);
@@ -776,12 +776,12 @@ ul { margin: 0; }
   .cinematic-actions { gap: .5rem; margin-top: 1rem; }
   .cinematic-actions .primary, .cinematic-actions .secondary { min-height: 43px; padding: .65rem .9rem; font-size: .75rem; }
   .cinematic-copy .meta { margin-top: .72rem; font-size: .52rem; }
-  .cinematic-kai img { left: 66% !important; bottom: -5% !important; height: 60% !important; }
+  .cinematic-kai img { left: 50% !important; bottom: -5% !important; height: 60% !important; }
   .cinematic-kai-halo { right: -4%; top: 50%; width: 94%; height: 52%; }
   .cinematic-particles i:nth-child(n+5) { display: none; }
   .current-signal { margin-top: -20px; }
 }
 @media (max-width: 380px) {
-  .cinematic-kai img { left: 64% !important; height: 59% !important; }
+  .cinematic-kai img { left: 50% !important; height: 59% !important; }
 }
 @media (prefers-reduced-motion: reduce) { .cinematic-layer[data-kai-depth] { transform: none !important; } }
