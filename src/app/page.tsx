@@ -28,7 +28,7 @@ const capabilities = [
   },
 ];
 
-const building = ["8Agents", "Kaidevlab redesign", "8Router", "NihongoGate"];
+const building = ["8Agents", "Kaidevlab redesign", "Rakusaku"];
 const exploring = ["Manhwa production", "Visual storytelling", "AI-assisted filmmaking", "Product storytelling", "Video editing"];
 
 export default function Home() {

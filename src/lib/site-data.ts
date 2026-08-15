@@ -40,38 +40,6 @@ export const projects: ProjectPreview[] = [
     coverPosition: "center top",
   },
   {
-    slug: "8router",
-    name: "8Router",
-    category: "Developer Tool",
-    group: "Developer Tools",
-    status: "Beta · Active Development",
-    role: "Architecture, routing, developer experience",
-    summary:
-      "An OpenAI-compatible gateway for routing, fallback, credentials, and multi-provider AI access.",
-    logo: "/logos/8router-mark.svg",
-    tone: "router",
-    signals: ["OpenAI-compatible", "Fallback", "Provider routing"],
-    liveUrl: "https://8router.8agents.xyz",
-    coverImage: "/project-screenshots/8router.webp",
-    coverPosition: "center top",
-  },
-  {
-    slug: "nihongogate",
-    name: "NihongoGate",
-    category: "Education Product",
-    group: "Education",
-    status: "Active Development",
-    role: "Product engineering, learning design",
-    summary:
-      "A Japanese and SSW learning platform built around structured, practical learning workflows.",
-    logo: "/logos/nihongogate-64.svg",
-    tone: "education",
-    signals: ["JLPT N5–N1", "SSW", "Learning paths"],
-    liveUrl: "https://nihongogate.kaidevlab.com",
-    coverImage: "/project-screenshots/nihongogate.webp",
-    coverPosition: "center top",
-  },
-  {
     slug: "rakusaku",
     name: "Rakusaku",
     category: "Digital Commerce Prototype",
@@ -119,5 +87,5 @@ export const projects: ProjectPreview[] = [
   },
 ];
 
-export const featuredProjects = projects.slice(0, 4);
+export const featuredProjects = projects.filter((project) => project.group === "Products" || project.group === "AI Systems");
 export const creativeProjects = projects.filter((project) => project.group === "Creative");
