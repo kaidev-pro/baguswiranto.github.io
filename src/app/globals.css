@@ -751,51 +751,49 @@ ul { margin: 0; }
 }
 @media (max-width: 820px) {
   .hero-section:has(.cinematic-hero) { margin-top: 0; padding-top: 0; }
-  .cinematic-hero { min-height: max(900px, 100svh); }
+  .cinematic-hero { min-height: 100svh; position: relative; overflow: hidden; }
   .cinematic-background { inset: -6%; }
   .cinematic-background img { object-position: 61% center; }
   .cinematic-background::after { background: linear-gradient(180deg,rgba(255,255,255,.8),rgba(250,253,255,.5) 45%,transparent 72%); }
   .cinematic-light-arc i:first-child { width: 105vw; right: -36%; top: 29%; }
-  .cinematic-scrim { background: linear-gradient(180deg,rgba(253,254,255,.98) 0%,rgba(251,253,255,.92) 39%,rgba(248,251,255,.35) 55%,transparent 72%); }
-  .cinematic-copy { left: 22px; right: 22px; top: 110px; width: auto; max-width: 590px; margin: 0 auto; transform: none; text-align: left; }
-  .cinematic-copy .eyebrow { margin-bottom: 1rem; font-size: .52rem; letter-spacing: .13em; }
-  .cinematic-copy h1 { margin: 0; font-size: clamp(2.25rem,8.6vw,3.1rem); line-height: .98; }
-  .cinematic-copy .lead { max-width: 480px; margin: 1.1rem 0 0; font-size: .82rem; line-height: 1.57; }
-  .cinematic-actions { justify-content: flex-start; margin-top: 1.25rem; }
-  .cinematic-copy .meta { margin-top: .9rem; font-size: .57rem; }
+  .cinematic-scrim { background: linear-gradient(135deg,rgba(253,254,255,.95) 0%,rgba(251,253,255,.85) 35%,rgba(248,251,255,.2) 60%,transparent 75%); }
+  .cinematic-copy { left: 22px; right: auto; top: 105px; bottom: auto; width: 55%; max-width: 320px; margin: 0; padding-bottom: 0; transform: none; text-align: left; z-index: 30; }
+  .cinematic-copy .eyebrow { margin-bottom: .8rem; font-size: .5rem; letter-spacing: .12em; }
+  .cinematic-copy h1 { margin: 0; font-size: clamp(2rem,9vw,2.8rem); line-height: .96; }
+  .cinematic-copy .lead { max-width: 340px; margin: .9rem 0 0; font-size: .78rem; line-height: 1.5; }
+  .cinematic-actions { justify-content: flex-start; margin-top: 1rem; gap: .5rem; }
+  .cinematic-actions .primary, .cinematic-actions .secondary { min-height: 43px; padding: .65rem .9rem; font-size: .75rem; }
+  .cinematic-copy .meta { margin-top: .7rem; font-size: .5rem; }
   .cinematic-kai img {
-    right: -18% !important;
+    right: -8% !important;
     left: auto !important;
     bottom: 0 !important;
     top: auto !important;
     width: auto !important;
-    height: 100% !important;
+    height: 85% !important;
     transform: none !important;
     object-fit: contain !important;
-    filter: drop-shadow(0 22px 30px rgba(31,55,91,.10));
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, #000 12%, #000 86%, transparent 100%);
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, #000 12%, #000 86%, transparent 100%);
+    filter: drop-shadow(0 12px 24px rgba(31,55,91,.12));
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 15%, #000 88%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 15%, #000 88%, transparent 100%);
   }
-  .cinematic-kai-halo { right: -8%; top: 47%; width: 92%; height: 56%; }
-  .current-signal { position: relative; z-index: 90; margin-top: 0; backdrop-filter: blur(14px); }
+  .cinematic-kai { inset: 0 !important; }
+  .cinematic-kai-halo { right: 12%; top: 35%; width: 65%; height: 55%; opacity: .85; }
+  .current-signal { display: none; }
   .cinematic-pendant-glint, .cinematic-depth-label, .cinematic-motion-toggle { display: none; }
-  [data-theme="dark"] .cinematic-background::after, [data-theme="dark"] .cinematic-scrim { background: linear-gradient(180deg,rgba(4,13,29,.98),rgba(5,18,41,.9) 43%,rgba(5,18,41,.24) 62%,transparent 78%); }
+  .cinematic-atmosphere, .cinematic-reflections, .cinematic-particles { opacity: .18; }
+  [data-theme="dark"] .cinematic-background::after, [data-theme="dark"] .cinematic-scrim { background: linear-gradient(135deg,rgba(4,13,29,.95) 0%,rgba(5,18,41,.85) 35%,rgba(5,18,41,.24) 62%,transparent 78%); }
 }
 @media (max-width: 470px) {
-  .cinematic-hero { min-height: max(790px, 100svh); }
-  .cinematic-copy { left: 16px; right: 16px; top: 100px; }
-  .cinematic-copy .eyebrow { margin-bottom: .72rem; font-size: .46rem; }
-  .cinematic-copy h1 { max-width: 390px; font-size: clamp(2rem,8.9vw,2.45rem); line-height: 1; letter-spacing: -.04em; }
-  .cinematic-copy .lead { max-width: 340px; margin-top: .9rem; font-size: .76rem; line-height: 1.5; }
-  .cinematic-actions { gap: .5rem; margin-top: 1rem; }
-  .cinematic-actions .primary, .cinematic-actions .secondary { min-height: 43px; padding: .65rem .9rem; font-size: .75rem; }
-  .cinematic-copy .meta { margin-top: .72rem; font-size: .52rem; }
-  .cinematic-kai img { right: -16% !important; left: auto !important; height: 100% !important; bottom: 0 !important; }
-  .cinematic-kai-halo { right: -4%; top: 50%; width: 94%; height: 52%; }
+  .cinematic-hero { min-height: 100svh; }
+  .cinematic-copy { left: 18px; width: 56%; top: 100px; bottom: auto; padding-bottom: 0; }
+  .cinematic-copy h1 { font-size: clamp(1.85rem,9.2vw,2.5rem); line-height: 1; letter-spacing: -.03em; }
+  .cinematic-copy .lead { margin-top: .7rem; font-size: .72rem; }
+  .cinematic-kai img { height: 80% !important; }
   .cinematic-particles i:nth-child(n+5) { display: none; }
-  .current-signal { margin-top: -20px; }
 }
 @media (max-width: 380px) {
-  .cinematic-kai img { right: -14% !important; left: auto !important; height: 100% !important; bottom: 0 !important; }
+  .cinematic-copy h1 { font-size: clamp(1.7rem,8.8vw,2.2rem); }
+  .cinematic-kai img { height: 78% !important; }
 }
 @media (prefers-reduced-motion: reduce) { .cinematic-layer[data-kai-depth] { transform: none !important; } }
