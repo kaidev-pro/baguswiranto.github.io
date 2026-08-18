@@ -747,7 +747,7 @@ ul { margin: 0; }
   .cinematic-background::after { background: linear-gradient(180deg,rgba(255,255,255,.8),rgba(250,253,255,.5) 45%,transparent 72%); }
   .cinematic-light-arc i:first-child { width: 105vw; right: -36%; top: 29%; }
   .cinematic-scrim { background: linear-gradient(180deg,rgba(253,254,255,.98) 0%,rgba(251,253,255,.92) 39%,rgba(248,251,255,.35) 55%,transparent 72%); }
-  .cinematic-copy { left: 22px; right: 22px; top: 170px; width: auto; max-width: 590px; margin: 0 auto; transform: none; text-align: left; }
+  .cinematic-copy { left: 22px; right: 22px; top: 110px; width: auto; max-width: 590px; margin: 0 auto; transform: none; text-align: left; }
   .cinematic-copy .eyebrow { margin-bottom: 1rem; font-size: .52rem; letter-spacing: .13em; }
   .cinematic-copy h1 { margin: 0; font-size: clamp(2.25rem,8.6vw,3.1rem); line-height: .98; }
   .cinematic-copy .lead { max-width: 480px; margin: 1.1rem 0 0; font-size: .82rem; line-height: 1.57; }
@@ -772,7 +772,7 @@ ul { margin: 0; }
 }
 @media (max-width: 470px) {
   .cinematic-hero { min-height: max(790px, 100svh); }
-  .cinematic-copy { left: 16px; right: 16px; top: 158px; }
+  .cinematic-copy { left: 16px; right: 16px; top: 100px; }
   .cinematic-copy .eyebrow { margin-bottom: .72rem; font-size: .46rem; }
   .cinematic-copy h1 { max-width: 390px; font-size: clamp(2rem,8.9vw,2.45rem); line-height: 1; letter-spacing: -.04em; }
   .cinematic-copy .lead { max-width: 340px; margin-top: .9rem; font-size: .76rem; line-height: 1.5; }
