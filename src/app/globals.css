@@ -774,8 +774,12 @@ ul { margin: 0; }
     transform: none !important;
     object-fit: contain !important;
     filter: drop-shadow(0 12px 24px rgba(31,55,91,.12));
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 15%, #000 88%, transparent 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 15%, #000 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 3%, #000 88%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 3%, #000 88%, transparent 100%);
+  }
+  [data-theme="dark"] .cinematic-kai img {
+    mix-blend-mode: darken;
+    filter: drop-shadow(0 12px 24px rgba(31,55,91,.12)) drop-shadow(0 0 2px rgba(0,0,0,.15));
   }
   .cinematic-kai { inset: 0 !important; }
   .cinematic-kai-halo { right: 12%; top: 35%; width: 65%; height: 55%; opacity: .85; }
