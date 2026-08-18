@@ -754,19 +754,17 @@ ul { margin: 0; }
   .cinematic-actions { justify-content: flex-start; margin-top: 1.25rem; }
   .cinematic-copy .meta { margin-top: .9rem; font-size: .57rem; }
   .cinematic-kai img {
-    right: auto !important;
-    left: 22% !important;
-    bottom: 0 !important;
+    right: -24% !important;
+    left: auto !important;
+    bottom: -10% !important;
     top: auto !important;
     width: auto !important;
-    height: 80% !important;
+    height: 102% !important;
     transform: none !important;
     object-fit: contain !important;
-    filter: drop-shadow(0 18px 28px rgba(31,55,91,.08));
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 86%, transparent 100%), linear-gradient(to bottom, #000 0%, #000 84%, rgba(0, 0, 0, 0.62) 94%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 86%, transparent 100%), linear-gradient(to bottom, #000 0%, #000 84%, rgba(0, 0, 0, 0.62) 94%, transparent 100%);
-    mask-composite: intersect;
-    -webkit-mask-composite: source-in;
+    filter: drop-shadow(0 24px 30px rgba(31,55,91,.1));
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, #000 18%, #000 82%, rgba(0, 0, 0, 0.5) 95%, transparent 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, #000 18%, #000 82%, rgba(0, 0, 0, 0.5) 95%, transparent 100%);
   }
   .cinematic-kai-halo { right: -8%; top: 47%; width: 92%; height: 56%; }
   .current-signal { position: relative; z-index: 90; margin-top: 0; backdrop-filter: blur(14px); }
@@ -782,12 +780,12 @@ ul { margin: 0; }
   .cinematic-actions { gap: .5rem; margin-top: 1rem; }
   .cinematic-actions .primary, .cinematic-actions .secondary { min-height: 43px; padding: .65rem .9rem; font-size: .75rem; }
   .cinematic-copy .meta { margin-top: .72rem; font-size: .52rem; }
-  .cinematic-kai img { left: 20% !important; height: 82% !important; }
+  .cinematic-kai img { right: -22% !important; left: auto !important; height: 104% !important; bottom: -10% !important; }
   .cinematic-kai-halo { right: -4%; top: 50%; width: 94%; height: 52%; }
   .cinematic-particles i:nth-child(n+5) { display: none; }
   .current-signal { margin-top: -20px; }
 }
 @media (max-width: 380px) {
-  .cinematic-kai img { left: 18% !important; height: 80% !important; }
+  .cinematic-kai img { right: -20% !important; left: auto !important; height: 102% !important; bottom: -10% !important; }
 }
 @media (prefers-reduced-motion: reduce) { .cinematic-layer[data-kai-depth] { transform: none !important; } }
