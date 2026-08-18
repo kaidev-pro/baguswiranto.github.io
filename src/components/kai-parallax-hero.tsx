@@ -107,7 +107,10 @@ export function KaiParallaxHero() {
       <div className="cinematic-layer cinematic-atmosphere" data-kai-depth="0.36" aria-hidden="true"><i /><i /><i /></div>
       <div className="cinematic-layer cinematic-kai" data-kai-depth="0.7">
         <div className="cinematic-kai-halo" aria-hidden="true" />
-        <Image src="/media/kai-cinematic/kai-portrait-final.png" alt="Kai, creative technologist and independent builder" fill priority sizes="(max-width: 820px) 95vw, 66vw" />
+        <picture>
+          <source media="(max-width: 820px)" srcSet="/media/kai-cinematic/kai-portrait-mobile.png" />
+          <Image src="/media/kai-cinematic/kai-portrait-final.png" alt="Kai, creative technologist and independent builder" fill priority sizes="(max-width: 820px) 95vw, 66vw" />
+        </picture>
         <span className="cinematic-pendant-glint" aria-hidden="true" />
       </div>
       <div className="cinematic-layer cinematic-reflections" data-kai-depth="1.02" aria-hidden="true"><i /><i /></div>
