@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import { Menu, Moon, Sun, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const navItems = [
   ["Work", "/#work"],
@@ -16,7 +16,14 @@ const navItems = [
 export function SiteHeader() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   function toggleTheme() {
     const next = theme === "dark" ? "light" : "dark";
@@ -26,7 +33,7 @@ export function SiteHeader() {
   }
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
       <a className="brand-logo" href="/" aria-label="Kaidevlab home">
         <Image
           className="logo-light"
