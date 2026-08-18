@@ -762,8 +762,11 @@ ul { margin: 0; }
     height: 80% !important;
     transform: none !important;
     object-fit: contain !important;
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 89%, rgba(0, 0, 0, 0.82) 93%, transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 0%, #000 89%, rgba(0, 0, 0, 0.82) 93%, transparent 100%);
+    filter: drop-shadow(0 18px 28px rgba(31,55,91,.08));
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 86%, transparent 100%), linear-gradient(to bottom, #000 0%, #000 84%, rgba(0, 0, 0, 0.62) 94%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 86%, transparent 100%), linear-gradient(to bottom, #000 0%, #000 84%, rgba(0, 0, 0, 0.62) 94%, transparent 100%);
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
   }
   .cinematic-kai-halo { right: -8%; top: 47%; width: 92%; height: 56%; }
   .current-signal { position: relative; z-index: 90; margin-top: 0; backdrop-filter: blur(14px); }
